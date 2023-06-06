@@ -18,4 +18,5 @@ export const HeaderText = styled(Typography)`
 export const DescriptionText = styled(Typography)`
   margin: auto;
   font-size: 16px;
+  color: #4E5969;
 `;

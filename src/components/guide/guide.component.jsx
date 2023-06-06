@@ -17,6 +17,8 @@ import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import OpenWithOutlinedIcon from "@mui/icons-material/OpenWithOutlined";
 import PowerSettingsNewOutlinedIcon from "@mui/icons-material/PowerSettingsNewOutlined";
 import CircleIcon from "@mui/icons-material/Circle";
+import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
+import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 
 import StepConnector, {
   stepConnectorClasses,
@@ -41,6 +43,7 @@ import SelectMarketplace from "../selectMarketplace/selectMarketplace.component"
 import {
   Avatar,
   Button,
+  Chip,
   FormControl,
   FormControlLabel,
   List,
@@ -446,10 +449,12 @@ const Guide = () => {
                 >
                   <Paper
                     sx={{
+                      position: "relative",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      marginTop: "20px",
                       border: "1px solid #00A3FF",
                       borderRadius: "16px",
                       width: "280px",
@@ -457,11 +462,18 @@ const Guide = () => {
                       background: "#FFFFFF",
                     }}
                   >
+                    <Chip
+                      label="FAST ROUTE"
+                      color="success"
+                      icon={<BoltOutlinedIcon />}
+                      sx={{ position: "absolute", top: "-20px", padding: "20px", fontWeight: "700" }}
+                    />
+
                     <Box
                       component="img"
                       sx={{
                         width: "64px",
-                        marginTop: "30px",
+                        marginTop: "50px",
                         marginBottom: "30px",
                       }}
                       src={aiStrategyLogo}
@@ -520,10 +532,12 @@ const Guide = () => {
                   </Paper>
                   <Paper
                     sx={{
+                      position: "relative",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      marginTop: "20px",
                       border: "1px solid #00A3FF",
                       borderRadius: "16px",
                       width: "280px",
@@ -531,11 +545,17 @@ const Guide = () => {
                       background: "#FFFFFF",
                     }}
                   >
+                    <Chip
+                      label="PERSONALIZED"
+                      color="primary"
+                      icon={<TuneOutlinedIcon />}
+                      sx={{ position: "absolute", top: "-20px", padding: "20px", fontWeight: "700" }}
+                    />
                     <Box
                       component="img"
                       sx={{
                         width: "64px",
-                        marginTop: "30px",
+                        marginTop: "50px",
                         marginBottom: "30px",
                       }}
                       src={customStrategyLogo}
