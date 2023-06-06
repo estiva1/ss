@@ -1,4 +1,4 @@
-import { Box, Button, Paper } from "@mui/material";
+import { Box, Button, Paper, Typography } from "@mui/material";
 import styled from "styled-components";
 
 export const UploaderContainer = styled(Box)`
@@ -12,12 +12,12 @@ export const UploaderContainer = styled(Box)`
 `;
 
 export const StyledPaper = styled(Paper)`
-  border: 1px solid #00A3FF;
+  border: 1px solid #00a3ff;
   border-radius: 16px !important;
   min-width: 100px;
   min-height: 100px;
   max-width: 255px;
-  background-color: #F8FAFB!important;
+  background-color: #f8fafb !important;
   box-shadow: 0;
 `;
 
@@ -28,10 +28,29 @@ export const TextfieldContainer = styled(Box)`
   margin: 20px;
 `;
 
+export const TextContainer = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  background: #f8fafb;
+  gap: 15px;
+`;
+
+export const HeaderText = styled(Typography)`
+  font-weight: 700 !important;
+  color: #000 !important;
+`;
+
+export const DescriptionText = styled(Typography)`
+  margin: auto;
+  font-size: 16px;
+`;
+
 export const StyledWhiteButton = styled(Button)`
   height: 40px;
-  border: 1px solid #E6E6E6;
-  border-radius: 10px!important;
-  margin-top: 20px!important;
-  margin-bottom: 20px!important;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
 `;

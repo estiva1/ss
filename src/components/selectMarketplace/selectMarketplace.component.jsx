@@ -4,6 +4,11 @@ import { Box, Button, Divider, Paper, Typography } from "@mui/material";
 import amazonLogo from "../../assets/amazon-logo.png";
 import walmartLogo from "../../assets/walmart-logo.png";
 import shopifyLogo from "../../assets/shopify-logo.png";
+import {
+  DescriptionText,
+  HeaderText,
+  TextContainer,
+} from "./selectMarketplace.styles";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText("#0A3DB0"),
@@ -15,36 +20,21 @@ const ColorButton = styled(Button)(({ theme }) => ({
 
 const SelectMarketplace = () => {
   return (
-    <div>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: "20px",
-          background: "#F8FAFB",
-          gap: "15px",
-        }}
-      >
-        <Typography
+    <Box>
+      <TextContainer>
+        <HeaderText
           gutterBottom
           align="center"
           variant="h5"
           component="div"
-          sx={{ fontWeight: "700", color: "#000"}}
         >
           Select Your Market Place
-        </Typography>
-        <Typography
-          gutterBottom
-          component="div"
-          sx={{ margin: "auto", fontSize: "16px" }}
-          align="center"
-        >
+        </HeaderText>
+        <DescriptionText gutterBottom component="div" align="center">
           After selecting you will be redirected to your marketplace setup page
           to connect your account.
-        </Typography>
-      </Box>
+        </DescriptionText>
+      </TextContainer>
       <Box
         sx={{
           display: "flex",
@@ -181,7 +171,7 @@ const SelectMarketplace = () => {
           </ColorButton>
         </Paper>
       </Box>
-    </div>
+    </Box>
   );
 };
 

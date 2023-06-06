@@ -1,17 +1,20 @@
 import { styled } from "@mui/material/styles";
-import { Box, Chip, Divider, Paper } from "@mui/material";
-import { Upload, Button, Typography } from "antd";
+import { Box, Chip, Divider, Paper, Typography } from "@mui/material";
+import { Upload } from "antd";
 
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import dragndrop from "../../assets/dragndrop.png";
-import { HeaderText, TextContainer } from "../addCost/addCost.styles";
+
 import {
+  HeaderText,
   StyledPaper,
   StyledWhiteButton,
+  TextContainer,
   TextfieldContainer,
   UploaderContainer,
 } from "./costUploader.styles";
+
+import dragndrop from "../../assets/dragndrop.png";
 
 const { Dragger } = Upload;
 

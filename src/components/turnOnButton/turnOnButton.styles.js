@@ -12,8 +12,8 @@ export const RepricerButton = styled.button`
   background: var(--bg);
   box-shadow: 0 3px 12px 2px var(--bga);
   border-radius: 50%;
-  margin-top: -42px;
-  margin-left: 24px;
+  margin-top: -48px;
+  margin-left: 20px;
   bottom: 60px;
   overflow: hidden;
   cursor: pointer;
