@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ArrowOutwardOutlinedIcon from "@mui/icons-material/ArrowOutwardOutlined";
+import TipsAndUpdatesOutlinedIcon from "@mui/icons-material/TipsAndUpdatesOutlined";
 
 import PropTypes from "prop-types";
 import Step from "@mui/material/Step";
@@ -52,6 +53,12 @@ import {
   ListItemText,
   Radio,
   RadioGroup,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
 } from "@mui/material";
 
 import {
@@ -244,6 +251,7 @@ ColorlibStepIcon.propTypes = {
 
 const mainSteps = ["Authorize Marketplace", "Add Cost", "Choose Strategy"];
 const chooseStrategySteps = ["", "", "", "", ""];
+
 //-------------------------------
 
 function generate(element) {
@@ -466,7 +474,12 @@ const Guide = () => {
                       label="FAST ROUTE"
                       color="success"
                       icon={<BoltOutlinedIcon />}
-                      sx={{ position: "absolute", top: "-20px", padding: "20px", fontWeight: "700" }}
+                      sx={{
+                        position: "absolute",
+                        top: "-20px",
+                        padding: "20px",
+                        fontWeight: "700",
+                      }}
                     />
 
                     <Box
@@ -549,7 +562,12 @@ const Guide = () => {
                       label="PERSONALIZED"
                       color="primary"
                       icon={<TuneOutlinedIcon />}
-                      sx={{ position: "absolute", top: "-20px", padding: "20px", fontWeight: "700" }}
+                      sx={{
+                        position: "absolute",
+                        top: "-20px",
+                        padding: "20px",
+                        fontWeight: "700",
+                      }}
                     />
                     <Box
                       component="img"
@@ -1624,7 +1642,7 @@ const Guide = () => {
                         marginTop: "30px",
                       }}
                       variant="contained"
-                      onClick={handleStrategyTypeChange("", 3)}
+                      onClick={handleStrategyTypeChange("madmax", 2)}
                     >
                       Back
                     </TransparentButton>
@@ -1637,14 +1655,193 @@ const Guide = () => {
                         marginTop: "30px",
                       }}
                       variant="contained"
-                      onClick={handleStrategyTypeChange("review", 1)}
+                      onClick={handleStrategyTypeChange("review", 4)}
                     >
                       Review the Strategy
                     </ColorButton>
                   </Box>
                 </Box>
               ) : (
-                <Box>Review</Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    padding: "20px",
+                    background: "#F8FAFB",
+                  }}
+                >
+                  <Grid container spacing={1} sx={{ marginTop: "10px" }}>
+                    <Grid item xs={6} md={6}>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "start",
+                          alignContent: "center",
+                          background: "#F8FAFB",
+                        }}
+                      >
+                        <Typography sx={{ fontWeight: "700" }}>
+                          Type of Strategy &#62;
+                        </Typography>
+                        <Typography
+                          sx={{ color: "#1565D8", marginLeft: "5px" }}
+                        >
+                          Strategy name
+                        </Typography>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={6} md={6}>
+                      <Chip
+                        label="This Ai Powered strategy that can be tailor fit for any situation"
+                        color="warning"
+                        icon={<TipsAndUpdatesOutlinedIcon />}
+                        sx={{
+                          padding: "20px",
+                          paddingLeft: "10px",
+                          paddingRight: "10px",
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={1} sx={{ marginTop: "10px" }}>
+                    <Grid item xs={6} md={6}>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "start",
+                          alignContent: "center",
+                          background: "#F8FAFB",
+                        }}
+                      >
+                        <Typography sx={{ fontWeight: "700" }}>
+                          Competition Type &#62;
+                        </Typography>
+                        <Typography
+                          sx={{ color: "#1565D8", marginLeft: "5px" }}
+                        >
+                          Strategy name
+                        </Typography>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={6} md={6}>
+                      <Chip
+                        label="The type of competition that your listings will compete against"
+                        color="warning"
+                        icon={<TipsAndUpdatesOutlinedIcon />}
+                        sx={{
+                          padding: "20px",
+                          paddingLeft: "10px",
+                          paddingRight: "10px",
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={1} sx={{ marginTop: "10px" }}>
+                    <Grid item xs={6} md={6}>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "start",
+                          alignContent: "center",
+                          background: "#F8FAFB",
+                        }}
+                      >
+                        <Typography sx={{ fontWeight: "700" }}>
+                          Minimum Price &#62;
+                        </Typography>
+                        <Typography
+                          sx={{ color: "#1565D8", marginLeft: "5px" }}
+                        >
+                          Minimum Price
+                        </Typography>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={6} md={6}>
+                      <Chip
+                        label="The ROI based minimum pricing method used for listings"
+                        color="warning"
+                        icon={<TipsAndUpdatesOutlinedIcon />}
+                        sx={{
+                          padding: "20px",
+                          paddingLeft: "10px",
+                          paddingRight: "10px",
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={1} sx={{ marginTop: "10px" }}>
+                    <Grid item xs={6} md={6}>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "start",
+                          alignContent: "center",
+                          background: "#F8FAFB",
+                        }}
+                      >
+                        <Typography sx={{ fontWeight: "700" }}>
+                          Maximum Price &#62;
+                        </Typography>
+                        <Typography
+                          sx={{ color: "#1565D8", marginLeft: "5px" }}
+                        >
+                          Maximum Price
+                        </Typography>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={6} md={6}>
+                      <Chip
+                        label="The ROI based maximum pricing method used for listings"
+                        color="warning"
+                        icon={<TipsAndUpdatesOutlinedIcon />}
+                        sx={{
+                          padding: "20px",
+                          paddingLeft: "10px",
+                          paddingRight: "10px",
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container spacing={1} sx={{ marginTop: "10px" }}>
+                    <Grid item xs={6} md={6}>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "start",
+                          alignContent: "center",
+                          background: "#F8FAFB",
+                        }}
+                      >
+                        <Typography sx={{ fontWeight: "700" }}>
+                          Assigned Strategy &#62;
+                        </Typography>
+                        <Typography
+                          sx={{ color: "#1565D8", marginLeft: "5px" }}
+                        >
+                          Assigned Strategy
+                        </Typography>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={6} md={6}>
+                      <Chip
+                        label="Lorem ipsum dolor amnia strait"
+                        color="warning"
+                        icon={<TipsAndUpdatesOutlinedIcon />}
+                        sx={{
+                          padding: "20px",
+                          paddingLeft: "10px",
+                          paddingRight: "10px",
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
               )}
             </Box>
           )}

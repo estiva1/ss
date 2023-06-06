@@ -30,7 +30,7 @@ const SelectMarketplace = () => {
         >
           Select Your Market Place
         </HeaderText>
-        <DescriptionText gutterBottom component="div" align="center">
+        <DescriptionText component="div" align="center">
           After selecting you will be redirected to your marketplace setup page
           to connect your account.
         </DescriptionText>
