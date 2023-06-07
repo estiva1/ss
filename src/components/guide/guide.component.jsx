@@ -62,23 +62,24 @@ import {
 } from "@mui/material";
 
 import {
+  ChooseStrategyButton,
   DescriptionText,
+  Dot,
   HeaderText,
   ImageBox,
+  StrategyChip,
+  StrategyImageBox,
+  StrategyName,
+  StrategyType,
+  StrategyTypesContainer,
   StyledAccordion,
+  StyledListItemAvatar,
   StyledPaper,
   StyledPaperRight,
+  StyledStack,
   TextContainer,
 } from "./guide.styles";
 import { cloneElement } from "react";
-
-const ColorButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText("#0A3DB0"),
-  backgroundColor: "#0A3DB0",
-  "&:hover": {
-    backgroundColor: "#0A3DB0",
-  },
-}));
 
 const TransparentButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText("#F8FAFB"),
@@ -281,8 +282,6 @@ const Guide = () => {
     setStrategy(event.target.value);
   };
 
-  const [dense, setDense] = useState(true);
-
   return (
     <Grid container spacing={0}>
       {/* grid for side steps */}
@@ -374,7 +373,7 @@ const Guide = () => {
                 ? "2" && 1
                 : expanded === "panel3"
                 ? "3" && 2
-                : "0"
+                : "1"
             }
             connector={<ColorlibConnector />}
           >
@@ -420,15 +419,7 @@ const Guide = () => {
                 </DescriptionText>
               </TextContainer>
 
-              <Stack
-                sx={{
-                  width: "75%",
-                  display: "flex",
-                  margin: "auto",
-                  padding: "5px",
-                }}
-                spacing={4}
-              >
+              <StyledStack spacing={4}>
                 <Stepper
                   alternativeLabel
                   activeStep={strategyStep}
@@ -442,195 +433,78 @@ const Guide = () => {
                     </Step>
                   ))}
                 </Stepper>
-              </Stack>
+              </StyledStack>
 
               {strategyType === null ? (
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    padding: "20px",
-                    background: "#F8FAFB",
-                    gap: "15px",
-                  }}
-                >
-                  <Paper
-                    sx={{
-                      position: "relative",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      marginTop: "20px",
-                      border: "1px solid #00A3FF",
-                      borderRadius: "16px",
-                      width: "280px",
-                      minheight: "250px",
-                      background: "#FFFFFF",
-                    }}
-                  >
-                    <Chip
+                <StrategyTypesContainer>
+                  <StrategyType>
+                    <StrategyChip
                       label="FAST ROUTE"
                       color="success"
                       icon={<BoltOutlinedIcon />}
-                      sx={{
-                        position: "absolute",
-                        top: "-20px",
-                        padding: "20px",
-                        fontWeight: "700",
-                      }}
                     />
-
-                    <Box
-                      component="img"
-                      sx={{
-                        width: "64px",
-                        marginTop: "50px",
-                        marginBottom: "30px",
-                      }}
-                      src={aiStrategyLogo}
-                    />
-                    <Typography
-                      gutterBottom
-                      align="center"
-                      variant="h5"
-                      component="div"
-                      sx={{
-                        fontWeight: "700",
-                        color: "#000",
-                        fontSize: "18px",
-                      }}
-                    >
+                    <StrategyImageBox component="img" src={aiStrategyLogo} />
+                    <StrategyName gutterBottom align="center" component="div">
                       Ai Powered Strategy
-                    </Typography>
-                    <Grid>
-                      <Box>
-                        <List dense={dense}>
-                          {generate(
-                            <ListItem>
-                              <ListItemAvatar sx={{ minWidth: "20px" }}>
-                                <Avatar
-                                  sx={{
-                                    width: "6px",
-                                    height: "6px",
-                                  }}
-                                >
-                                  <CircleIcon sx={{ width: "0px" }} />
-                                </Avatar>
-                              </ListItemAvatar>
-                              <ListItemText
-                                sx={{ color: "#4E5969" }}
-                                primary="Lorem ipsum dolor sit amet, conse"
-                              />
-                            </ListItem>
-                          )}
-                        </List>
-                      </Box>
-                    </Grid>
-                    <ColorButton
-                      sx={{
-                        height: "40px",
-                        width: "180px",
-                        border: "1px solid #0A3DB0",
-                        borderRadius: "10px",
-                        marginTop: "5px",
-                        marginBottom: "20px",
-                      }}
+                    </StrategyName>
+                    <List dense={true}>
+                      {generate(
+                        <ListItem>
+                          <StyledListItemAvatar>
+                            <CircleIcon
+                              sx={{ width: "8px", color: "#4E5969" }}
+                            />
+                          </StyledListItemAvatar>
+                          <ListItemText
+                            sx={{ color: "#4E5969" }}
+                            primary="Lorem ipsum dolor sit amet, conse"
+                          />
+                        </ListItem>
+                      )}
+                    </List>
+                    <ChooseStrategyButton
                       variant="contained"
                       onClick={handleStrategyTypeChange("ai", 1)}
                     >
                       Choose Strategy
-                    </ColorButton>
-                  </Paper>
-                  <Paper
-                    sx={{
-                      position: "relative",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      marginTop: "20px",
-                      border: "1px solid #00A3FF",
-                      borderRadius: "16px",
-                      width: "280px",
-                      minHeight: "250px",
-                      background: "#FFFFFF",
-                    }}
-                  >
-                    <Chip
+                    </ChooseStrategyButton>
+                  </StrategyType>
+                  <StrategyType>
+                    <StrategyChip
                       label="PERSONALIZED"
                       color="primary"
                       icon={<TuneOutlinedIcon />}
-                      sx={{
-                        position: "absolute",
-                        top: "-20px",
-                        padding: "20px",
-                        fontWeight: "700",
-                      }}
                     />
-                    <Box
+                    <StrategyImageBox
                       component="img"
-                      sx={{
-                        width: "64px",
-                        marginTop: "50px",
-                        marginBottom: "30px",
-                      }}
                       src={customStrategyLogo}
                     />
-                    <Typography
-                      gutterBottom
-                      align="center"
-                      variant="h5"
-                      component="div"
-                      sx={{
-                        fontWeight: "700",
-                        color: "#000",
-                        fontSize: "18px",
-                      }}
-                    >
+                    <StrategyName gutterBottom align="center" component="div">
                       Custom Rules Strategy
-                    </Typography>
-                    <Grid>
-                      <Box>
-                        <List dense={dense}>
-                          {generate(
-                            <ListItem>
-                              <ListItemAvatar sx={{ minWidth: "20px" }}>
-                                <Avatar
-                                  sx={{
-                                    width: "6px",
-                                    height: "6px",
-                                  }}
-                                >
-                                  <CircleIcon sx={{ width: "0px" }} />
-                                </Avatar>
-                              </ListItemAvatar>
-                              <ListItemText
-                                sx={{ color: "#4E5969" }}
-                                primary="Lorem ipsum dolor sit amet, conse"
-                              />
-                            </ListItem>
-                          )}
-                        </List>
-                      </Box>
-                    </Grid>
-                    <ColorButton
-                      sx={{
-                        height: "40px",
-                        width: "180px",
-                        border: "1px solid #0A3DB0",
-                        borderRadius: "10px",
-                        marginTop: "5px",
-                        marginBottom: "20px",
-                      }}
+                    </StrategyName>
+                    <List dense={true}>
+                      {generate(
+                        <ListItem>
+                          <StyledListItemAvatar>
+                            <CircleIcon
+                              sx={{ width: "8px", color: "#4E5969" }}
+                            />
+                          </StyledListItemAvatar>
+                          <ListItemText
+                            sx={{ color: "#4E5969" }}
+                            primary="Lorem ipsum dolor sit amet, conse"
+                          />
+                        </ListItem>
+                      )}
+                    </List>
+                    <ChooseStrategyButton
                       variant="contained"
                       onClick={handleStrategyTypeChange("custom", 1)}
                     >
                       Choose Strategy
-                    </ColorButton>
-                  </Paper>
-                </Box>
+                    </ChooseStrategyButton>
+                  </StrategyType>
+                </StrategyTypesContainer>
               ) : strategyType === "ai" ? (
                 <Box
                   sx={{
@@ -1646,7 +1520,7 @@ const Guide = () => {
                     >
                       Back
                     </TransparentButton>
-                    <ColorButton
+                    <ChooseStrategyButton
                       sx={{
                         height: "40px",
                         width: "250px",
@@ -1658,7 +1532,7 @@ const Guide = () => {
                       onClick={handleStrategyTypeChange("review", 4)}
                     >
                       Review the Strategy
-                    </ColorButton>
+                    </ChooseStrategyButton>
                   </Box>
                 </Box>
               ) : (
