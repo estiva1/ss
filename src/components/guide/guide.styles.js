@@ -114,7 +114,7 @@ export const StrategyImageBox = styled(Box)`
   margin-bottom: 30px;
 `;
 
-export const StrategyName = styled(Typography)`
+export const BoxText = styled(Typography)`
   font-weight: 700 !important;
   font-size: 18px !important;
   color: #000;
@@ -141,4 +141,38 @@ export const ChooseStrategyButton = styled(ContrastColorButton)`
   border-radius: 10px !important;
   margin-top: 5px !important;
   margin-bottom: 20px !important;
+`;
+
+//-----------------------
+
+export const AiProfilesContainer = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  background: #f8fafb;
+  gap: 15px;
+`;
+
+export const AiProfileButton = styled(Button)`
+  padding: 0px;
+  text-transform: none !important;
+  border-radius: 16px !important;
+`;
+
+export const AiType = styled(Paper)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #00a3ff;
+  border-radius: 16px !important;
+  width: 280px;
+  height: 80px;
+  background: #fff;
+`;
+
+export const AiProfileImageBox = styled(Box)`
+  height: 24px;
+  margin-right: 15px;
 `;

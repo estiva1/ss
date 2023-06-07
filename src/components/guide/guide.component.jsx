@@ -36,6 +36,8 @@ import manual from "../../assets/ai-repricer/manual.png";
 import roi from "../../assets/ai-repricer/roi.png";
 import profitMargin from "../../assets/ai-repricer/profit-margin.png";
 import fixedProfit from "../../assets/ai-repricer/fixed-profit.png";
+import madMax from "../../assets/ai-repricer/madmax.png";
+import slowAndSteady from "../../assets/ai-repricer/slownsteady.png";
 
 import { useState } from "react";
 import BigButton from "../turnOnButton/turnOnButton.component";
@@ -62,6 +64,11 @@ import {
 } from "@mui/material";
 
 import {
+  AiProfileButton,
+  AiProfileImageBox,
+  AiProfilesContainer,
+  AiType,
+  BoxText,
   ChooseStrategyButton,
   DescriptionText,
   Dot,
@@ -69,7 +76,6 @@ import {
   ImageBox,
   StrategyChip,
   StrategyImageBox,
-  StrategyName,
   StrategyType,
   StrategyTypesContainer,
   StyledAccordion,
@@ -444,9 +450,9 @@ const Guide = () => {
                       icon={<BoltOutlinedIcon />}
                     />
                     <StrategyImageBox component="img" src={aiStrategyLogo} />
-                    <StrategyName gutterBottom align="center" component="div">
+                    <BoxText gutterBottom align="center" component="div">
                       Ai Powered Strategy
-                    </StrategyName>
+                    </BoxText>
                     <List dense={true}>
                       {generate(
                         <ListItem>
@@ -479,9 +485,9 @@ const Guide = () => {
                       component="img"
                       src={customStrategyLogo}
                     />
-                    <StrategyName gutterBottom align="center" component="div">
+                    <BoxText gutterBottom align="center" component="div">
                       Custom Rules Strategy
-                    </StrategyName>
+                    </BoxText>
                     <List dense={true}>
                       {generate(
                         <ListItem>
@@ -506,89 +512,28 @@ const Guide = () => {
                   </StrategyType>
                 </StrategyTypesContainer>
               ) : strategyType === "ai" ? (
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    padding: "20px",
-                    background: "#F8FAFB",
-                    gap: "15px",
-                  }}
-                >
-                  <Button
-                    sx={{
-                      padding: "0px",
-                      textTransform: "none",
-                      borderRadius: "16px",
-                    }}
+                <AiProfilesContainer>
+                  <AiProfileButton
                     onClick={handleStrategyTypeChange("madmax", 2)}
                   >
-                    <Paper
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        border: "1px solid #00A3FF",
-                        borderRadius: "16px",
-                        width: "280px",
-                        height: "80px",
-                        background: "#FFFFFF",
-                      }}
-                    >
-                      <Typography
-                        gutterBottom
-                        align="center"
-                        variant="h5"
-                        component="div"
-                        sx={{
-                          fontWeight: "700",
-                          color: "#000",
-                          fontSize: "18px",
-                        }}
-                      >
+                    <AiType>
+                      <AiProfileImageBox component="img" src={madMax} />
+                      <BoxText align="center" variant="h5" component="div">
                         MadMax
-                      </Typography>
-                    </Paper>
-                  </Button>
-                  <Button
-                    sx={{
-                      padding: "0px",
-                      textTransform: "none",
-                      borderRadius: "16px",
-                    }}
+                      </BoxText>
+                    </AiType>
+                  </AiProfileButton>
+                  <AiProfileButton
                     onClick={handleStrategyTypeChange("madmax", 2)}
                   >
-                    <Paper
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        border: "1px solid #00A3FF",
-                        borderRadius: "16px",
-                        width: "280px",
-                        height: "80px",
-                        background: "#FFFFFF",
-                      }}
-                    >
-                      <Typography
-                        gutterBottom
-                        align="center"
-                        variant="h5"
-                        component="div"
-                        sx={{
-                          fontWeight: "700",
-                          color: "#000",
-                          fontSize: "18px",
-                        }}
-                      >
+                    <AiType>
+                      <AiProfileImageBox component="img" src={slowAndSteady} />
+                      <BoxText align="center" variant="h5" component="div">
                         Slow and Steady
-                      </Typography>
-                    </Paper>
-                  </Button>
-                </Box>
+                      </BoxText>
+                    </AiType>
+                  </AiProfileButton>
+                </AiProfilesContainer>
               ) : strategyType === "madmax" ? (
                 <Box>
                   <Box
