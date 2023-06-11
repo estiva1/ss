@@ -64,16 +64,22 @@ import {
 } from "@mui/material";
 
 import {
+  AdjustMinMaxContainer,
   AiProfileButton,
   AiProfileImageBox,
+  AiProfileSelect,
+  AiProfilesButtonsContainer,
   AiProfilesContainer,
   AiType,
+  BackButton,
   BoxText,
-  ChooseStrategyButton,
   DescriptionText,
   Dot,
   HeaderText,
   ImageBox,
+  MinMaxTypeSelect,
+  NavigationButtonsContainer,
+  SpanText,
   StrategyChip,
   StrategyImageBox,
   StrategyType,
@@ -83,17 +89,10 @@ import {
   StyledPaper,
   StyledPaperRight,
   StyledStack,
+  SubmitButton,
   TextContainer,
 } from "./guide.styles";
 import { cloneElement } from "react";
-
-const TransparentButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText("#F8FAFB"),
-  backgroundColor: "#F8FAFB",
-  "&:hover": {
-    backgroundColor: "#F8FAFB",
-  },
-}));
 
 //slider styles
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
@@ -288,6 +287,11 @@ const Guide = () => {
     setStrategy(event.target.value);
   };
 
+  const [activeButton, setActiveButton] = useState(null);
+  const handleClick = (buttonId) => {
+    setActiveButton(buttonId);
+  };
+
   return (
     <Grid container spacing={0}>
       {/* grid for side steps */}
@@ -441,6 +445,7 @@ const Guide = () => {
                 </Stepper>
               </StyledStack>
 
+              {/* Choose Strategy */}
               {strategyType === null ? (
                 <StrategyTypesContainer>
                   <StrategyType>
@@ -468,12 +473,13 @@ const Guide = () => {
                         </ListItem>
                       )}
                     </List>
-                    <ChooseStrategyButton
+                    <SubmitButton
                       variant="contained"
                       onClick={handleStrategyTypeChange("ai", 1)}
+                      sx={{ marginBottom: "20px" }}
                     >
                       Choose Strategy
-                    </ChooseStrategyButton>
+                    </SubmitButton>
                   </StrategyType>
                   <StrategyType>
                     <StrategyChip
@@ -503,129 +509,142 @@ const Guide = () => {
                         </ListItem>
                       )}
                     </List>
-                    <ChooseStrategyButton
+                    <SubmitButton
                       variant="contained"
                       onClick={handleStrategyTypeChange("custom", 1)}
+                      sx={{ marginBottom: "20px" }}
                     >
                       Choose Strategy
-                    </ChooseStrategyButton>
+                    </SubmitButton>
                   </StrategyType>
                 </StrategyTypesContainer>
               ) : strategyType === "ai" ? (
                 <AiProfilesContainer>
-                  <AiProfileButton
-                    onClick={handleStrategyTypeChange("madmax", 2)}
-                  >
-                    <AiType>
+                  <AiProfilesButtonsContainer>
+                    <AiProfileSelect
+                      active={activeButton === 1}
+                      onClick={() => handleClick(1)}
+                      //onClick={handleStrategyTypeChange("madmax", 2)}
+                    >
                       <AiProfileImageBox component="img" src={madMax} />
                       <BoxText align="center" variant="h5" component="div">
                         MadMax
                       </BoxText>
-                    </AiType>
-                  </AiProfileButton>
-                  <AiProfileButton
-                    onClick={handleStrategyTypeChange("madmax", 2)}
-                  >
-                    <AiType>
+                    </AiProfileSelect>
+                    <AiProfileSelect
+                      active={activeButton === 2}
+                      onClick={() => handleClick(2)}
+                      //onClick={handleStrategyTypeChange("madmax", 2)}
+                    >
                       <AiProfileImageBox component="img" src={slowAndSteady} />
                       <BoxText align="center" variant="h5" component="div">
                         Slow and Steady
                       </BoxText>
-                    </AiType>
-                  </AiProfileButton>
+                    </AiProfileSelect>
+                  </AiProfilesButtonsContainer>
+
+                  <NavigationButtonsContainer>
+                    <BackButton
+                      variant="contained"
+                      onClick={() => {
+                        //setActiveButton(null);
+                        handleStrategyTypeChange(null, 0);
+                      }}
+                    >
+                      Back
+                    </BackButton>
+                    <SubmitButton
+                      disabled={!activeButton}
+                      variant="contained"
+                      onClick={handleStrategyTypeChange("madmax", 2)}
+                    >
+                      Review the Strategy
+                    </SubmitButton>
+                  </NavigationButtonsContainer>
                 </AiProfilesContainer>
               ) : strategyType === "madmax" ? (
                 <Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      alignSelf: "center",
-                      padding: "20px",
-                      background: "#F8FAFB",
-                      gap: "15px",
-                    }}
-                  >
-                    <Button
-                      sx={{
-                        padding: "0px",
-                        textTransform: "none",
-                        borderRadius: "16px",
-                      }}
+                  <AdjustMinMaxContainer>
+                    <MinMaxTypeSelect
                       onClick={handleStrategyTypeChange("manual", 3)}
                     >
-                      <Paper
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          border: "1px solid #00A3FF",
-                          borderRadius: "16px",
-                          width: "280px",
-                          height: "120px",
-                          background: "#FFFFFF",
-                        }}
-                      >
-                        <Box sx={{ display: "flex", flexDirection: "column" }}>
-                          <Typography
+                      <Box sx={{ display: "flex", flexDirection: "column" }}>
+                        <DescriptionText component="div" align="center">
+                          Manual
+                        </DescriptionText>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <Box
+                            component="img"
+                            sx={{
+                              height: 24,
+                              marginRight: "8px",
+                            }}
+                            src={manual}
+                          />
+                          <HeaderText
                             gutterBottom
+                            align="center"
+                            variant="h5"
                             component="div"
                             sx={{
-                              fontSize: "16px",
-                              color: "#4E5969",
-                              lineHeight: "16px",
+                              fontSize: "18px",
                             }}
-                            align="center"
                           >
                             Manual
-                          </Typography>
+                          </HeaderText>
+                        </Box>
+                        <SpanText component="div" align="center">
+                          Manual min/max for each listing
+                        </SpanText>
+                      </Box>
+                    </MinMaxTypeSelect>
+
+                    <MinMaxTypeSelect
+                      onClick={handleStrategyTypeChange("manual", 3)}
+                    >
+                      <Box sx={{ display: "flex", flexDirection: "column" }}>
+                        <DescriptionText component="div" align="center">
+                          Manual
+                        </DescriptionText>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "center",
+                          }}
+                        >
                           <Box
+                            component="img"
                             sx={{
-                              display: "flex",
-                              flexDirection: "row",
-                              justifyContent: "center",
+                              height: 24,
+                              marginRight: "8px",
                             }}
-                          >
-                            <Box
-                              component="img"
-                              sx={{
-                                height: 24,
-                                marginRight: "8px",
-                              }}
-                              src={manual}
-                            />
-                            <Typography
-                              gutterBottom
-                              align="center"
-                              variant="h5"
-                              component="div"
-                              sx={{
-                                fontWeight: "700",
-                                color: "#000",
-                                fontSize: "18px",
-                              }}
-                            >
-                              Manual
-                            </Typography>
-                          </Box>
-                          <Typography
+                            src={roi}
+                          />
+                          <HeaderText
                             gutterBottom
+                            align="center"
+                            variant="h5"
                             component="div"
                             sx={{
-                              marginTop: "10px",
-                              fontSize: "12px",
-                              color: "#4E5969",
-                              lineHeight: "18px",
+                              fontSize: "18px",
                             }}
-                            align="center"
                           >
-                            Manual min/max for each listing
-                          </Typography>
+                            ROI
+                          </HeaderText>
                         </Box>
-                      </Paper>
-                    </Button>
+                        <SpanText component="div" align="center">
+                          Calculation based on return on investment
+                        </SpanText>
+                      </Box>
+                    </MinMaxTypeSelect>
+
                     <Button
                       sx={{
                         padding: "0px",
@@ -705,7 +724,7 @@ const Guide = () => {
                         </Box>
                       </Paper>
                     </Button>
-                  </Box>
+                  </AdjustMinMaxContainer>
 
                   <Box
                     sx={{
@@ -1452,32 +1471,18 @@ const Guide = () => {
                       justifyContent: "end",
                     }}
                   >
-                    <TransparentButton
-                      sx={{
-                        height: "40px",
-                        width: "100px",
-                        border: "none",
-                        borderRadius: "10px",
-                        marginTop: "30px",
-                      }}
+                    <BackButton
                       variant="contained"
                       onClick={handleStrategyTypeChange("madmax", 2)}
                     >
                       Back
-                    </TransparentButton>
-                    <ChooseStrategyButton
-                      sx={{
-                        height: "40px",
-                        width: "250px",
-                        border: "1px solid #0A3DB0",
-                        borderRadius: "10px",
-                        marginTop: "30px",
-                      }}
+                    </BackButton>
+                    <SubmitButton
                       variant="contained"
                       onClick={handleStrategyTypeChange("review", 4)}
                     >
                       Review the Strategy
-                    </ChooseStrategyButton>
+                    </SubmitButton>
                   </Box>
                 </Box>
               ) : (

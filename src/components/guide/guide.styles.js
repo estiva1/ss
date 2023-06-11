@@ -134,18 +134,34 @@ const ContrastColorButton = materialStyled(Button)(({ theme }) => ({
     backgroundColor: "#0A3DB0",
   },
 }));
-
-export const ChooseStrategyButton = styled(ContrastColorButton)`
+export const SubmitButton = styled(ContrastColorButton)`
   height: 40px;
-  width: 180px;
+  width: max-content;
   border-radius: 10px !important;
-  margin-top: 5px !important;
-  margin-bottom: 20px !important;
+`;
+
+const TransparentButton = materialStyled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText("#F8FAFB"),
+  backgroundColor: "#F8FAFB",
+  "&:hover": {
+    backgroundColor: "#F8FAFB",
+  },
+}));
+export const BackButton = styled(TransparentButton)`
+  height: 40px;
+  width: max-content;
+  border-radius: 10px !important;
 `;
 
 //-----------------------
 
 export const AiProfilesContainer = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+`;
+
+export const AiProfilesButtonsContainer = styled(Box)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -154,25 +170,64 @@ export const AiProfilesContainer = styled(Box)`
   gap: 15px;
 `;
 
-export const AiProfileButton = styled(Button)`
-  padding: 0px;
-  text-transform: none !important;
-  border-radius: 16px !important;
-`;
-
-export const AiType = styled(Paper)`
+export const AiProfileSelect = styled(Button)`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border: 1px solid #00a3ff;
+  padding: 0px !important;
+  text-transform: none !important;
   border-radius: 16px !important;
+  box-shadow: 4px 4px 20px rgba(111, 213, 246, 0.25),
+    inset 0px 0px 0px 1px #00a3ff;
   width: 280px;
   height: 80px;
-  background: #fff;
+  background-color: ${(props) =>
+    props.active ? "#F1FBFE" : "#FFF"} !important;
+  box-shadow: ${(props) =>
+    props.active ? "inset 0px 0px 0px 2px #00a3ff" : ""} !important;
 `;
 
 export const AiProfileImageBox = styled(Box)`
   height: 24px;
   margin-right: 15px;
+`;
+
+export const NavigationButtonsContainer = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding: 20px;
+  gap: 15px;
+`;
+//-----------------------------
+export const AdjustMinMaxContainer = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: center;
+  padding: 20px;
+  background: #f8fafb;
+  gap: 15px;
+`;
+
+export const MinMaxTypeSelect = styled(Button)`
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  text-transform: none !important;
+  border-radius: 16px !important;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #00a3ff !important;
+  width: 280px;
+  height: 120px;
+  background: #ffffff!important;
+`;
+
+export const SpanText = styled(Typography)`
+  margin-top: 10px !important;
+  font-size: 12px !important;
+  color: #4e5969 !important;
+  line-height: 18px !important;
 `;
