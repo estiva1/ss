@@ -33,6 +33,7 @@ export const StyledAccordion = styled(Accordion)`
   border-radius: 16px !important;
   background: #fff;
   box-shadow: none;
+
 `;
 
 export const ImageBox = styled(Box)`

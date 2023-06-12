@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import amazonLogo from "../../assets/amazon-logo.png";
 import walmartLogo from "../../assets/walmart-logo.png";
 import shopifyLogo from "../../assets/shopify-logo.png";
+
 import {
   AddMarketplaceAccountButton,
   DescriptionText,
@@ -42,12 +43,14 @@ const SelectMarketplace = () => {
           </AddMarketplaceAccountButton>
         </Marketplace>
         <Marketplace>
+          <StrategyChip label="WFS & DS 3PL only" color="primary" />
           <MarketplaceImageBox component="img" src={walmartLogo} />
           <AddMarketplaceAccountButton variant="contained">
             Add Account
           </AddMarketplaceAccountButton>
         </Marketplace>
         <Marketplace>
+          <StrategyChip label="DTC 3PL orders only" color="primary" />
           <MarketplaceImageBox component="img" src={shopifyLogo} />
           <AddMarketplaceAccountButton variant="contained">
             Add Account

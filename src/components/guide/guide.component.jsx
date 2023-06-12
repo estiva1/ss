@@ -40,41 +40,29 @@ import madMax from "../../assets/ai-repricer/madmax.png";
 import slowAndSteady from "../../assets/ai-repricer/slownsteady.png";
 
 import { useState } from "react";
-import BigButton from "../turnOnButton/turnOnButton.component";
 import CostUploader from "../costUploader/costUploader.component";
 import SelectMarketplace from "../selectMarketplace/selectMarketplace.component";
 import {
-  Avatar,
   Button,
   Chip,
   FormControl,
   FormControlLabel,
   List,
   ListItem,
-  ListItemAvatar,
   ListItemText,
   Radio,
   RadioGroup,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
 } from "@mui/material";
 
 import {
   AdjustMinMaxContainer,
-  AiProfileButton,
   AiProfileImageBox,
   AiProfileSelect,
   AiProfilesButtonsContainer,
   AiProfilesContainer,
-  AiType,
   BackButton,
   BoxText,
   DescriptionText,
-  Dot,
   HeaderText,
   ImageBox,
   MinMaxTypeSelect,
@@ -93,6 +81,7 @@ import {
   TextContainer,
 } from "./guide.styles";
 import { cloneElement } from "react";
+import RepricerButton from "../repricerButton/repricerButton.component";
 
 //slider styles
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
@@ -296,9 +285,11 @@ const Guide = () => {
     <Grid container spacing={0}>
       {/* grid for side steps */}
       <Grid item xs={4} sx={{ margin: "20px" }}>
-        <StyledPaper>
+      {/* for the power button */}
+        <StyledPaper sx={{ marginBottom: "50px" }}>
           <StyledAccordion
-            sx={{ paddingBottom: "40px" }} //for the power button
+            //for the power button
+            sx={{ paddingBottom: "30px" }}
             expanded={expanded === "panel1"}
             onChange={handleChange("panel1")}
           >
@@ -319,7 +310,7 @@ const Guide = () => {
               </Typography>
             </AccordionDetails>
           </StyledAccordion>
-          <BigButton />
+          <RepricerButton />
         </StyledPaper>
 
         <StyledPaper>

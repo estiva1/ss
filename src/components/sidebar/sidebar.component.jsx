@@ -12,8 +12,8 @@ import BlurOnOutlinedIcon from "@mui/icons-material/BlurOnOutlined";
 
 const SidebarComponent = () => {
   return (
-    <div style={{ height: "90vh" }}>
-      <Sidebar style={{ backgroundColor: "#212224" }}>
+    <div style={{ height: "90vh", width: "80px", background: "#1976D2" }}>
+      {/* <Sidebar style={{ backgroundColor: "#212224" }}>
         <Menu
           menuItemStyles={{
             button: ({ level }) => {
@@ -37,43 +37,43 @@ const SidebarComponent = () => {
             }}
             icon={<TrendingUpIcon />}
           >
-            Dashboard
+            
           </MenuItem>
           <MenuItem
             style={{ color: "#FCFCFC", backgroundColor: "#212224" }}
             icon={<MonitorHeartOutlinedIcon />}
           >
-            Strategies
+            
           </MenuItem>
           <MenuItem
             style={{ color: "#FCFCFC", backgroundColor: "#212224" }}
             icon={<Inventory2OutlinedIcon />}
           >
-            Products
+            
           </MenuItem>
           <MenuItem
             style={{ color: "#FCFCFC", backgroundColor: "#212224" }}
             icon={<BarChartOutlinedIcon />}
           >
-            Pricing Activity
+          
           </MenuItem>
           <MenuItem
             style={{ color: "#FCFCFC", backgroundColor: "#212224" }}
             icon={<DescriptionOutlinedIcon />}
           >
-            Reports
+            
           </MenuItem>
           <MenuItem
             style={{ color: "#FCFCFC", backgroundColor: "#212224" }}
             icon={<ShoppingCartOutlinedIcon />}
           >
-            Marketplaces
+            
           </MenuItem>
           <MenuItem
             style={{ color: "#FCFCFC", backgroundColor: "#212224" }}
             icon={<DonutSmallOutlinedIcon />}
           >
-            Integrations
+            
           </MenuItem>
           <SubMenu
             style={{ color: "#FCFCFC", backgroundColor: "#212224" }}
@@ -100,7 +100,7 @@ const SidebarComponent = () => {
             </MenuItem>
           </SubMenu>
         </Menu>
-      </Sidebar>
+      </Sidebar> */}
     </div>
   );
 };
