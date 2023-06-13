@@ -1,24 +1,29 @@
 import { Box, Button, Paper, Typography } from "@mui/material";
 import styled from "styled-components";
 
-export const UploaderContainer = styled(Box)`
+export const CostUploaderContainer = styled(Box)`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: 10px;
-  box-shadow: 0;
-  min-height: 100px;
+  justify-content: center;
+  //justify-content: space-between;
+  padding: 20px;
   gap: 15px;
+  overflow: hidden;
 `;
 
 export const StyledPaper = styled(Paper)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 1px solid #00a3ff;
   border-radius: 16px !important;
   min-width: 100px;
   min-height: 100px;
-  max-width: 255px;
+  width: 390px;
   background-color: #f8fafb !important;
   box-shadow: 0;
+  overflow: hidden;
 `;
 
 export const TextfieldContainer = styled(Box)`
@@ -43,9 +48,8 @@ export const HeaderText = styled(Typography)`
 `;
 
 export const DescriptionText = styled(Typography)`
-  margin: auto;
   font-size: 16px;
-  color: #4E5969;
+  color: #4e5969;
 `;
 
 export const StyledWhiteButton = styled(Button)`
@@ -54,4 +58,33 @@ export const StyledWhiteButton = styled(Button)`
   border-radius: 10px !important;
   margin-top: 20px !important;
   margin-bottom: 20px !important;
+`;
+
+export const AboutContainer = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px;
+`;
+
+export const AboutContainerTop = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  padding: 15px 25px;
+  background: #f1fbfe;
+`;
+
+export const AboutContainerBottom = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 25px;
+  background: #fff;
+`;
+
+export const AboutText = styled(Typography)`
+  font-size: 12px !important;
+  color: #4e5969 !important;
+  line-height: 18px !important;
 `;
