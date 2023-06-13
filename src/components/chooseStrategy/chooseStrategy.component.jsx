@@ -100,6 +100,7 @@ import {
 import { cloneElement } from "react";
 import RepricerButton from "../repricerButton/repricerButton.component";
 import { GradientColorButton } from "../selectMarketplace/selectMarketplace.styles";
+import RepricerModal from "../repricerModal/repricerModal.component";
 
 const Item = styled(Box)(({ theme }) => ({
   padding: theme.spacing(1),
@@ -221,6 +222,12 @@ const ChooseStrategy = () => {
   const minMaxPriceUploadHandleClick = () => {
     setIsManualFileUploaded(!isManualFileUploaded);
   };
+
+  //---------------------------------------------------------------------
+
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
 
   return (
     <>
@@ -1367,15 +1374,13 @@ const ChooseStrategy = () => {
               <GradientColorButton
                 disabled={!minMaxPriceSelectButton}
                 variant="contained"
-                onClick={handleStrategyStepChange(
-                  "assignStrategyToProducts",
-                  2
-                )}
+                onClick={() => handleOpenModal()}
               >
                 Assign and proceed
               </GradientColorButton>
             </NavigationButtonsContainer>
           </AssignStrategyToProductsContainer>
+          <RepricerModal open={openModal} close={handleCloseModal} />
         </>
       )}
     </>
