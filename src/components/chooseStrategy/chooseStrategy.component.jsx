@@ -209,15 +209,16 @@ const ChooseStrategy = () => {
 
   //---------------------------------------------------------------------
   const [aiProfileSelectButton, setAiProfileSelectButton] = useState(null);
-  const aiProfileHandleClick = (buttonId) => {
-    setAiProfileSelectButton(buttonId);
+  const aiProfileHandleClick = (aiProfileButtonId) => {
+    setAiProfileSelectButton(aiProfileButtonId);
   };
 
   const [minMaxPriceSelectButton, setMinMaxPriceSelectButton] = useState(null);
-  const minMaxPriceHandleClick = (buttonId) => {
-    setMinMaxPriceSelectButton(buttonId);
+  const minMaxPriceHandleClick = (minMaxPriceSelectButtonId) => {
+    setMinMaxPriceSelectButton(minMaxPriceSelectButtonId);
   };
 
+  //check if file uploaded
   const [isManualFileUploaded, setIsManualFileUploaded] = useState(false);
   const minMaxPriceUploadHandleClick = () => {
     setIsManualFileUploaded(!isManualFileUploaded);
@@ -318,7 +319,8 @@ const ChooseStrategy = () => {
               </List>
               <GradientColorButton
                 variant="contained"
-                onClick={handleStrategyStepChange("custom", 0)}
+                // SHOULD BE CHANGED TO "custom"
+                onClick={handleStrategyStepChange("ai", 0)}
                 sx={{ marginBottom: "20px" }}
               >
                 Choose Strategy
@@ -633,6 +635,7 @@ const ChooseStrategy = () => {
                 </Item>
               </Grid>
             </Grid>
+
             {minMaxPriceSelectButton === 1 && (
               <Grid container spacing={2}>
                 <Grid item xs={12}>
@@ -680,7 +683,6 @@ const ChooseStrategy = () => {
                           Upload File for Manual Price
                         </DescriptionText>
                       </AboutManualPricingTop>
-
                       <AboutManualPricingBottom>
                         <AboutManualPricingUploadBox sx={{ gap: "20px" }}>
                           {isManualFileUploaded ? (
@@ -1366,7 +1368,7 @@ const ChooseStrategy = () => {
                 variant="contained"
                 onClick={
                   //setActiveButton(null);
-                  handleStrategyStepChange("ai", 0)
+                  handleStrategyStepChange("madMax", 1)
                 }
               >
                 Back
@@ -1376,7 +1378,7 @@ const ChooseStrategy = () => {
                 variant="contained"
                 onClick={() => handleOpenModal()}
               >
-                Assign and proceed
+                Finish & Create Strategy
               </GradientColorButton>
             </NavigationButtonsContainer>
           </AssignStrategyToProductsContainer>
