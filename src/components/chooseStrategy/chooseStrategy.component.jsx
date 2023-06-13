@@ -424,7 +424,7 @@ const ChooseStrategy = () => {
                 disabled={!aiProfileSelectButton}
                 onClick={handleStrategyStepChange("madMax", 1)}
               >
-                Assign and proceed
+                Next
               </GradientColorButton>
             </NavigationButtonsContainer>
           </AiProfilesContainer>
