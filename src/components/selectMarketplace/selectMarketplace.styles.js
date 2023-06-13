@@ -82,20 +82,17 @@ const ColorButton = materialStyled(Button)(({ theme }) => ({
   },
 }));
 
-export const AddMarketplaceAccountButton = styled(ColorButton)`
+export const GradientColorButton = styled(ColorButton)`
   height: 40px;
-  width: 150px;
+  width: max-content;
   border: none !important;
-
-  background-image: linear-gradient(
-    to right,
-    #25aae1,
-    #4481eb,
-    #04befe,
-    #3f86ed
-  ) !important;
+  background-image: ${(props) =>
+    props.disabled
+      ? ""
+      : "linear-gradient(to right, #25aae1,#4481eb, #04befe, #3f86ed)"} !important;
   background-size: 300% 100% !important;
-  box-shadow: 0 4px 12px 0 rgba(65, 132, 234, 0.75) !important;
+  box-shadow: ${(props) =>
+    props.disabled ? "" : "0 4px 12px 0 rgba(65, 132, 234, 0.75)"} !important;
   border-radius: 10px !important;
   -o-transition: all 0.4s ease-in-out !important;
   -webkit-transition: all 0.4s ease-in-out !important;

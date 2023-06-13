@@ -8,6 +8,7 @@ import {
   AddMarketplaceAccountButton,
   DescriptionText,
   DividerContainer,
+  GradientColorButton,
   HeaderText,
   Marketplace,
   MarketplaceImageBox,
@@ -38,23 +39,23 @@ const SelectMarketplace = () => {
         <Marketplace>
           <StrategyChip label="Repricer only" color="primary" />
           <MarketplaceImageBox component="img" src={amazonLogo} />
-          <AddMarketplaceAccountButton variant="contained">
+          <GradientColorButton variant="contained">
             Add Account
-          </AddMarketplaceAccountButton>
+          </GradientColorButton>
         </Marketplace>
         <Marketplace>
           <StrategyChip label="WFS & DS 3PL only" color="primary" />
           <MarketplaceImageBox component="img" src={walmartLogo} />
-          <AddMarketplaceAccountButton variant="contained">
+          <GradientColorButton variant="contained">
             Add Account
-          </AddMarketplaceAccountButton>
+          </GradientColorButton>
         </Marketplace>
         <Marketplace>
           <StrategyChip label="DTC 3PL orders only" color="primary" />
           <MarketplaceImageBox component="img" src={shopifyLogo} />
-          <AddMarketplaceAccountButton variant="contained">
+          <GradientColorButton variant="contained">
             Add Account
-          </AddMarketplaceAccountButton>
+          </GradientColorButton>
         </Marketplace>
       </MarketplacesContainer>
     </Box>
