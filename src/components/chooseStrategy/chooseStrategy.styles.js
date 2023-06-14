@@ -56,7 +56,7 @@ export const StrategyType = styled(Paper)`
   align-items: center;
   justify-content: center;
   width: 300px;
-  margin-top: 20px;
+  margin-top: 40px;
   border: 1px solid #00a3ff;
   border-radius: 16px !important;
   min-height: 250px;
@@ -65,8 +65,12 @@ export const StrategyType = styled(Paper)`
 
 export const StrategyChip = styled(Chip)`
   position: absolute;
-  top: -20px;
-  padding: 20px !important;
+  height: 30px;
+  top: -33px;
+  padding: 15px 30px !important;
+  color: #000;
+  border-radius: 16px 16px 0px 0px !important;
+  border-color: #dedfdf;
   font-weight: 700 !important;
 `;
 
@@ -102,19 +106,6 @@ export const SubmitButton = styled(ContrastColorButton)`
   border-radius: 10px !important;
 `;
 
-const TransparentButton = materialStyled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText("#F8FAFB"),
-  backgroundColor: "#F8FAFB",
-  "&:hover": {
-    backgroundColor: "#F8FAFB",
-  },
-}));
-export const BackButton = styled(TransparentButton)`
-  height: 40px;
-  width: max-content;
-  border-radius: 10px !important;
-`;
-
 //--------------------------------------------------------------
 
 export const AiProfilesContainer = styled(Box)`
@@ -131,7 +122,7 @@ export const AiProfile = styled(Paper)`
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 20px;
   border: 1px solid #00a3ff;
   border-radius: 16px !important;
@@ -277,8 +268,6 @@ export const AssignStrategyToProductsContainer = styled(Box)`
 `;
 
 export const AssignItem = styled(Paper)`
-
-
   justify-content: space-between;
   margin: 10px;
   padding-left: 20px;

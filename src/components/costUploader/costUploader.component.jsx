@@ -19,8 +19,6 @@ import {
   StyledPaper,
   StyledWhiteButton,
   TextContainer,
-  TextfieldContainer,
-  UploaderContainer,
 } from "./costUploader.styles";
 
 import dragndrop from "../../assets/dragndrop.png";

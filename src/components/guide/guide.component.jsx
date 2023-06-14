@@ -1,25 +1,18 @@
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ArrowOutwardOutlinedIcon from "@mui/icons-material/ArrowOutwardOutlined";
-import TipsAndUpdatesOutlinedIcon from "@mui/icons-material/TipsAndUpdatesOutlined";
 
 import PropTypes from "prop-types";
 import Step from "@mui/material/Step";
 import Stack from "@mui/material/Stack";
 import Stepper from "@mui/material/Stepper";
-import Check from "@mui/icons-material/Check";
 import StepLabel from "@mui/material/StepLabel";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import OpenWithOutlinedIcon from "@mui/icons-material/OpenWithOutlined";
 import PowerSettingsNewOutlinedIcon from "@mui/icons-material/PowerSettingsNewOutlined";
-import CircleIcon from "@mui/icons-material/Circle";
-import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
-import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 
 import StepConnector, {
   stepConnectorClasses,
@@ -28,65 +21,30 @@ import StepConnector, {
 import cube from "../../assets/ai-repricer/cube.png";
 import wind from "../../assets/ai-repricer/wind.png";
 import power from "../../assets/ai-repricer/power.png";
-
-import aiStrategyLogo from "../../assets/ai-repricer/ai-strategy-logo.png";
-import customStrategyLogo from "../../assets/ai-repricer/custom-strategy-logo.png";
-
-import manual from "../../assets/ai-repricer/manual.png";
-import roi from "../../assets/ai-repricer/roi.png";
-import profitMargin from "../../assets/ai-repricer/profit-margin.png";
-import fixedProfit from "../../assets/ai-repricer/fixed-profit.png";
-import madMax from "../../assets/ai-repricer/madmax.png";
-import slowAndSteady from "../../assets/ai-repricer/slownsteady.png";
+import arrowBlue from "../../assets/ai-repricer/arrow-blue.png";
+import arrowGray from "../../assets/ai-repricer/arrow-gray.png";
+import inProgress from "../../assets/ai-repricer/in-progress.png";
+import completed from "../../assets/ai-repricer/completed.png";
 
 import { useState } from "react";
 import CostUploader from "../costUploader/costUploader.component";
 import SelectMarketplace from "../selectMarketplace/selectMarketplace.component";
-import {
-  Button,
-  Chip,
-  Divider,
-  FormControl,
-  FormControlLabel,
-  List,
-  ListItem,
-  ListItemText,
-  Radio,
-  RadioGroup,
-} from "@mui/material";
 
 import {
-  AdjustMinMaxContainer,
-  AiProfile,
-  AiProfileImageBox,
-  AiProfileSelect,
-  AiProfilesButtonsContainer,
-  AiProfilesContainer,
-  AiProfilesSelectContainer,
-  AiStrategyImageAndText,
-  AiStrategyImageBox,
-  BackButton,
-  BoxText,
-  DescriptionText,
-  HeaderText,
+  ArrowContainer,
+  GuideContainer,
+  GuideLeftSide,
+  GuideRightSide,
+  GuideText,
   ImageBox,
-  MinMaxTypeSelect,
-  NavigationButtonsContainer,
-  SpanText,
-  StrategyChip,
-  StrategyImageBox,
-  StrategyType,
-  StrategyTypesContainer,
+  StepText,
   StyledAccordion,
-  StyledListItemAvatar,
   StyledPaper,
   StyledPaperRight,
-  StyledStack,
-  SubmitButton,
-  TextContainer,
 } from "./guide.styles";
 import RepricerButton from "../repricerButton/repricerButton.component";
 import ChooseStrategy from "../chooseStrategy/chooseStrategy.component";
+import { Box } from "@mui/material";
 
 //-------------------------------
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
@@ -122,7 +80,7 @@ const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
   width: 50,
   height: 50,
   display: "flex",
-  borderRadius: "50%",
+  borderRadius: "10%",
   justifyContent: "center",
   alignItems: "center",
   ...(ownerState.active && {
@@ -174,11 +132,7 @@ ColorlibStepIcon.propTypes = {
   icon: PropTypes.node,
 };
 
-const headingGuideSteps = [
-  "Authorize Marketplace",
-  "Add Cost",
-  "Choose Strategy",
-];
+const headingGuideSteps = ["", "", ""];
 
 const Guide = () => {
   // accordion
@@ -189,6 +143,138 @@ const Guide = () => {
 
   return (
     <Grid container spacing={0}>
+      <GuideContainer>
+        <GuideLeftSide>
+          <ImageBox
+            component="img"
+            src={cube}
+            sx={{ width: "34px", height: "36px", margin: "0px" }}
+          />
+          <GuideText>Guide</GuideText>
+        </GuideLeftSide>
+        <GuideRightSide>
+          <Box sx={{ position: "relative" }}>
+            <ImageBox
+              component="img"
+              src={expanded === "panel1" ? arrowBlue : arrowGray}
+              sx={
+                expanded === "panel1"
+                  ? {
+                      width: "240px",
+                      height: "50px",
+                      margin: "0px",
+                      right: "-10px",
+                    }
+                  : {
+                      width: "240px",
+                      height: "50px",
+                      margin: "0px",
+                      filter: "drop-shadow(5px 5px 5px #d5d5d5)",
+                    }
+              }
+            />
+            <ArrowContainer>
+              <Box
+                component="img"
+                src={expanded === "panel1" ? inProgress : power}
+                sx={{
+                  width: "30px",
+                  height: "30px",
+                  margin: "0px",
+                }}
+              />
+              <StepText>Authorize Marketplace</StepText>
+            </ArrowContainer>
+          </Box>
+          <Box sx={{ position: "relative" }}>
+            <ImageBox
+              component="img"
+              src={expanded === "panel2" ? arrowBlue : arrowGray}
+              sx={
+                expanded === "panel2"
+                  ? {
+                      width: "240px",
+                      height: "50px",
+                      margin: "0px",
+                    }
+                  : {
+                      width: "240px",
+                      height: "50px",
+                      margin: "0px",
+                      filter: "drop-shadow(5px 5px 5px #d5d5d5)",
+                    }
+              }
+            />
+            <ArrowContainer>
+              <Box
+                component="img"
+                src={expanded === "panel2" ? inProgress : cube}
+                sx={{
+                  width: "30px",
+                  height: "30px",
+                  margin: "0px",
+                }}
+              />
+              <StepText>Add Cost</StepText>
+            </ArrowContainer>
+          </Box>
+          <Box sx={{ position: "relative" }}>
+            <ImageBox
+              component="img"
+              src={expanded === "panel3" ? arrowBlue : arrowGray}
+              sx={
+                expanded === "panel3"
+                  ? {
+                      width: "240px",
+                      height: "50px",
+                      margin: "0px",
+                    }
+                  : {
+                      width: "240px",
+                      height: "50px",
+                      margin: "0px",
+                      filter: "drop-shadow(5px 5px 5px #d5d5d5)",
+                    }
+              }
+            />
+            <ArrowContainer>
+              <Box
+                component="img"
+                src={expanded === "panel3" ? inProgress : wind}
+                sx={{
+                  width: "30px",
+                  height: "30px",
+                  margin: "0px",
+                }}
+              />
+              <StepText>Choose Strategy</StepText>
+            </ArrowContainer>
+          </Box>
+        </GuideRightSide>
+        {/* <Stack sx={{ width: "70%" }} spacing={4}>
+          <Stepper
+            alternativeLabel
+            activeStep={
+              expanded === "panel1"
+                ? "1" && 0
+                : expanded === "panel2"
+                ? "2" && 1
+                : expanded === "panel3"
+                ? "3" && 2
+                : "1"
+            }
+            connector={<ColorlibConnector />}
+          >
+            {headingGuideSteps.map((label) => (
+              <Step key={label}>
+                <StepLabel StepIconComponent={ColorlibStepIcon}>
+                  {label}
+                </StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+        </Stack> */}
+      </GuideContainer>
       {/* grid for side steps */}
       <Grid item xs={4} sx={{ margin: "20px" }}>
         {/* for the power button */}
@@ -270,30 +356,6 @@ const Guide = () => {
       </Grid>
 
       <Grid item xs={7} sx={{ margin: "20px" }}>
-        <Stack sx={{ width: "100%" }} spacing={4}>
-          <Stepper
-            alternativeLabel
-            activeStep={
-              expanded === "panel1"
-                ? "1" && 0
-                : expanded === "panel2"
-                ? "2" && 1
-                : expanded === "panel3"
-                ? "3" && 2
-                : "1"
-            }
-            connector={<ColorlibConnector />}
-          >
-            {headingGuideSteps.map((label) => (
-              <Step key={label}>
-                <StepLabel StepIconComponent={ColorlibStepIcon}>
-                  {label}
-                </StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-        </Stack>
-
         <StyledPaperRight>
           {expanded === "panel1" ? (
             <SelectMarketplace />

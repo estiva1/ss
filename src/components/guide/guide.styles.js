@@ -1,15 +1,41 @@
-import {
-  Accordion,
-  Box,
-  Button,
-  Chip,
-  ListItemAvatar,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Accordion, Box, Paper, Typography } from "@mui/material";
 import styled from "styled-components";
-import { styled as materialStyled } from "@mui/material/styles";
+
+export const GuideContainer = styled(Paper)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 0px 40px;
+  width: 100%;
+  height: 100px;
+  background-color: #f1fbfe !important;
+  box-shadow: none !important;
+  border-radius: 16px !important;
+`;
+
+export const GuideLeftSide = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+`;
+
+export const GuideRightSide = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const GuideText = styled(Typography)`
+  font-weight: 400 !important;
+  font-size: 46px !important;
+  line-height: 46px !important;
+  color: #000 !important;
+`;
 
 export const StyledPaper = styled(Paper)`
   margin-bottom: 5px;
@@ -38,17 +64,33 @@ export const StyledAccordion = styled(Accordion)`
 export const ImageBox = styled(Box)`
   height: 20px;
   margin-right: 15px;
-  filter: drop-shadow(2px 2px 2px rgb(10, 61, 176));
+  //filter: drop-shadow(2px 2px 2px rgb(10, 61, 176));
+`;
+
+export const StepText = styled(Typography)`
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  line-height: 18px !important;
+  color: #000 !important;
+`;
+
+export const ArrowContainer = styled(Box)`
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 //--------------------------------------------------------------
 
 export const StyledPaperRight = styled(Paper)`
-  margin-top: 20px;
   overflow: hidden;
   border: 1px solid #e6e6e6;
   border-radius: 16px !important;
   background: #f8fafb !important;
   box-shadow: 4px 4px 25px rgba(111, 213, 246, 0.25) !important;
 `;
-

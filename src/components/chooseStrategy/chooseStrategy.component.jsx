@@ -1,54 +1,9 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import ArrowOutwardOutlinedIcon from "@mui/icons-material/ArrowOutwardOutlined";
-import TipsAndUpdatesOutlinedIcon from "@mui/icons-material/TipsAndUpdatesOutlined";
-
-import PropTypes from "prop-types";
-import Step from "@mui/material/Step";
-import Stack from "@mui/material/Stack";
-import Stepper from "@mui/material/Stepper";
-import Check from "@mui/icons-material/Check";
-import StepLabel from "@mui/material/StepLabel";
-import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
-import OpenWithOutlinedIcon from "@mui/icons-material/OpenWithOutlined";
-import PowerSettingsNewOutlinedIcon from "@mui/icons-material/PowerSettingsNewOutlined";
-import CircleIcon from "@mui/icons-material/Circle";
-import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
-import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
-
-import StepConnector, {
-  stepConnectorClasses,
-} from "@mui/material/StepConnector";
-
-import cube from "../../assets/ai-repricer/cube.png";
-import wind from "../../assets/ai-repricer/wind.png";
-import power from "../../assets/ai-repricer/power.png";
-
-import aiStrategyLogo from "../../assets/ai-repricer/ai-strategy-logo.png";
-import customStrategyLogo from "../../assets/ai-repricer/custom-strategy-logo.png";
-
-import manual from "../../assets/ai-repricer/manual.png";
-import roi from "../../assets/ai-repricer/roi.png";
-import profitMargin from "../../assets/ai-repricer/profit-margin.png";
-import fixedProfit from "../../assets/ai-repricer/fixed-profit.png";
-import madMax from "../../assets/ai-repricer/madmax.png";
-import slowAndSteady from "../../assets/ai-repricer/slownsteady.png";
-import lightBulb from "../../assets/ai-repricer/light-bulb.png";
-import fileUploaded from "../../assets/ai-repricer/file-uploaded.png";
-import dragndrop from "../../assets/dragndrop.png";
-
 import { useState } from "react";
-import CostUploader from "../costUploader/costUploader.component";
-import SelectMarketplace from "../selectMarketplace/selectMarketplace.component";
+import { cloneElement } from "react";
+
 import {
   Button,
-  Chip,
   Divider,
   FormControl,
   FormControlLabel,
@@ -58,6 +13,39 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+
+import PropTypes from "prop-types";
+import Step from "@mui/material/Step";
+import Stepper from "@mui/material/Stepper";
+import Check from "@mui/icons-material/Check";
+import StepLabel from "@mui/material/StepLabel";
+
+import CircleIcon from "@mui/icons-material/Circle";
+import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
+import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
+import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
+import KeyboardBackspaceOutlinedIcon from "@mui/icons-material/KeyboardBackspaceOutlined";
+
+import StepConnector, {
+  stepConnectorClasses,
+} from "@mui/material/StepConnector";
+
+import dragndrop from "../../assets/dragndrop.png";
+import roi from "../../assets/ai-repricer/roi.png";
+import aiStrategyLogo from "../../assets/ai-repricer/ai-strategy-logo.png";
+import customStrategyLogo from "../../assets/ai-repricer/custom-strategy-logo.png";
+import manual from "../../assets/ai-repricer/manual.png";
+import profitMargin from "../../assets/ai-repricer/profit-margin.png";
+import fixedProfit from "../../assets/ai-repricer/fixed-profit.png";
+import madMax from "../../assets/ai-repricer/madmax.png";
+import slowAndSteady from "../../assets/ai-repricer/slownsteady.png";
+import lightBulb from "../../assets/ai-repricer/light-bulb.png";
+import fileUploaded from "../../assets/ai-repricer/file-uploaded.png";
 
 import {
   AboutManualPricingBottom,
@@ -69,7 +57,6 @@ import {
   AiProfile,
   AiProfileImageBox,
   AiProfileSelect,
-  AiProfilesButtonsContainer,
   AiProfilesContainer,
   AiProfilesSelectContainer,
   AiStrategyImageAndText,
@@ -77,11 +64,9 @@ import {
   AssignItem,
   AssignItemContent,
   AssignStrategyToProductsContainer,
-  BackButton,
   BoxText,
   DescriptionText,
   HeaderText,
-  ImageBox,
   MinMaxTypeSelect,
   NavigationButtonsContainer,
   SpanText,
@@ -89,17 +74,13 @@ import {
   StrategyImageBox,
   StrategyType,
   StrategyTypesContainer,
-  StyledAccordion,
   StyledListItemAvatar,
-  StyledPaper,
-  StyledPaperRight,
   StyledStack,
-  SubmitButton,
   TextContainer,
 } from "./chooseStrategy.styles";
-import { cloneElement } from "react";
-import RepricerButton from "../repricerButton/repricerButton.component";
-import { GradientColorButton } from "../selectMarketplace/selectMarketplace.styles";
+import { BlueButton } from "../buttons/blueButton.styles";
+import { BackButton } from "../buttons/backButton.styles";
+
 import RepricerModal from "../repricerModal/repricerModal.component";
 
 const Item = styled(Box)(({ theme }) => ({
@@ -127,7 +108,7 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`& .${stepConnectorClasses.line}`]: {
     borderColor:
       theme.palette.mode === "dark" ? theme.palette.grey[800] : "#EAEAF0",
-    borderTopWidth: 4,
+    borderTopWidth: 5,
     borderRadius: 6,
   },
 }));
@@ -144,11 +125,11 @@ const QontoStepIconRoot = styled("div")(({ theme, ownerState }) => ({
   "& .QontoStepIcon-completedIcon": {
     color: "#00A3FF",
     zIndex: 1,
-    fontSize: 18,
+    fontSize: 0,
   },
   "& .QontoStepIcon-circle": {
-    width: 14,
-    height: 14,
+    width: 0,
+    height: 0,
     borderRadius: "50%",
     backgroundColor: "currentColor",
   },
@@ -182,7 +163,7 @@ QontoStepIcon.propTypes = {
   completed: PropTypes.bool,
 };
 
-const chooseStrategySteps = ["", "", ""];
+const chooseStrategySteps = ["", "", "", ""];
 
 //-------------------------------
 
@@ -195,7 +176,7 @@ function generate(element) {
 }
 
 const ChooseStrategy = () => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [strategyStep, setStrategyStep] = useState(null);
   const handleStrategyStepChange = (strategy, step) => (event) => {
     setStrategyStep(strategy);
@@ -265,8 +246,11 @@ const ChooseStrategy = () => {
             <StrategyType>
               <StrategyChip
                 label="FAST ROUTE"
-                color="success"
-                icon={<BoltOutlinedIcon />}
+                icon={<BoltOutlinedIcon sx={{ fill: "black" }} />}
+                style={{
+                  background: "#7CCFFD",
+                  padding: "0px 20px",
+                }}
               />
               <StrategyImageBox component="img" src={aiStrategyLogo} />
               <BoxText gutterBottom align="center" component="div">
@@ -285,20 +269,23 @@ const ChooseStrategy = () => {
                   </ListItem>
                 )}
               </List>
-              <GradientColorButton
+              <BlueButton
                 variant="contained"
-                onClick={handleStrategyStepChange("ai", 0)}
+                onClick={handleStrategyStepChange("ai", 1)}
                 sx={{ marginBottom: "20px" }}
               >
                 Choose Strategy
-              </GradientColorButton>
+              </BlueButton>
             </StrategyType>
 
             <StrategyType>
               <StrategyChip
                 label="PERSONALIZED"
-                color="primary"
-                icon={<TuneOutlinedIcon />}
+                icon={<TuneOutlinedIcon sx={{ fill: "black" }} />}
+                style={{
+                  background: "#DEDFDF",
+                  padding: "0px 20px",
+                }}
               />
               <StrategyImageBox component="img" src={customStrategyLogo} />
               <BoxText gutterBottom align="center" component="div">
@@ -317,14 +304,14 @@ const ChooseStrategy = () => {
                   </ListItem>
                 )}
               </List>
-              <GradientColorButton
+              <BlueButton
                 variant="contained"
                 // SHOULD BE CHANGED TO "custom"
-                onClick={handleStrategyStepChange("ai", 0)}
+                onClick={handleStrategyStepChange("ai", 1)}
                 sx={{ marginBottom: "20px" }}
               >
                 Choose Strategy
-              </GradientColorButton>
+              </BlueButton>
             </StrategyType>
           </StrategyTypesContainer>
         </>
@@ -362,8 +349,12 @@ const ChooseStrategy = () => {
             <AiProfile>
               <StrategyChip
                 label="FAST ROUTE"
-                color="success"
-                icon={<BoltOutlinedIcon />}
+                icon={<BoltOutlinedIcon sx={{ fill: "black" }} />}
+                style={{
+                  background: "#7CCFFD",
+                  padding: "0px 20px",
+                  left: "11.5%",
+                }}
               />
               <AiStrategyImageAndText>
                 <AiStrategyImageBox component="img" src={aiStrategyLogo} />
@@ -412,20 +403,22 @@ const ChooseStrategy = () => {
             <NavigationButtonsContainer>
               <BackButton
                 variant="contained"
+                startIcon={<KeyboardBackspaceOutlinedIcon />}
                 onClick={
                   //setActiveButton(null);
-                  handleStrategyStepChange(null, 0)
+                  handleStrategyStepChange(null, 1)
                 }
               >
                 Back
               </BackButton>
-              <GradientColorButton
+              <BlueButton
                 variant="contained"
+                endIcon={<EastOutlinedIcon />}
                 disabled={!aiProfileSelectButton}
-                onClick={handleStrategyStepChange("madMax", 1)}
+                onClick={handleStrategyStepChange("madMax", 2)}
               >
                 Next
-              </GradientColorButton>
+              </BlueButton>
             </NavigationButtonsContainer>
           </AiProfilesContainer>
         </>
@@ -762,23 +755,25 @@ const ChooseStrategy = () => {
             <NavigationButtonsContainer>
               <BackButton
                 variant="contained"
+                startIcon={<KeyboardBackspaceOutlinedIcon />}
                 onClick={
                   //setActiveButton(null);
-                  handleStrategyStepChange("ai", 0)
+                  handleStrategyStepChange("ai", 1)
                 }
               >
                 Back
               </BackButton>
-              <GradientColorButton
+              <BlueButton
                 disabled={!minMaxPriceSelectButton}
                 variant="contained"
+                endIcon={<EastOutlinedIcon />}
                 onClick={handleStrategyStepChange(
                   "assignStrategyToProducts",
-                  2
+                  3
                 )}
               >
                 Assign and proceed
-              </GradientColorButton>
+              </BlueButton>
             </NavigationButtonsContainer>
           </AdjustMinMaxContainer>
         </>
@@ -1363,25 +1358,27 @@ const ChooseStrategy = () => {
                 </Paper>
               </RadioGroup>
             </FormControl>
-            <NavigationButtonsContainer>
-              <BackButton
-                variant="contained"
-                onClick={
-                  //setActiveButton(null);
-                  handleStrategyStepChange("madMax", 1)
-                }
-              >
-                Back
-              </BackButton>
-              <GradientColorButton
-                disabled={!minMaxPriceSelectButton}
-                variant="contained"
-                onClick={() => handleOpenModal()}
-              >
-                Finish & Create Strategy
-              </GradientColorButton>
-            </NavigationButtonsContainer>
           </AssignStrategyToProductsContainer>
+          <NavigationButtonsContainer sx={{ margin: "20px" }}>
+            <BackButton
+              variant="contained"
+              startIcon={<KeyboardBackspaceOutlinedIcon />}
+              onClick={
+                //setActiveButton(null);
+                handleStrategyStepChange("madMax", 2)
+              }
+            >
+              Back
+            </BackButton>
+            <BlueButton
+              disabled={!minMaxPriceSelectButton}
+              variant="contained"
+              endIcon={<EastOutlinedIcon />}
+              onClick={() => handleOpenModal()}
+            >
+              Finish & Create Strategy
+            </BlueButton>
+          </NavigationButtonsContainer>
           <RepricerModal open={openModal} close={handleCloseModal} />
         </>
       )}

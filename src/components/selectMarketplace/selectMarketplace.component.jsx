@@ -1,14 +1,8 @@
 import { Box } from "@mui/material";
 
-import amazonLogo from "../../assets/amazon-logo.png";
-import walmartLogo from "../../assets/walmart-logo.png";
-import shopifyLogo from "../../assets/shopify-logo.png";
-
 import {
-  AddMarketplaceAccountButton,
   DescriptionText,
   DividerContainer,
-  GradientColorButton,
   HeaderText,
   Marketplace,
   MarketplaceImageBox,
@@ -17,12 +11,18 @@ import {
   StrategyChip,
   TextContainer,
 } from "./selectMarketplace.styles";
+import { BlueButton } from "../buttons/blueButton.styles";
+
+import amazonLogo from "../../assets/amazon-logo.png";
+import walmartLogo from "../../assets/walmart-logo.png";
+import shopifyLogo from "../../assets/shopify-logo.png";
+import { WhiteButton } from "../buttons/whiteButton.styles";
 
 const SelectMarketplace = () => {
   return (
     <Box>
       <TextContainer>
-        <HeaderText gutterBottom align="center" variant="h5" component="div">
+        <HeaderText align="center" variant="h5" component="div">
           Select Your Market Place
         </HeaderText>
         <DescriptionText component="div" align="center">
@@ -37,25 +37,28 @@ const SelectMarketplace = () => {
 
       <MarketplacesContainer>
         <Marketplace>
-          <StrategyChip label="Repricer only" color="primary" />
+          <StrategyChip
+            label="Repricer only"
+            style={{ background: "#7CCFFD" }}
+          />
           <MarketplaceImageBox component="img" src={amazonLogo} />
-          <GradientColorButton variant="contained">
+          <BlueButton sx={{ width: "85%" }} variant="contained">
             Add Account
-          </GradientColorButton>
+          </BlueButton>
         </Marketplace>
         <Marketplace>
-          <StrategyChip label="WFS & DS 3PL only" color="primary" />
+          <StrategyChip label="WFS & DS 3PL only" />
           <MarketplaceImageBox component="img" src={walmartLogo} />
-          <GradientColorButton variant="contained">
+          <BlueButton sx={{ width: "85%" }} variant="contained">
             Add Account
-          </GradientColorButton>
+          </BlueButton>
         </Marketplace>
         <Marketplace>
-          <StrategyChip label="DTC 3PL orders only" color="primary" />
+          <StrategyChip label="DTC 3PL orders only" />
           <MarketplaceImageBox component="img" src={shopifyLogo} />
-          <GradientColorButton variant="contained">
+          <BlueButton sx={{ width: "85%" }} variant="contained">
             Add Account
-          </GradientColorButton>
+          </BlueButton>
         </Marketplace>
       </MarketplacesContainer>
     </Box>
