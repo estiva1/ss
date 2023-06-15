@@ -28,6 +28,8 @@ import completed from "../../assets/ai-repricer/completed.png";
 
 import { useState } from "react";
 import CostUploader from "../costUploader/costUploader.component";
+import RepricerButton from "../repricerButton/repricerButton.component";
+import ChooseStrategy from "../chooseStrategy/chooseStrategy.component";
 import SelectMarketplace from "../selectMarketplace/selectMarketplace.component";
 
 import {
@@ -42,8 +44,6 @@ import {
   StyledPaper,
   StyledPaperRight,
 } from "./guide.styles";
-import RepricerButton from "../repricerButton/repricerButton.component";
-import ChooseStrategy from "../chooseStrategy/chooseStrategy.component";
 import { Box } from "@mui/material";
 
 //-------------------------------
