@@ -37,11 +37,15 @@ export const GuideText = styled(Typography)`
   color: #000 !important;
 `;
 
-export const StyledPaper = styled(Paper)`
+export const StyledAccordionContainer = styled(Paper)`
   margin-bottom: 5px;
   padding: 0px;
   border: none;
   box-shadow: none !important;
+  
+  &:first-of-type {
+    margin-bottom: 50px;
+  }
 
   & .MuiPaper-root.Mui-expanded {
     margin-bottom: 0px; //fix for floating buttons

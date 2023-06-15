@@ -13,6 +13,7 @@ const ColorButton = materialStyled(Button)(({ theme }) => ({
 export const WhiteButton = styled(ColorButton)`
   height: 40px;
   width: 85%;
+  color: #4e5969 !important;
   background: #ffffff !important;
   border: 1px solid #e6e6e6 !important;
   border-radius: 10px !important;
@@ -27,7 +28,7 @@ export const WhiteButton = styled(ColorButton)`
 
   &:hover {
     box-shadow: 0px 4px 3px -1px rgb(0 0 0 / 10%),
-      0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 2px 8px 0px rgb(0 0 0 / 12%) !important;
+      0px 2px 8px 0px rgb(0 0 0 / 12%) !important;
     scale: 1.02;
     -o-transition: all 0.4s ease-in-out !important;
     -webkit-transition: all 0.4s ease-in-out !important;

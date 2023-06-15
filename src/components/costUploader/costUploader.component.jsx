@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { Box, Chip, Divider, Grid, Paper, Typography } from "@mui/material";
 
@@ -13,24 +14,18 @@ import {
   AboutContainerBottom,
   AboutContainerTop,
   AboutText,
+  CostUploaderButtonsContainer,
   CostUploaderContainer,
   DescriptionText,
   HeaderText,
   StyledPaper,
-  StyledWhiteButton,
+  StyledTableContainer,
   TextContainer,
 } from "./costUploader.styles";
 
 import dragndrop from "../../assets/dragndrop.png";
 import lightBulb from "../../assets/ai-repricer/light-bulb.png";
-
-const ColorButton = styled(StyledWhiteButton)(({ theme }) => ({
-  color: theme.palette.getContrastText("#FFFFFF"),
-  backgroundColor: "#FFFFFF",
-  "&:hover": {
-    backgroundColor: "#FFFFFF",
-  },
-}));
+import { WhiteButton } from "../buttons/whiteButton.styles";
 
 const Item = styled(Box)(({ theme }) => ({
   padding: theme.spacing(1),
@@ -44,23 +39,29 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 12,
+    borderRight: "1px solid #E6E6E6",
   },
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
+  backgroundColor: "white",
+
   // hide last border
   "&:last-child td, &:last-child th": {
     border: 0,
+  },
+  rowStyle: {
+    // Define your row styles here
+    backgroundColor: "lightgray",
+    "&:hover": {
+      backgroundColor: "lightblue",
+    },
   },
 }));
 
 function createData(sku, cost, vendorPreference) {
   return { sku, cost, vendorPreference };
 }
-
 const rows = [
   createData("", "", ""),
   createData("", "", ""),
@@ -69,7 +70,17 @@ const rows = [
   createData("", "", ""),
 ];
 
+function fileUploaded(fileName, fileStatus, output) {
+  return { fileName, fileStatus, output };
+}
+const rowForFile = [fileUploaded("", "", "")];
 const CostUploader = () => {
+  //check if file uploaded
+  const [isFileUploaded, setIsFileUploaded] = useState(false);
+  const handleClick = () => {
+    setIsFileUploaded(!isFileUploaded);
+  };
+
   return (
     <>
       <TextContainer>
@@ -85,14 +96,14 @@ const CostUploader = () => {
           >
             Select parameters to finish uploading
           </Typography>
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 380 }} aria-label="customized table">
+          <TableContainer component={Paper} sx={{ minWidth: 380 }}>
+            <Table aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell>SKU</StyledTableCell>
-                  <StyledTableCell align="right">COST</StyledTableCell>
+                  <StyledTableCell>SKU:</StyledTableCell>
+                  <StyledTableCell align="right">COST:</StyledTableCell>
                   <StyledTableCell align="right">
-                    VENDOR PREFERENCE
+                    VENDOR PREFERENCE:
                   </StyledTableCell>
                 </TableRow>
               </TableHead>
@@ -192,6 +203,43 @@ const CostUploader = () => {
                 </AboutText>
               </AboutContainerBottom>
             </AboutContainer>
+
+            <CostUploaderButtonsContainer>
+              <WhiteButton sx={{ width: "50%" }}>Generate Template</WhiteButton>
+              <WhiteButton sx={{ width: "50%" }} onClick={() => handleClick()}>
+                Finish Uploading /PRESS TO SEE/
+              </WhiteButton>
+            </CostUploaderButtonsContainer>
+            {isFileUploaded && (
+              <StyledTableContainer>
+                <Table aria-label="customized table">
+                  <TableHead>
+                    <TableRow>
+                      <StyledTableCell>File Name</StyledTableCell>
+                      <StyledTableCell align="right">
+                        File Status
+                      </StyledTableCell>
+                      <StyledTableCell align="right">Output</StyledTableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {rowForFile.map((row) => (
+                      <StyledTableRow key={row.fileName}>
+                        <StyledTableCell component="th" scope="row">
+                          {row.fileName}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {row.fileStatus}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">
+                          {row.output}
+                        </StyledTableCell>
+                      </StyledTableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </StyledTableContainer>
+            )}
           </Item>
         </Grid>
       </Grid>

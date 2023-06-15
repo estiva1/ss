@@ -7,6 +7,7 @@ export const CostUploaderContainer = styled(Box)`
   justify-content: center;
   //justify-content: space-between;
   padding: 20px;
+  padding-bottom: 5px;
   gap: 15px;
   overflow: hidden;
 `;
@@ -87,4 +88,22 @@ export const AboutText = styled(Typography)`
   font-size: 12px !important;
   color: #4e5969 !important;
   line-height: 18px !important;
+`;
+
+export const CostUploaderButtonsContainer = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+`;
+
+export const StyledTableContainer = styled(Paper)`
+  overflow: hidden;
+  margin: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 16px !important;
+  background: #f8fafb !important;
+  box-shadow: 4px 4px 25px rgba(111, 213, 246, 0.25) !important;
 `;
