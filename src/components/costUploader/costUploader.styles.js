@@ -107,3 +107,17 @@ export const StyledTableContainer = styled(Paper)`
   background: #f8fafb !important;
   box-shadow: 4px 4px 25px rgba(111, 213, 246, 0.25) !important;
 `;
+
+export const FileStatusContainer = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const FileStatusLineSuccess = styled(Box)`
+  width: 140px;
+  height: 8px;
+  background: #009c34;
+  border-radius: 8px;
+`;

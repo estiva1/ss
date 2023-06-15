@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { Box, Chip, Divider, Grid, Paper, Typography } from "@mui/material";
+import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 
 import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import TableBody from "@mui/material/TableBody";
+import TableHead from "@mui/material/TableHead";
+import TableContainer from "@mui/material/TableContainer";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 
 import {
   AboutContainer,
@@ -17,15 +18,19 @@ import {
   CostUploaderButtonsContainer,
   CostUploaderContainer,
   DescriptionText,
+  FileStatusContainer,
+  FileStatusLineSuccess,
   HeaderText,
   StyledPaper,
   StyledTableContainer,
   TextContainer,
 } from "./costUploader.styles";
+import { BlueButton } from "../buttons/blueButton.styles";
+import { WhiteButton } from "../buttons/whiteButton.styles";
 
 import dragndrop from "../../assets/dragndrop.png";
+import completed from "../../assets/ai-repricer/completed.png";
 import lightBulb from "../../assets/ai-repricer/light-bulb.png";
-import { WhiteButton } from "../buttons/whiteButton.styles";
 
 const Item = styled(Box)(({ theme }) => ({
   padding: theme.spacing(1),
@@ -100,9 +105,9 @@ const CostUploader = () => {
             <Table aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell>SKU:</StyledTableCell>
-                  <StyledTableCell align="right">COST:</StyledTableCell>
-                  <StyledTableCell align="right">
+                  <StyledTableCell align="center">SKU:</StyledTableCell>
+                  <StyledTableCell align="center">COST:</StyledTableCell>
+                  <StyledTableCell align="center">
                     VENDOR PREFERENCE:
                   </StyledTableCell>
                 </TableRow>
@@ -110,11 +115,11 @@ const CostUploader = () => {
               <TableBody>
                 {rows.map((row) => (
                   <StyledTableRow key={row.sku}>
-                    <StyledTableCell component="th" scope="row">
+                    <StyledTableCell component="th" scope="row" align="center">
                       {row.sku}
                     </StyledTableCell>
-                    <StyledTableCell align="right">{row.cost}</StyledTableCell>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="center">{row.cost}</StyledTableCell>
+                    <StyledTableCell align="center">
                       {row.vendorPreference}
                     </StyledTableCell>
                   </StyledTableRow>
@@ -215,24 +220,38 @@ const CostUploader = () => {
                 <Table aria-label="customized table">
                   <TableHead>
                     <TableRow>
-                      <StyledTableCell>File Name</StyledTableCell>
-                      <StyledTableCell align="right">
+                      <StyledTableCell align="center">
+                        File Name
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
                         File Status
                       </StyledTableCell>
-                      <StyledTableCell align="right">Output</StyledTableCell>
+                      <StyledTableCell align="center">Output</StyledTableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {rowForFile.map((row) => (
                       <StyledTableRow key={row.fileName}>
-                        <StyledTableCell component="th" scope="row">
-                          {row.fileName}
+                        <StyledTableCell align="center">
+                          {`File Name Goes Here...`}
                         </StyledTableCell>
-                        <StyledTableCell align="right">
-                          {row.fileStatus}
+                        <StyledTableCell align="center">
+                          <FileStatusContainer>
+                            <FileStatusLineSuccess />
+                            <Box
+                              component="img"
+                              src={completed}
+                              sx={{ width: "14px", height: "14px" }}
+                            />
+                          </FileStatusContainer>
                         </StyledTableCell>
-                        <StyledTableCell align="right">
-                          {row.output}
+                        <StyledTableCell align="center">
+                          <BlueButton
+                            variant="contained"
+                            endIcon={<FileDownloadOutlinedIcon />}
+                          >
+                            Assign and proceed
+                          </BlueButton>
                         </StyledTableCell>
                       </StyledTableRow>
                     ))}
