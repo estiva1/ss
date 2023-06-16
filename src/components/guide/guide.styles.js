@@ -42,6 +42,7 @@ export const StyledAccordionContainer = styled(Paper)`
   padding: 0px;
   border: none;
   box-shadow: none !important;
+  border-radius: 16px !important;
   
   &:first-of-type {
     margin-bottom: 50px;
@@ -59,7 +60,7 @@ export const StyledAccordion = styled(Accordion)`
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
-  border: 1px solid #e6e6e6;
+  border: 1px solid #e6e6e6 !important;
   border-radius: 16px !important;
   background: #fff;
   box-shadow: none;

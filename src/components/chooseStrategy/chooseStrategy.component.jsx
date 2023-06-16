@@ -7,17 +7,17 @@ import {
   Divider,
   FormControl,
   FormControlLabel,
+  Grow,
   List,
   ListItem,
   ListItemText,
   Radio,
   RadioGroup,
+  Stack,
 } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
 
 import PropTypes from "prop-types";
 import Step from "@mui/material/Step";
@@ -30,7 +30,6 @@ import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import KeyboardBackspaceOutlinedIcon from "@mui/icons-material/KeyboardBackspaceOutlined";
-import PanoramaFishEyeOutlinedIcon from "@mui/icons-material/PanoramaFishEyeOutlined";
 
 import StepConnector, {
   stepConnectorClasses,
@@ -45,6 +44,8 @@ import profitMargin from "../../assets/ai-repricer/profit-margin.png";
 import fixedProfit from "../../assets/ai-repricer/fixed-profit.png";
 import madMax from "../../assets/ai-repricer/madmax.png";
 import slowAndSteady from "../../assets/ai-repricer/slownsteady.png";
+import buyBoxStrategy from "../../assets/ai-repricer/buy-box-strategy.png";
+import lowPriceStrategy from "../../assets/ai-repricer/low-price-strategy.png";
 import lightBulb from "../../assets/ai-repricer/light-bulb.png";
 import fileUploaded from "../../assets/ai-repricer/file-uploaded.png";
 
@@ -63,11 +64,9 @@ import {
   AiStrategyImageAndText,
   AiStrategyImageBox,
   AssignItem,
-  AssignItemContent,
   AssignItemContentLeft,
   AssignItemContentRight,
   AssignItemContentRightExtended,
-  AssignItemName,
   AssignItemQuantityText,
   AssignItemSpanText,
   AssignStrategyToProductsContainer,
@@ -200,6 +199,11 @@ const ChooseStrategy = () => {
   const aiProfileHandleClick = (aiProfileButtonId) => {
     setAiProfileSelectButton(aiProfileButtonId);
   };
+  const [personalizedProfileSelectButton, setPersonalizedProfileSelectButton] =
+    useState(null);
+  const personalizedProfileHandleClick = (personalizedProfileButtonId) => {
+    setPersonalizedProfileSelectButton(personalizedProfileButtonId);
+  };
 
   const [minMaxPriceSelectButton, setMinMaxPriceSelectButton] = useState(null);
   const minMaxPriceHandleClick = (minMaxPriceSelectButtonId) => {
@@ -249,78 +253,87 @@ const ChooseStrategy = () => {
             </Stepper>
           </StyledStack>
 
-          <StrategyTypesContainer>
-            <StrategyType>
-              <StrategyChip
-                label="FAST ROUTE"
-                icon={<BoltOutlinedIcon sx={{ fill: "black" }} />}
-                style={{
-                  background: "#7CCFFD",
-                  padding: "0px 20px",
-                }}
-              />
-              <StrategyImageBox component="img" src={aiStrategyLogo} />
-              <BoxText gutterBottom align="center" component="div">
-                Ai Powered Strategy
-              </BoxText>
-              <List dense={true}>
-                {generate(
-                  <ListItem>
-                    <StyledListItemAvatar>
-                      <CircleIcon sx={{ width: "8px", color: "#4E5969" }} />
-                    </StyledListItemAvatar>
-                    <ListItemText
-                      sx={{ color: "#4E5969" }}
-                      primary="Lorem ipsum dolor sit amet, conse"
-                    />
-                  </ListItem>
-                )}
-              </List>
-              <BlueButton
-                variant="contained"
-                onClick={handleStrategyStepChange("ai", 1)}
-                sx={{ marginBottom: "20px" }}
-              >
-                Choose Strategy
-              </BlueButton>
-            </StrategyType>
+          {strategyStep === "ai" ? (
+            1
+          ) : strategyStep === "personalized" ? (
+            2
+          ) : (
+            <StrategyTypesContainer>
+              <Grow in={true}>
+                <StrategyType>
+                  <StrategyChip
+                    label="FAST ROUTE"
+                    icon={<BoltOutlinedIcon sx={{ fill: "black" }} />}
+                    style={{
+                      background: "#7CCFFD",
+                      padding: "0px 20px",
+                    }}
+                  />
+                  <StrategyImageBox component="img" src={aiStrategyLogo} />
+                  <BoxText gutterBottom align="center" component="div">
+                    Ai Powered Strategy
+                  </BoxText>
+                  <List dense={true}>
+                    {generate(
+                      <ListItem>
+                        <StyledListItemAvatar>
+                          <CircleIcon sx={{ width: "8px", color: "#4E5969" }} />
+                        </StyledListItemAvatar>
+                        <ListItemText
+                          sx={{ color: "#4E5969" }}
+                          primary="Lorem ipsum dolor sit amet, conse"
+                        />
+                      </ListItem>
+                    )}
+                  </List>
+                  <BlueButton
+                    variant="contained"
+                    onClick={handleStrategyStepChange("ai", 1)}
+                    sx={{ marginBottom: "20px" }}
+                  >
+                    Choose Strategy
+                  </BlueButton>
+                </StrategyType>
+              </Grow>
 
-            <StrategyType>
-              <StrategyChip
-                label="PERSONALIZED"
-                icon={<TuneOutlinedIcon sx={{ fill: "black" }} />}
-                style={{
-                  background: "#DEDFDF",
-                  padding: "0px 20px",
-                }}
-              />
-              <StrategyImageBox component="img" src={customStrategyLogo} />
-              <BoxText gutterBottom align="center" component="div">
-                Custom Rules Strategy
-              </BoxText>
-              <List dense={true}>
-                {generate(
-                  <ListItem>
-                    <StyledListItemAvatar>
-                      <CircleIcon sx={{ width: "8px", color: "#4E5969" }} />
-                    </StyledListItemAvatar>
-                    <ListItemText
-                      sx={{ color: "#4E5969" }}
-                      primary="Lorem ipsum dolor sit amet, conse"
-                    />
-                  </ListItem>
-                )}
-              </List>
-              <BlueButton
-                variant="contained"
-                // SHOULD BE CHANGED TO "custom"
-                onClick={handleStrategyStepChange("ai", 1)}
-                sx={{ marginBottom: "20px" }}
-              >
-                Choose Strategy
-              </BlueButton>
-            </StrategyType>
-          </StrategyTypesContainer>
+              <Grow in={true} timeout={1000}>
+                <StrategyType>
+                  <StrategyChip
+                    label="PERSONALIZED"
+                    icon={<TuneOutlinedIcon sx={{ fill: "black" }} />}
+                    style={{
+                      background: "#DEDFDF",
+                      padding: "0px 20px",
+                    }}
+                  />
+                  <StrategyImageBox component="img" src={customStrategyLogo} />
+                  <BoxText gutterBottom align="center" component="div">
+                    Custom Rules Strategy
+                  </BoxText>
+                  <List dense={true}>
+                    {generate(
+                      <ListItem>
+                        <StyledListItemAvatar>
+                          <CircleIcon sx={{ width: "8px", color: "#4E5969" }} />
+                        </StyledListItemAvatar>
+                        <ListItemText
+                          sx={{ color: "#4E5969" }}
+                          primary="Lorem ipsum dolor sit amet, conse"
+                        />
+                      </ListItem>
+                    )}
+                  </List>
+                  <BlueButton
+                    variant="contained"
+                    onClick={handleStrategyStepChange("personalized", 1)}
+                    sx={{ marginBottom: "20px" }}
+                  >
+                    Choose Strategy
+                  </BlueButton>
+                </StrategyType>
+              </Grow>
+            </StrategyTypesContainer>
+          )}
         </>
       )}
       {strategyStep === "ai" && (
@@ -385,25 +398,29 @@ const ChooseStrategy = () => {
               </TextContainer>
 
               <AiProfilesSelectContainer>
-                <AiProfileSelect
-                  active={aiProfileSelectButton === 1}
-                  onClick={() => aiProfileHandleClick(1)}
-                >
-                  <AiProfileImageBox component="img" src={madMax} />
-                  <BoxText align="center" variant="h5" component="div">
-                    MadMax
-                  </BoxText>
-                </AiProfileSelect>
+                <Grow in={true}>
+                  <AiProfileSelect
+                    active={aiProfileSelectButton === 1}
+                    onClick={() => aiProfileHandleClick(1)}
+                  >
+                    <AiProfileImageBox component="img" src={madMax} />
+                    <BoxText align="center" variant="h5" component="div">
+                      MadMax
+                    </BoxText>
+                  </AiProfileSelect>
+                </Grow>
 
-                <AiProfileSelect
-                  active={aiProfileSelectButton === 2}
-                  onClick={() => aiProfileHandleClick(2)}
-                >
-                  <AiProfileImageBox component="img" src={slowAndSteady} />
-                  <BoxText align="center" variant="h5" component="div">
-                    Slow and Steady
-                  </BoxText>
-                </AiProfileSelect>
+                <Grow in={true} timeout={1000}>
+                  <AiProfileSelect
+                    active={aiProfileSelectButton === 2}
+                    onClick={() => aiProfileHandleClick(2)}
+                  >
+                    <AiProfileImageBox component="img" src={slowAndSteady} />
+                    <BoxText align="center" variant="h5" component="div">
+                      Slow and Steady
+                    </BoxText>
+                  </AiProfileSelect>
+                </Grow>
               </AiProfilesSelectContainer>
             </AiProfile>
 
@@ -422,6 +439,117 @@ const ChooseStrategy = () => {
                 variant="contained"
                 endIcon={<EastOutlinedIcon />}
                 disabled={!aiProfileSelectButton}
+                onClick={handleStrategyStepChange("madMax", 2)}
+              >
+                Next
+              </BlueButton>
+            </NavigationButtonsContainer>
+          </AiProfilesContainer>
+        </>
+      )}
+
+      {strategyStep === "personalized" && (
+        <>
+          <TextContainer>
+            <HeaderText align="center" variant="h5" component="div">
+              Choose one
+            </HeaderText>
+            <DescriptionText gutterBottom component="div" align="center">
+              Strategies are your unique repricing rules that determine exactly
+              how your listings will compete against other sellers on the
+              marketplace. Please choose the strategy you would like to create.
+            </DescriptionText>
+          </TextContainer>
+
+          <StyledStack spacing={4}>
+            <Stepper
+              alternativeLabel
+              activeStep={step}
+              connector={<QontoConnector />}
+            >
+              {chooseStrategySteps.map((label) => (
+                <Step key={label}>
+                  <StepLabel StepIconComponent={QontoStepIcon}>
+                    {label}
+                  </StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+          </StyledStack>
+
+          <AiProfilesContainer>
+            <AiProfile>
+              <StrategyChip
+                label="PERSONALIZED"
+                icon={<TuneOutlinedIcon sx={{ fill: "black" }} />}
+                style={{
+                  background: "#DEDFDF",
+                  padding: "0px 20px",
+                  right: "10.3%",
+                }}
+              />
+              <AiStrategyImageAndText>
+                <AiStrategyImageBox component="img" src={customStrategyLogo} />
+                <BoxText gutterBottom align="center" component="div">
+                  Custom Rules Strategy
+                </BoxText>
+              </AiStrategyImageAndText>
+
+              <Divider sx={{ margin: "10px", width: "70%" }} variant="middle" />
+
+              <TextContainer sx={{ background: "#fff" }}>
+                <HeaderText align="center" variant="h5" component="div">
+                  Choose Custom Rule Base
+                </HeaderText>
+                <DescriptionText gutterBottom component="div" align="center">
+                  There are Two Custom base Strategies are your unique repricing
+                  rules that determine exactly how your listings will compete
+                  against other sellers on the marketplace. Please choose any
+                  one strategy you would like to create.
+                </DescriptionText>
+              </TextContainer>
+
+              <AiProfilesSelectContainer>
+                <Grow in={true}>
+                  <AiProfileSelect
+                    active={personalizedProfileSelectButton === 1}
+                    onClick={() => personalizedProfileHandleClick(1)}
+                  >
+                    <AiProfileImageBox component="img" src={buyBoxStrategy} />
+                    <BoxText align="center" variant="h5" component="div">
+                      Buy Box Strategy
+                    </BoxText>
+                  </AiProfileSelect>
+                </Grow>
+                <Grow in={true} timeout={1000}>
+                  <AiProfileSelect
+                    active={personalizedProfileSelectButton === 2}
+                    onClick={() => personalizedProfileHandleClick(2)}
+                  >
+                    <AiProfileImageBox component="img" src={lowPriceStrategy} />
+                    <BoxText align="center" variant="h5" component="div">
+                      Low Price Strategy
+                    </BoxText>
+                  </AiProfileSelect>
+                </Grow>
+              </AiProfilesSelectContainer>
+            </AiProfile>
+
+            <NavigationButtonsContainer>
+              <BackButton
+                variant="contained"
+                startIcon={<KeyboardBackspaceOutlinedIcon />}
+                onClick={
+                  //setActiveButton(null);
+                  handleStrategyStepChange(null, 1)
+                }
+              >
+                Back
+              </BackButton>
+              <BlueButton
+                variant="contained"
+                endIcon={<EastOutlinedIcon />}
+                disabled={!personalizedProfileHandleClick}
                 onClick={handleStrategyStepChange("madMax", 2)}
               >
                 Next
@@ -463,96 +591,56 @@ const ChooseStrategy = () => {
           <AdjustMinMaxContainer>
             <Grid container spacing={2}>
               <Grid item xs={6}>
-                <Item>
-                  <MinMaxTypeSelect
-                    active={minMaxPriceSelectButton === 1}
-                    onClick={() => minMaxPriceHandleClick(1)}
-                  >
-                    <DescriptionText component="div" align="center">
-                      Manual
-                    </DescriptionText>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "center",
-                      }}
+                <Grow in={true}>
+                  <Item>
+                    <MinMaxTypeSelect
+                      active={minMaxPriceSelectButton === 1}
+                      onClick={() => minMaxPriceHandleClick(1)}
                     >
-                      <Box
-                        component="img"
-                        sx={{
-                          height: 24,
-                          marginRight: "8px",
-                        }}
-                        src={manual}
-                      />
-                      <HeaderText
-                        gutterBottom
-                        align="center"
-                        variant="h5"
-                        component="div"
-                        sx={{
-                          fontSize: "18px",
-                        }}
-                      >
+                      <DescriptionText component="div" align="center">
                         Manual
-                      </HeaderText>
-                    </Box>
-                    <SpanText component="div" align="center">
-                      Manual min/max for each listing
-                    </SpanText>
-                  </MinMaxTypeSelect>
-                </Item>
+                      </DescriptionText>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Box
+                          component="img"
+                          sx={{
+                            height: 24,
+                            marginRight: "8px",
+                          }}
+                          src={manual}
+                        />
+                        <HeaderText
+                          gutterBottom
+                          align="center"
+                          variant="h5"
+                          component="div"
+                          sx={{
+                            fontSize: "18px",
+                          }}
+                        >
+                          Manual
+                        </HeaderText>
+                      </Box>
+                      <SpanText component="div" align="center">
+                        Manual min/max for each listing
+                      </SpanText>
+                    </MinMaxTypeSelect>
+                  </Item>
+                </Grow>
               </Grid>
               <Grid item xs={6}>
-                <Item>
-                  <MinMaxTypeSelect
-                    active={minMaxPriceSelectButton === 2}
-                    onClick={() => minMaxPriceHandleClick(2)}
-                  >
-                    <DescriptionText component="div" align="center">
-                      Automatic
-                    </DescriptionText>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "center",
-                      }}
+                <Grow in={true} timeout={500}>
+                  <Item>
+                    <MinMaxTypeSelect
+                      active={minMaxPriceSelectButton === 2}
+                      onClick={() => minMaxPriceHandleClick(2)}
                     >
-                      <Box
-                        component="img"
-                        sx={{
-                          height: 24,
-                          marginRight: "8px",
-                        }}
-                        src={roi}
-                      />
-                      <HeaderText
-                        gutterBottom
-                        align="center"
-                        variant="h5"
-                        component="div"
-                        sx={{
-                          fontSize: "18px",
-                        }}
-                      >
-                        ROI
-                      </HeaderText>
-                    </Box>
-                    <SpanText component="div" align="center">
-                      Calculation based on return on investment
-                    </SpanText>
-                  </MinMaxTypeSelect>
-                </Item>
-              </Grid>
-              <Grid item xs={6}>
-                <Item>
-                  <MinMaxTypeSelect
-                    active={minMaxPriceSelectButton === 3}
-                    onClick={() => minMaxPriceHandleClick(3)}
-                  >
-                    <Box sx={{ display: "flex", flexDirection: "column" }}>
                       <DescriptionText component="div" align="center">
                         Automatic
                       </DescriptionText>
@@ -569,7 +657,7 @@ const ChooseStrategy = () => {
                             height: 24,
                             marginRight: "8px",
                           }}
-                          src={profitMargin}
+                          src={roi}
                         />
                         <HeaderText
                           gutterBottom
@@ -580,59 +668,107 @@ const ChooseStrategy = () => {
                             fontSize: "18px",
                           }}
                         >
-                          Profit Margin
+                          ROI
                         </HeaderText>
                       </Box>
                       <SpanText component="div" align="center">
-                        Calculated based on profit margin
+                        Calculation based on return on investment
                       </SpanText>
-                    </Box>
-                  </MinMaxTypeSelect>
-                </Item>
+                    </MinMaxTypeSelect>
+                  </Item>
+                </Grow>
               </Grid>
               <Grid item xs={6}>
-                <Item>
-                  <MinMaxTypeSelect
-                    active={minMaxPriceSelectButton === 4}
-                    onClick={() => minMaxPriceHandleClick(4)}
-                  >
-                    <Box sx={{ display: "flex", flexDirection: "column" }}>
-                      <DescriptionText component="div" align="center">
-                        Automatic
-                      </DescriptionText>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          justifyContent: "center",
-                        }}
-                      >
+                <Grow in={true} timeout={1000}>
+                  <Item>
+                    <MinMaxTypeSelect
+                      active={minMaxPriceSelectButton === 3}
+                      onClick={() => minMaxPriceHandleClick(3)}
+                    >
+                      <Box sx={{ display: "flex", flexDirection: "column" }}>
+                        <DescriptionText component="div" align="center">
+                          Automatic
+                        </DescriptionText>
                         <Box
-                          component="img"
                           sx={{
-                            height: 24,
-                            marginRight: "8px",
-                          }}
-                          src={fixedProfit}
-                        />
-                        <HeaderText
-                          gutterBottom
-                          align="center"
-                          variant="h5"
-                          component="div"
-                          sx={{
-                            fontSize: "18px",
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "center",
                           }}
                         >
-                          Fixed Profit
-                        </HeaderText>
+                          <Box
+                            component="img"
+                            sx={{
+                              height: 24,
+                              marginRight: "8px",
+                            }}
+                            src={profitMargin}
+                          />
+                          <HeaderText
+                            gutterBottom
+                            align="center"
+                            variant="h5"
+                            component="div"
+                            sx={{
+                              fontSize: "18px",
+                            }}
+                          >
+                            Profit Margin
+                          </HeaderText>
+                        </Box>
+                        <SpanText component="div" align="center">
+                          Calculated based on profit margin
+                        </SpanText>
                       </Box>
-                      <SpanText component="div" align="center">
-                        Calculated based on fixed amount of profit
-                      </SpanText>
-                    </Box>
-                  </MinMaxTypeSelect>
-                </Item>
+                    </MinMaxTypeSelect>
+                  </Item>
+                </Grow>
+              </Grid>
+              <Grid item xs={6}>
+                <Grow in={true} timeout={1500}>
+                  <Item>
+                    <MinMaxTypeSelect
+                      active={minMaxPriceSelectButton === 4}
+                      onClick={() => minMaxPriceHandleClick(4)}
+                    >
+                      <Box sx={{ display: "flex", flexDirection: "column" }}>
+                        <DescriptionText component="div" align="center">
+                          Automatic
+                        </DescriptionText>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <Box
+                            component="img"
+                            sx={{
+                              height: 24,
+                              marginRight: "8px",
+                            }}
+                            src={fixedProfit}
+                          />
+                          <HeaderText
+                            gutterBottom
+                            align="center"
+                            variant="h5"
+                            component="div"
+                            sx={{
+                              fontSize: "18px",
+                            }}
+                          >
+                            Fixed Profit
+                          </HeaderText>
+                        </Box>
+                        <SpanText component="div" align="center">
+                          Calculated based on fixed amount of profit
+                        </SpanText>
+                      </Box>
+                    </MinMaxTypeSelect>
+                  </Item>
+                </Grow>
               </Grid>
             </Grid>
 
@@ -816,227 +952,241 @@ const ChooseStrategy = () => {
           </StyledStack>
 
           <AssignStrategyToProductsContainer>
-            <FormControl>
-              <RadioGroup
-                aria-labelledby="demo-controlled-radio-buttons-group"
-                name="controlled-radio-buttons-group"
-                value={strategy}
-                onChange={handleChangeStrategy}
-              >
-                <AssignItem>
-                  <AssignItemContentLeft>
-                    <FormControlLabel
-                      sx={{
-                        "& .MuiTypography-root": {
-                          fontWeight: "700",
-                        },
-                      }}
-                      value="fba"
-                      control={
-                        <Radio
+            <Stack spacing={2}>
+              <FormControl>
+                <RadioGroup
+                  aria-labelledby="demo-controlled-radio-buttons-group"
+                  name="controlled-radio-buttons-group"
+                  value={strategy}
+                  onChange={handleChangeStrategy}
+                >
+                  <Grow in={true}>
+                    <AssignItem>
+                      <AssignItemContentLeft>
+                        <FormControlLabel
                           sx={{
-                            "& .MuiSvgIcon-root": {
-                              fontSize: 44,
-                              color: "#1565D8",
+                            "& .MuiTypography-root": {
+                              fontWeight: "700",
                             },
                           }}
+                          value="fba"
+                          control={
+                            <Radio
+                              sx={{
+                                "& .MuiSvgIcon-root": {
+                                  fontSize: 44,
+                                  color: "#1565D8",
+                                },
+                              }}
+                            />
+                          }
+                          label="FBA"
                         />
-                      }
-                      label="FBA"
-                    />
-                    <AssignItemSpanText component="div" align="center">
-                      Fulfillment by Amazon
-                    </AssignItemSpanText>
-                  </AssignItemContentLeft>
-                  <AssignItemContentRight>
-                    <AssignItemQuantityText
-                      variant="h5"
-                      sx={{
-                        color: "#1565D8",
-                      }}
-                    >
-                      999
-                    </AssignItemQuantityText>
-                    <AssignItemSpanText>Products</AssignItemSpanText>
-                  </AssignItemContentRight>
-                </AssignItem>
+                        <AssignItemSpanText component="div" align="center">
+                          Fulfillment by Amazon
+                        </AssignItemSpanText>
+                      </AssignItemContentLeft>
+                      <AssignItemContentRight>
+                        <AssignItemQuantityText
+                          variant="h5"
+                          sx={{
+                            color: "#1565D8",
+                          }}
+                        >
+                          999
+                        </AssignItemQuantityText>
+                        <AssignItemSpanText>Products</AssignItemSpanText>
+                      </AssignItemContentRight>
+                    </AssignItem>
+                  </Grow>
 
-                <AssignItem>
-                  <AssignItemContentLeft>
-                    <FormControlLabel
-                      sx={{
-                        "& .MuiTypography-root": {
-                          fontWeight: "700",
-                        },
-                      }}
-                      value="fbm"
-                      control={
-                        <Radio
+                  <Grow in={true} timeout={250}>
+                    <AssignItem>
+                      <AssignItemContentLeft>
+                        <FormControlLabel
                           sx={{
-                            "& .MuiSvgIcon-root": {
-                              fontSize: 44,
-                              color: "#1565D8",
+                            "& .MuiTypography-root": {
+                              fontWeight: "700",
                             },
                           }}
+                          value="fbm"
+                          control={
+                            <Radio
+                              sx={{
+                                "& .MuiSvgIcon-root": {
+                                  fontSize: 44,
+                                  color: "#1565D8",
+                                },
+                              }}
+                            />
+                          }
+                          label="FBM"
                         />
-                      }
-                      label="FBM"
-                    />
-                    <AssignItemSpanText component="div" align="center">
-                      Fulfillment by Merchant
-                    </AssignItemSpanText>
-                  </AssignItemContentLeft>
-                  <AssignItemContentRight>
-                    <AssignItemQuantityText
-                      variant="h5"
-                      sx={{
-                        color: "#1565D8",
-                      }}
-                    >
-                      999
-                    </AssignItemQuantityText>
-                    <AssignItemSpanText>Products</AssignItemSpanText>
-                  </AssignItemContentRight>
-                </AssignItem>
+                        <AssignItemSpanText component="div" align="center">
+                          Fulfillment by Merchant
+                        </AssignItemSpanText>
+                      </AssignItemContentLeft>
+                      <AssignItemContentRight>
+                        <AssignItemQuantityText
+                          variant="h5"
+                          sx={{
+                            color: "#1565D8",
+                          }}
+                        >
+                          999
+                        </AssignItemQuantityText>
+                        <AssignItemSpanText>Products</AssignItemSpanText>
+                      </AssignItemContentRight>
+                    </AssignItem>
+                  </Grow>
 
-                <AssignItem>
-                  <AssignItemContentLeft>
-                    <FormControlLabel
-                      sx={{
-                        "& .MuiTypography-root": {
-                          fontWeight: "700",
-                        },
-                      }}
-                      value="all"
-                      control={
-                        <Radio
+                  <Grow in={true} timeout={500}>
+                    <AssignItem>
+                      <AssignItemContentLeft>
+                        <FormControlLabel
                           sx={{
-                            "& .MuiSvgIcon-root": {
-                              fontSize: 44,
-                              color: "#1565D8",
+                            "& .MuiTypography-root": {
+                              fontWeight: "700",
                             },
                           }}
+                          value="all"
+                          control={
+                            <Radio
+                              sx={{
+                                "& .MuiSvgIcon-root": {
+                                  fontSize: 44,
+                                  color: "#1565D8",
+                                },
+                              }}
+                            />
+                          }
+                          label="All"
                         />
-                      }
-                      label="All"
-                    />
-                    <AssignItemSpanText component="div" align="center">
-                      Both FBA and FBM
-                    </AssignItemSpanText>
-                  </AssignItemContentLeft>
-                  <AssignItemContentRight>
-                    <AssignItemQuantityText
-                      variant="h5"
-                      sx={{
-                        color: "#1565D8",
-                      }}
-                    >
-                      999
-                    </AssignItemQuantityText>
-                    <AssignItemSpanText>Products</AssignItemSpanText>
-                  </AssignItemContentRight>
-                </AssignItem>
+                        <AssignItemSpanText component="div" align="center">
+                          Both FBA and FBM
+                        </AssignItemSpanText>
+                      </AssignItemContentLeft>
+                      <AssignItemContentRight>
+                        <AssignItemQuantityText
+                          variant="h5"
+                          sx={{
+                            color: "#1565D8",
+                          }}
+                        >
+                          999
+                        </AssignItemQuantityText>
+                        <AssignItemSpanText>Products</AssignItemSpanText>
+                      </AssignItemContentRight>
+                    </AssignItem>
+                  </Grow>
 
-                <AssignItem>
-                  <AssignItemContentLeft>
-                    <FormControlLabel
-                      sx={{
-                        "& .MuiTypography-root": {
-                          fontWeight: "700",
-                        },
-                      }}
-                      value="select-products"
-                      control={
-                        <Radio
+                  <Grow in={true} timeout={750}>
+                    <AssignItem>
+                      <AssignItemContentLeft>
+                        <FormControlLabel
                           sx={{
-                            "& .MuiSvgIcon-root": {
-                              fontSize: 44,
-                              color: "#1565D8",
+                            "& .MuiTypography-root": {
+                              fontWeight: "700",
                             },
                           }}
+                          value="select-products"
+                          control={
+                            <Radio
+                              sx={{
+                                "& .MuiSvgIcon-root": {
+                                  fontSize: 44,
+                                  color: "#1565D8",
+                                },
+                              }}
+                            />
+                          }
+                          label="Select Products"
                         />
-                      }
-                      label="Select Products"
-                    />
-                    <AssignItemSpanText component="div" align="center">
-                      Fulfillment by Amazon
-                    </AssignItemSpanText>
-                  </AssignItemContentLeft>
-                  <AssignItemContentRightExtended>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                      }}
-                    >
-                      <AssignItemQuantityText
-                        variant="h5"
-                        sx={{
-                          color: "#009C34",
-                        }}
-                      >
-                        --
-                      </AssignItemQuantityText>
-                      <AssignItemSpanText>Selected Products</AssignItemSpanText>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                      }}
-                    >
-                      <AssignItemQuantityText
-                        variant="h5"
-                        sx={{
-                          color: "#1565D8",
-                        }}
-                      >
-                        999
-                      </AssignItemQuantityText>
-                      <AssignItemSpanText>Products</AssignItemSpanText>
-                    </Box>
-                  </AssignItemContentRightExtended>
-                </AssignItem>
+                        <AssignItemSpanText component="div" align="center">
+                          Fulfillment by Amazon
+                        </AssignItemSpanText>
+                      </AssignItemContentLeft>
+                      <AssignItemContentRightExtended>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                          }}
+                        >
+                          <AssignItemQuantityText
+                            variant="h5"
+                            sx={{
+                              color: "#009C34",
+                            }}
+                          >
+                            --
+                          </AssignItemQuantityText>
+                          <AssignItemSpanText>
+                            Selected Products
+                          </AssignItemSpanText>
+                        </Box>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                          }}
+                        >
+                          <AssignItemQuantityText
+                            variant="h5"
+                            sx={{
+                              color: "#1565D8",
+                            }}
+                          >
+                            999
+                          </AssignItemQuantityText>
+                          <AssignItemSpanText>Products</AssignItemSpanText>
+                        </Box>
+                      </AssignItemContentRightExtended>
+                    </AssignItem>
+                  </Grow>
 
-                <AssignItem>
-                  <AssignItemContentLeft>
-                    <FormControlLabel
-                      sx={{
-                        "& .MuiTypography-root": {
-                          fontWeight: "700",
-                        },
-                      }}
-                      value="apply-later"
-                      control={
-                        <Radio
+                  <Grow in={true} timeout={1000}>
+                    <AssignItem>
+                      <AssignItemContentLeft>
+                        <FormControlLabel
                           sx={{
-                            "& .MuiSvgIcon-root": {
-                              fontSize: 44,
-                              color: "#1565D8",
+                            "& .MuiTypography-root": {
+                              fontWeight: "700",
                             },
                           }}
+                          value="apply-later"
+                          control={
+                            <Radio
+                              sx={{
+                                "& .MuiSvgIcon-root": {
+                                  fontSize: 44,
+                                  color: "#1565D8",
+                                },
+                              }}
+                            />
+                          }
+                          label="Apply Later"
                         />
-                      }
-                      label="Apply Later"
-                    />
-                    <AssignItemSpanText component="div" align="center">
-                      Fulfillment by Amazon
-                    </AssignItemSpanText>
-                  </AssignItemContentLeft>
-                  <AssignItemContentRight sx={{ visibility: "hidden" }}>
-                    <AssignItemQuantityText
-                      variant="h5"
-                      sx={{
-                        color: "#1565D8",
-                      }}
-                    >
-                      999
-                    </AssignItemQuantityText>
-                    <AssignItemSpanText>Products</AssignItemSpanText>
-                  </AssignItemContentRight>
-                </AssignItem>
-              </RadioGroup>
-            </FormControl>
+                        <AssignItemSpanText component="div" align="center">
+                          Fulfillment by Amazon
+                        </AssignItemSpanText>
+                      </AssignItemContentLeft>
+                      <AssignItemContentRight sx={{ visibility: "hidden" }}>
+                        <AssignItemQuantityText
+                          variant="h5"
+                          sx={{
+                            color: "#1565D8",
+                          }}
+                        >
+                          999
+                        </AssignItemQuantityText>
+                        <AssignItemSpanText>Products</AssignItemSpanText>
+                      </AssignItemContentRight>
+                    </AssignItem>
+                  </Grow>
+                </RadioGroup>
+              </FormControl>
+            </Stack>
           </AssignStrategyToProductsContainer>
           <NavigationButtonsContainer sx={{ margin: "20px" }}>
             <BackButton

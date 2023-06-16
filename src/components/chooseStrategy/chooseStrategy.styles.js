@@ -76,6 +76,9 @@ export const StrategyChip = styled(Chip)`
 
 export const StrategyImageBox = styled(Box)`
   width: 64px;
+  height: 64px;
+  min-width: 64px;
+  min-height: 64px;
   margin-top: 50px;
   margin-bottom: 30px;
 `;
@@ -260,11 +263,8 @@ export const AboutManualPricingUploadBox = styled(Box)`
 //--------------------------------------------------------------
 
 export const AssignStrategyToProductsContainer = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background: #f8fafb !important;
+  width: 100%;
+  margin-top: 20px;
 `;
 
 export const AssignItem = styled(Paper)`
@@ -272,11 +272,10 @@ export const AssignItem = styled(Paper)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 10px;
+  margin: 10px 20px;
   padding-left: 20px;
   border: 1px solid #00a3ff;
   border-radius: 16px !important;
-  width: 580px;
   height: 60px;
   background: #ffffff;
   box-shadow: 4px 4px 25px rgba(111, 213, 246, 0.25) !important;
