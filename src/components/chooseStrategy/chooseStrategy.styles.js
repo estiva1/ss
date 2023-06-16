@@ -268,6 +268,9 @@ export const AssignStrategyToProductsContainer = styled(Box)`
 `;
 
 export const AssignItem = styled(Paper)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   margin: 10px;
   padding-left: 20px;
@@ -279,4 +282,33 @@ export const AssignItem = styled(Paper)`
   box-shadow: 4px 4px 25px rgba(111, 213, 246, 0.25) !important;
 `;
 
-export const AssignItemContent = styled(Box)``;
+export const AssignItemContentLeft = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const AssignItemSpanText = styled(Typography)`
+  font-size: 12px !important;
+  color: #4e5969 !important;
+  line-height: 18px !important;
+`;
+
+export const AssignItemContentRight = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 20px;
+`;
+export const AssignItemContentRightExtended = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  padding-right: 20px;
+`;
+
+export const AssignItemQuantityText = styled(Typography)`
+  font-size: 24px !important;
+  font-weight: 700 !important;
+`;

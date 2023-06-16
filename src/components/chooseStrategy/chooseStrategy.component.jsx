@@ -30,6 +30,7 @@ import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import KeyboardBackspaceOutlinedIcon from "@mui/icons-material/KeyboardBackspaceOutlined";
+import PanoramaFishEyeOutlinedIcon from "@mui/icons-material/PanoramaFishEyeOutlined";
 
 import StepConnector, {
   stepConnectorClasses,
@@ -63,6 +64,12 @@ import {
   AiStrategyImageBox,
   AssignItem,
   AssignItemContent,
+  AssignItemContentLeft,
+  AssignItemContentRight,
+  AssignItemContentRightExtended,
+  AssignItemName,
+  AssignItemQuantityText,
+  AssignItemSpanText,
   AssignStrategyToProductsContainer,
   BoxText,
   DescriptionText,
@@ -817,545 +824,217 @@ const ChooseStrategy = () => {
                 onChange={handleChangeStrategy}
               >
                 <AssignItem>
-                  <AssignItemContent>
-                    <Box
+                  <AssignItemContentLeft>
+                    <FormControlLabel
                       sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        alignContent: "center",
-                        justifyContent: "space-between",
+                        "& .MuiTypography-root": {
+                          fontWeight: "700",
+                        },
+                      }}
+                      value="fba"
+                      control={
+                        <Radio
+                          sx={{
+                            "& .MuiSvgIcon-root": {
+                              fontSize: 44,
+                              color: "#1565D8",
+                            },
+                          }}
+                        />
+                      }
+                      label="FBA"
+                    />
+                    <AssignItemSpanText component="div" align="center">
+                      Fulfillment by Amazon
+                    </AssignItemSpanText>
+                  </AssignItemContentLeft>
+                  <AssignItemContentRight>
+                    <AssignItemQuantityText
+                      variant="h5"
+                      sx={{
+                        color: "#1565D8",
                       }}
                     >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          alignContent: "center",
-                          columnGap: "100px",
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                          }}
-                        >
-                          <FormControlLabel
-                            sx={{
-                              "& .MuiTypography-root": {
-                                fontWeight: "700",
-                              },
-                            }}
-                            value="fba"
-                            control={
-                              <Radio
-                                sx={{
-                                  "& .MuiSvgIcon-root": {
-                                    fontSize: 44,
-                                  },
-                                }}
-                              />
-                            }
-                            label="FBA"
-                          />
-                          <Typography
-                            component="div"
-                            sx={{
-                              fontSize: "12px",
-                              color: "#4E5969",
-                              lineHeight: "18px",
-                            }}
-                            align="center"
-                          >
-                            Fulfillment by Amazon
-                          </Typography>
-                        </Box>
-                      </Box>
-
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          paddingRight: "20px",
-                        }}
-                      >
-                        <Typography
-                          align="center"
-                          variant="h5"
-                          component="div"
-                          sx={{
-                            fontSize: "24px",
-                            fontWeight: "700",
-                            color: "#1565D8",
-                          }}
-                        >
-                          999
-                        </Typography>
-                        <Typography
-                          component="div"
-                          sx={{
-                            fontSize: "12px",
-                            color: "#4E5969",
-                            lineHeight: "18px",
-                          }}
-                          align="center"
-                        >
-                          Products
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </AssignItemContent>
+                      999
+                    </AssignItemQuantityText>
+                    <AssignItemSpanText>Products</AssignItemSpanText>
+                  </AssignItemContentRight>
                 </AssignItem>
 
-                <Paper
-                  sx={{
-                    margin: "10px",
-                    paddingLeft: "20px",
-                    border: "1px solid #00A3FF",
-                    borderRadius: "16px",
-                    width: "580px",
-                    height: "60px",
-                    background: "#FFFFFF",
-                    boxShadow: "4px 4px 25px rgba(111, 213, 246, 0.25)",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      alignContent: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Box
+                <AssignItem>
+                  <AssignItemContentLeft>
+                    <FormControlLabel
                       sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        alignContent: "center",
-                        columnGap: "100px",
+                        "& .MuiTypography-root": {
+                          fontWeight: "700",
+                        },
                       }}
-                    >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
-                        }}
-                      >
-                        <FormControlLabel
+                      value="fbm"
+                      control={
+                        <Radio
                           sx={{
-                            "& .MuiTypography-root": {
-                              fontWeight: "700",
+                            "& .MuiSvgIcon-root": {
+                              fontSize: 44,
+                              color: "#1565D8",
                             },
                           }}
-                          value="fbm"
-                          control={
-                            <Radio
-                              sx={{
-                                "& .MuiSvgIcon-root": {
-                                  fontSize: 44,
-                                },
-                              }}
-                            />
-                          }
-                          label="FBM"
                         />
-                        <Typography
-                          component="div"
-                          sx={{
-                            fontSize: "12px",
-                            color: "#4E5969",
-                            lineHeight: "18px",
-                          }}
-                          align="center"
-                        >
-                          Fulfillment by Merchant
-                        </Typography>
-                      </Box>
-                    </Box>
+                      }
+                      label="FBM"
+                    />
+                    <AssignItemSpanText component="div" align="center">
+                      Fulfillment by Merchant
+                    </AssignItemSpanText>
+                  </AssignItemContentLeft>
+                  <AssignItemContentRight>
+                    <AssignItemQuantityText
+                      variant="h5"
+                      sx={{
+                        color: "#1565D8",
+                      }}
+                    >
+                      999
+                    </AssignItemQuantityText>
+                    <AssignItemSpanText>Products</AssignItemSpanText>
+                  </AssignItemContentRight>
+                </AssignItem>
 
-                    <Box
+                <AssignItem>
+                  <AssignItemContentLeft>
+                    <FormControlLabel
                       sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        paddingRight: "20px",
-                      }}
-                    >
-                      <Typography
-                        align="center"
-                        variant="h5"
-                        component="div"
-                        sx={{
-                          fontSize: "24px",
+                        "& .MuiTypography-root": {
                           fontWeight: "700",
-                          color: "#1565D8",
-                        }}
-                      >
-                        999
-                      </Typography>
-                      <Typography
-                        component="div"
-                        sx={{
-                          fontSize: "12px",
-                          color: "#4E5969",
-                          lineHeight: "18px",
-                        }}
-                        align="center"
-                      >
-                        Products
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Paper>
-                <Paper
-                  sx={{
-                    margin: "10px",
-                    paddingLeft: "20px",
-                    border: "1px solid #00A3FF",
-                    borderRadius: "16px",
-                    width: "580px",
-                    height: "60px",
-                    background: "#FFFFFF",
-                    boxShadow: "4px 4px 25px rgba(111, 213, 246, 0.25)",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      alignContent: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        alignContent: "center",
-                        columnGap: "100px",
+                        },
                       }}
-                    >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
-                        }}
-                      >
-                        <FormControlLabel
+                      value="all"
+                      control={
+                        <Radio
                           sx={{
-                            "& .MuiTypography-root": {
-                              fontWeight: "700",
+                            "& .MuiSvgIcon-root": {
+                              fontSize: 44,
+                              color: "#1565D8",
                             },
                           }}
-                          value="all"
-                          control={
-                            <Radio
-                              sx={{
-                                "& .MuiSvgIcon-root": {
-                                  fontSize: 44,
-                                },
-                              }}
-                            />
-                          }
-                          label="All"
                         />
-                        <Typography
-                          component="div"
-                          sx={{
-                            fontSize: "12px",
-                            color: "#4E5969",
-                            lineHeight: "18px",
-                          }}
-                          align="center"
-                        >
-                          Both FBA and FBM
-                        </Typography>
-                      </Box>
-                    </Box>
+                      }
+                      label="All"
+                    />
+                    <AssignItemSpanText component="div" align="center">
+                      Both FBA and FBM
+                    </AssignItemSpanText>
+                  </AssignItemContentLeft>
+                  <AssignItemContentRight>
+                    <AssignItemQuantityText
+                      variant="h5"
+                      sx={{
+                        color: "#1565D8",
+                      }}
+                    >
+                      999
+                    </AssignItemQuantityText>
+                    <AssignItemSpanText>Products</AssignItemSpanText>
+                  </AssignItemContentRight>
+                </AssignItem>
 
-                    <Box
+                <AssignItem>
+                  <AssignItemContentLeft>
+                    <FormControlLabel
                       sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        paddingRight: "20px",
-                      }}
-                    >
-                      <Typography
-                        align="center"
-                        variant="h5"
-                        component="div"
-                        sx={{
-                          fontSize: "24px",
+                        "& .MuiTypography-root": {
                           fontWeight: "700",
-                          color: "#1565D8",
-                        }}
-                      >
-                        999
-                      </Typography>
-                      <Typography
-                        component="div"
-                        sx={{
-                          fontSize: "12px",
-                          color: "#4E5969",
-                          lineHeight: "18px",
-                        }}
-                        align="center"
-                      >
-                        Products
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Paper>
-                <Paper
-                  sx={{
-                    margin: "10px",
-                    paddingLeft: "20px",
-                    border: "1px solid #00A3FF",
-                    borderRadius: "16px",
-                    width: "580px",
-                    height: "60px",
-                    background: "#FFFFFF",
-                    boxShadow: "4px 4px 25px rgba(111, 213, 246, 0.25)",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      alignContent: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        alignContent: "center",
-                        columnGap: "100px",
+                        },
                       }}
-                    >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
-                        }}
-                      >
-                        <FormControlLabel
+                      value="select-products"
+                      control={
+                        <Radio
                           sx={{
-                            "& .MuiTypography-root": {
-                              fontWeight: "700",
+                            "& .MuiSvgIcon-root": {
+                              fontSize: 44,
+                              color: "#1565D8",
                             },
                           }}
-                          value="select-products"
-                          control={
-                            <Radio
-                              sx={{
-                                "& .MuiSvgIcon-root": {
-                                  fontSize: 44,
-                                },
-                              }}
-                            />
-                          }
-                          label="Select Products"
                         />
-                        <Typography
-                          component="div"
-                          sx={{
-                            fontSize: "12px",
-                            color: "#4E5969",
-                            lineHeight: "18px",
-                          }}
-                          align="center"
-                        >
-                          Fulfillment by Amazon
-                        </Typography>
-                      </Box>
-                    </Box>
-
+                      }
+                      label="Select Products"
+                    />
+                    <AssignItemSpanText component="div" align="center">
+                      Fulfillment by Amazon
+                    </AssignItemSpanText>
+                  </AssignItemContentLeft>
+                  <AssignItemContentRightExtended>
                     <Box
                       sx={{
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "center",
-                        paddingLeft: "10px",
                       }}
                     >
-                      <Typography
-                        align="center"
+                      <AssignItemQuantityText
                         variant="h5"
-                        component="div"
                         sx={{
-                          fontSize: "24px",
-                          fontWeight: "700",
                           color: "#009C34",
                         }}
                       >
                         --
-                      </Typography>
-                      <Typography
-                        component="div"
-                        sx={{
-                          fontSize: "12px",
-                          color: "#4E5969",
-                          lineHeight: "18px",
-                        }}
-                        align="center"
-                      >
-                        Selected Products
-                      </Typography>
+                      </AssignItemQuantityText>
+                      <AssignItemSpanText>Selected Products</AssignItemSpanText>
                     </Box>
-
                     <Box
                       sx={{
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "center",
-                        paddingRight: "20px",
                       }}
                     >
-                      <Typography
-                        align="center"
+                      <AssignItemQuantityText
                         variant="h5"
-                        component="div"
                         sx={{
-                          fontSize: "24px",
-                          fontWeight: "700",
                           color: "#1565D8",
                         }}
                       >
                         999
-                      </Typography>
-                      <Typography
-                        component="div"
-                        sx={{
-                          fontSize: "12px",
-                          color: "#4E5969",
-                          lineHeight: "18px",
-                        }}
-                        align="center"
-                      >
-                        Products
-                      </Typography>
+                      </AssignItemQuantityText>
+                      <AssignItemSpanText>Products</AssignItemSpanText>
                     </Box>
-                  </Box>
-                </Paper>
-                <Paper
-                  sx={{
-                    margin: "10px",
-                    paddingLeft: "20px",
-                    border: "1px solid #00A3FF",
-                    borderRadius: "16px",
-                    width: "580px",
-                    height: "60px",
-                    background: "#FFFFFF",
-                    boxShadow: "4px 4px 25px rgba(111, 213, 246, 0.25)",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      alignContent: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Box
+                  </AssignItemContentRightExtended>
+                </AssignItem>
+
+                <AssignItem>
+                  <AssignItemContentLeft>
+                    <FormControlLabel
                       sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        alignContent: "center",
-                        columnGap: "100px",
+                        "& .MuiTypography-root": {
+                          fontWeight: "700",
+                        },
                       }}
-                    >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
-                        }}
-                      >
-                        <FormControlLabel
+                      value="apply-later"
+                      control={
+                        <Radio
                           sx={{
-                            "& .MuiTypography-root": {
-                              fontWeight: "700",
+                            "& .MuiSvgIcon-root": {
+                              fontSize: 44,
+                              color: "#1565D8",
                             },
                           }}
-                          value="apply-later"
-                          control={
-                            <Radio
-                              sx={{
-                                "& .MuiSvgIcon-root": {
-                                  fontSize: 44,
-                                },
-                              }}
-                            />
-                          }
-                          label="Apply Later"
                         />
-                        <Typography
-                          component="div"
-                          sx={{
-                            fontSize: "12px",
-                            color: "#4E5969",
-                            lineHeight: "18px",
-                          }}
-                          align="center"
-                        >
-                          [Apply Later]
-                        </Typography>
-                      </Box>
-                    </Box>
-
-                    {/* <Box
+                      }
+                      label="Apply Later"
+                    />
+                    <AssignItemSpanText component="div" align="center">
+                      Fulfillment by Amazon
+                    </AssignItemSpanText>
+                  </AssignItemContentLeft>
+                  <AssignItemContentRight sx={{ visibility: "hidden" }}>
+                    <AssignItemQuantityText
+                      variant="h5"
                       sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        paddingRight: "20px",
+                        color: "#1565D8",
                       }}
                     >
-                      <Typography
-                        align="center"
-                        variant="h5"
-                        component="div"
-                        sx={{
-                          fontSize: "24px",
-                          fontWeight: "700",
-                          color: "#1565D8",
-                        }}
-                      >
-                        999
-                      </Typography>
-                      <Typography
-                        component="div"
-                        sx={{
-                          fontSize: "12px",
-                          color: "#4E5969",
-                          lineHeight: "18px",
-                        }}
-                        align="center"
-                      >
-                        Products
-                      </Typography>
-                    </Box> */}
-                  </Box>
-                </Paper>
+                      999
+                    </AssignItemQuantityText>
+                    <AssignItemSpanText>Products</AssignItemSpanText>
+                  </AssignItemContentRight>
+                </AssignItem>
               </RadioGroup>
             </FormControl>
           </AssignStrategyToProductsContainer>
