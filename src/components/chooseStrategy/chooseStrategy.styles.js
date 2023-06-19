@@ -324,8 +324,6 @@ export const StackItems = styled(Box)`
   flex-direction: row;
   align-items: center;
   gap: 15px;
-  margin-top: 0px !important;
-  padding: 0px !important;
 `;
 
 export const Hint = styled(Box)`
@@ -337,4 +335,9 @@ export const Hint = styled(Box)`
   border-radius: 4px;
   background-color: #f9f0e2;
   cursor: help;
+  transition: all .2s ease-out;
+
+  &:hover{
+    box-shadow: 3px 4px 6px 1px rgba(0, 0, 255, .2);
+  }
 `;

@@ -633,7 +633,7 @@ const ChooseStrategy = () => {
 
             {personalizedProfileSelectButton === 1 && (
               <>
-                <Stack spacing={2}>
+                <Stack spacing={2} sx={{ marginBottom: "20px" }}>
                   <Box
                     sx={{ display: "flex", flexDirection: "row", gap: "10px" }}
                   >
@@ -641,7 +641,7 @@ const ChooseStrategy = () => {
                       How to price against the competition
                     </BuyBoxStrategyRulesLabel>
                   </Box>
-                  <StackItems>
+                  <StackItems sx={{ marginTop: "0px !important" }}>
                     <Autocomplete
                       disablePortal
                       id="combo-box-choose-option"
@@ -712,7 +712,7 @@ const ChooseStrategy = () => {
                       Price differently against Amazon
                     </BuyBoxStrategyRulesLabel>
                   </Box>
-                  <StackItems>
+                  <StackItems sx={{ marginTop: "0px !important" }}>
                     <Autocomplete
                       disablePortal
                       id="combo-box-choose-option"
@@ -782,7 +782,7 @@ const ChooseStrategy = () => {
                       Price differently against FBA
                     </BuyBoxStrategyRulesLabel>
                   </Box>
-                  <StackItems>
+                  <StackItems sx={{ marginTop: "0px !important" }}>
                     <Autocomplete
                       disablePortal
                       id="combo-box-choose-option"
@@ -852,7 +852,7 @@ const ChooseStrategy = () => {
                       Price differently against FBM
                     </BuyBoxStrategyRulesLabel>
                   </Box>
-                  <StackItems>
+                  <StackItems sx={{ marginTop: "0px !important" }}>
                     <Autocomplete
                       disablePortal
                       id="combo-box-choose-option"
@@ -903,6 +903,533 @@ const ChooseStrategy = () => {
                     </FormControl>
                     <Tooltip
                       title="The amount Sale Support will adjust your price by when competing with FBM."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+
+                  <Box
+                    sx={{ display: "flex", flexDirection: "row", gap: "10px" }}
+                  >
+                    <BuyBoxStrategyRulesLabel>
+                      When there is no competition
+                    </BuyBoxStrategyRulesLabel>
+                  </Box>
+                  <StackItems sx={{ marginTop: "0px !important" }}>
+                    <Autocomplete
+                      disablePortal
+                      id="combo-box-choose-option"
+                      options={options}
+                      sx={{
+                        minWidth: "160px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          label="Choose Option"
+                        />
+                      )}
+                    />
+                    <BuyBoxStrategyRulesLabel align="center">
+                      Set to
+                    </BuyBoxStrategyRulesLabel>
+                    <Autocomplete
+                      disablePortal
+                      id="combo-box-choose-option"
+                      options={options}
+                      sx={{
+                        minWidth: "160px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          label="Choose Option"
+                        />
+                      )}
+                    />
+                    <BuyBoxStrategyRulesLabel>by</BuyBoxStrategyRulesLabel>
+                    <TextField
+                      size="small"
+                      id="select-currency"
+                      select
+                      label="Currency"
+                      defaultValue="USD"
+                      sx={{
+                        minWidth: "100px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                    >
+                      {currencies.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                      <InputLabel htmlFor="amount">Amount</InputLabel>
+                      <OutlinedInput
+                        id="amount"
+                        size="small"
+                        sx={{ background: "#fff" }}
+                        startAdornment={
+                          <InputAdornment position="start">$</InputAdornment>
+                        }
+                        label="Amount"
+                      />
+                    </FormControl>
+                    <Tooltip
+                      title="Action for Sale Support to take when no competition is found on a listing."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+
+                  <Box
+                    sx={{ display: "flex", flexDirection: "row", gap: "10px" }}
+                  >
+                    <BuyBoxStrategyRulesLabel>
+                      When the competition is Below your minimum price
+                    </BuyBoxStrategyRulesLabel>
+                  </Box>
+                  <StackItems sx={{ marginTop: "0px !important" }}>
+                    <Autocomplete
+                      disablePortal
+                      id="combo-box-choose-option"
+                      options={options}
+                      sx={{
+                        minWidth: "160px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          label="Choose Option"
+                        />
+                      )}
+                    />
+                    <BuyBoxStrategyRulesLabel align="center">
+                      Set to
+                    </BuyBoxStrategyRulesLabel>
+                    <Autocomplete
+                      disablePortal
+                      id="combo-box-choose-option"
+                      options={options}
+                      sx={{
+                        minWidth: "160px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          label="Choose Option"
+                        />
+                      )}
+                    />
+                    <BuyBoxStrategyRulesLabel>by</BuyBoxStrategyRulesLabel>
+                    <TextField
+                      size="small"
+                      id="select-currency"
+                      select
+                      label="Currency"
+                      defaultValue="USD"
+                      sx={{
+                        minWidth: "100px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                    >
+                      {currencies.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                      <InputLabel htmlFor="amount">Amount</InputLabel>
+                      <OutlinedInput
+                        id="amount"
+                        size="small"
+                        sx={{ background: "#fff" }}
+                        startAdornment={
+                          <InputAdornment position="start">$</InputAdornment>
+                        }
+                        label="Amount"
+                      />
+                    </FormControl>
+                    <Tooltip
+                      title="Action for Sale Support to take when the competition is below your min price."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+
+                  <Box
+                    sx={{ display: "flex", flexDirection: "row", gap: "10px" }}
+                  >
+                    <BuyBoxStrategyRulesLabel>
+                      When the competition is Above your minimum price
+                    </BuyBoxStrategyRulesLabel>
+                  </Box>
+                  <StackItems sx={{ marginTop: "0px !important" }}>
+                    <Autocomplete
+                      disablePortal
+                      id="combo-box-choose-option"
+                      options={options}
+                      sx={{
+                        minWidth: "160px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          label="Choose Option"
+                        />
+                      )}
+                    />
+                    <BuyBoxStrategyRulesLabel align="center">
+                      Set to
+                    </BuyBoxStrategyRulesLabel>
+                    <Autocomplete
+                      disablePortal
+                      id="combo-box-choose-option"
+                      options={options}
+                      sx={{
+                        minWidth: "160px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          label="Choose Option"
+                        />
+                      )}
+                    />
+                    <BuyBoxStrategyRulesLabel>by</BuyBoxStrategyRulesLabel>
+                    <TextField
+                      size="small"
+                      id="select-currency"
+                      select
+                      label="Currency"
+                      defaultValue="USD"
+                      sx={{
+                        minWidth: "100px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                    >
+                      {currencies.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                      <InputLabel htmlFor="amount">Amount</InputLabel>
+                      <OutlinedInput
+                        id="amount"
+                        size="small"
+                        sx={{ background: "#fff" }}
+                        startAdornment={
+                          <InputAdornment position="start">$</InputAdornment>
+                        }
+                        label="Amount"
+                      />
+                    </FormControl>
+                    <Tooltip
+                      title="Action for Sale Support to take when the competition is above your max price."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+
+                  <Divider variant="middle" />
+
+                  <StackItems sx={{ justifyContent: "space-between" }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: "10px",
+                      }}
+                    >
+                      <StyledSwitch
+                        defaultChecked
+                        inputProps={{ "aria-label": "ant design" }}
+                      />
+                      <BuyBoxStrategyRulesLabel>
+                        Use max price when out of stock
+                      </BuyBoxStrategyRulesLabel>
+                    </Box>
+                    <Tooltip
+                      sx={{ padding: "8px 80px" }}
+                      title="Listings can be set to max price when going out of stock."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+
+                  <Divider variant="middle" />
+
+                  <BoxText>Exclude Sellers</BoxText>
+
+                  <StackItems sx={{ justifyContent: "space-between" }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <StyledSwitch
+                        defaultChecked
+                        inputProps={{ "aria-label": "ant design" }}
+                      />
+                      <FormControl
+                        sx={{ width: "80px", background: "#fff" }}
+                        variant="outlined"
+                      >
+                        <OutlinedInput
+                          size="small"
+                          id="outlined-adornment-weight"
+                          endAdornment={
+                            <InputAdornment position="end">%</InputAdornment>
+                          }
+                          aria-describedby="outlined-weight-helper-text"
+                          inputProps={{
+                            "aria-label": "weight",
+                          }}
+                        />
+                      </FormControl>
+                      <BuyBoxStrategyRulesLabel>
+                        Exclude sellers by their feedback rating
+                      </BuyBoxStrategyRulesLabel>
+                    </Box>
+                    <Tooltip
+                      sx={{ padding: "8px 80px" }}
+                      title="Sellers that meet or exceed this feedback level will be considered competitors."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+
+                  <StackItems sx={{ justifyContent: "space-between" }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <StyledSwitch
+                        defaultChecked
+                        inputProps={{ "aria-label": "ant design" }}
+                      />
+                      <BuyBoxStrategyRulesLabel>
+                        Exclude Amazon as a competitor
+                      </BuyBoxStrategyRulesLabel>
+                    </Box>
+                    <Tooltip
+                      sx={{ padding: "8px 80px" }}
+                      title="Choose to ignore Amazon when found on a listing."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+
+                  <StackItems sx={{ justifyContent: "space-between" }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <StyledSwitch
+                        defaultChecked
+                        inputProps={{ "aria-label": "ant design" }}
+                      />
+                      <BuyBoxStrategyRulesLabel>
+                        Exclude back-ordered sellers
+                      </BuyBoxStrategyRulesLabel>
+                    </Box>
+                    <Tooltip
+                      sx={{ padding: "8px 80px" }}
+                      title="Exclude sellers whose inventory is not yet available."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+
+                  <StackItems sx={{ justifyContent: "space-between" }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <StyledSwitch
+                        defaultChecked
+                        inputProps={{ "aria-label": "ant design" }}
+                      />
+                      <BuyBoxStrategyRulesLabel>
+                        Withe Free Shipping
+                      </BuyBoxStrategyRulesLabel>
+                    </Box>
+                    <Tooltip
+                      sx={{ padding: "8px 80px" }}
+                      title="Exclude sellers whose entered with free shipping details."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+
+                  <Divider
+                    variant="middle"
+                    sx={{ marginBottom: "20px !important" }}
+                  />
+
+                  <BoxText>Staying In the Buy Box</BoxText>
+
+                  {/* Containers need to be renaimed */}
+                  <Item>
+                    <AboutManualPricingContainer>
+                      <AboutManualPricingTop>
+                        <Box
+                          component="img"
+                          sx={{
+                            height: 24,
+                            marginRight: "8px",
+                          }}
+                          src={lightBulb}
+                        />
+                        <DescriptionText
+                          component="div"
+                          align="center"
+                          sx={{ fontWeight: 600 }}
+                        >
+                          Maximize your profit in the Buy Box.
+                        </DescriptionText>
+                      </AboutManualPricingTop>
+                      <AboutManualPricingBottom sx={{ alignItems: "start" }}>
+                        <AboutManualPricingBottomText
+                          component="div"
+                          align="start"
+                        >
+                          Getting into the Buy Box, and staying there, can
+                          require two different strategies. In this stage,
+                          you'll determine the strategy and we will use to
+                          maximize your time in the Buy Box once you've won it.
+                        </AboutManualPricingBottomText>
+                      </AboutManualPricingBottom>
+                    </AboutManualPricingContainer>
+                  </Item>
+                  {/* Containers need to be renaimed */}
+
+                  <Box
+                    sx={{ display: "flex", flexDirection: "row", gap: "10px" }}
+                  >
+                    <BuyBoxStrategyRulesLabel>
+                      When you've acquired the buy box
+                    </BuyBoxStrategyRulesLabel>
+                  </Box>
+                  <StackItems sx={{ marginTop: "0px !important" }}>
+                    <Autocomplete
+                      disablePortal
+                      id="combo-box-choose-option"
+                      options={options}
+                      sx={{
+                        minWidth: "250px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          label="Choose Option"
+                        />
+                      )}
+                    />
+                    <BuyBoxStrategyRulesLabel>by</BuyBoxStrategyRulesLabel>
+                    <TextField
+                      size="small"
+                      id="select-currency"
+                      select
+                      label="Currency"
+                      defaultValue="USD"
+                      sx={{
+                        minWidth: "100px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                    >
+                      {currencies.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                      <InputLabel htmlFor="amount">Amount</InputLabel>
+                      <OutlinedInput
+                        id="amount"
+                        size="small"
+                        sx={{ background: "#fff" }}
+                        startAdornment={
+                          <InputAdornment position="start">$</InputAdornment>
+                        }
+                        label="Amount"
+                      />
+                    </FormControl>
+                    <Tooltip
+                      title="The action Sale Support will take to keep you in the buy box for longer."
                       followCursor
                     >
                       <Hint>
