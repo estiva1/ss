@@ -3,17 +3,25 @@ import { useState } from "react";
 import { cloneElement } from "react";
 
 import {
+  Autocomplete,
   Button,
   Divider,
   FormControl,
   FormControlLabel,
   Grow,
+  InputAdornment,
+  InputLabel,
   List,
   ListItem,
   ListItemText,
+  MenuItem,
+  OutlinedInput,
   Radio,
   RadioGroup,
   Stack,
+  Switch,
+  TextField,
+  Tooltip,
 } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -71,11 +79,14 @@ import {
   AssignItemSpanText,
   AssignStrategyToProductsContainer,
   BoxText,
+  BuyBoxStrategyRulesLabel,
   DescriptionText,
   HeaderText,
+  Hint,
   MinMaxTypeSelect,
   NavigationButtonsContainer,
   SpanText,
+  StackItems,
   StrategyChip,
   StrategyImageBox,
   StrategyType,
@@ -92,6 +103,50 @@ import RepricerModal from "../repricerModal/repricerModal.component";
 const Item = styled(Box)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: "center",
+}));
+
+const StyledSwitch = styled(Switch)(({ theme }) => ({
+  width: 28,
+  height: 16,
+  padding: 0,
+  display: "flex",
+  "&:active": {
+    "& .MuiSwitch-thumb": {
+      width: 15,
+    },
+    "& .MuiSwitch-switchBase.Mui-checked": {
+      transform: "translateX(9px)",
+    },
+  },
+  "& .MuiSwitch-switchBase": {
+    padding: 2,
+    "&.Mui-checked": {
+      transform: "translateX(12px)",
+      color: "#fff",
+      "& + .MuiSwitch-track": {
+        opacity: 1,
+        backgroundColor: theme.palette.mode === "dark" ? "#177ddc" : "#1890ff",
+      },
+    },
+  },
+  "& .MuiSwitch-thumb": {
+    boxShadow: "0 2px 4px 0 rgb(0 35 11 / 20%)",
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    transition: theme.transitions.create(["width"], {
+      duration: 200,
+    }),
+  },
+  "& .MuiSwitch-track": {
+    borderRadius: 16 / 2,
+    opacity: 1,
+    backgroundColor:
+      theme.palette.mode === "dark"
+        ? "rgba(255,255,255,.35)"
+        : "rgba(0,0,0,.25)",
+    boxSizing: "border-box",
+  },
 }));
 
 //slider styles
@@ -181,33 +236,74 @@ function generate(element) {
   );
 }
 
+const options = [
+  { label: "Option 1" },
+  { label: "Option 2" },
+  { label: "Option 3" },
+  { label: "Option 4" },
+];
+
+const currencies = [
+  {
+    value: "USD",
+    label: "$",
+  },
+  {
+    value: "EUR",
+    label: "€",
+  },
+  {
+    value: "BTC",
+    label: "฿",
+  },
+  {
+    value: "JPY",
+    label: "¥",
+  },
+];
+
 const ChooseStrategy = () => {
+  // blue stepbar starting step
   const [step, setStep] = useState(1);
+
+  // active step
   const [strategyStep, setStrategyStep] = useState(null);
+
   const handleStrategyStepChange = (strategy, step) => (event) => {
     setStrategyStep(strategy);
     setStep(step);
   };
 
-  const [strategy, setStrategy] = useState("");
-  const handleChangeStrategy = (event) => {
-    setStrategy(event.target.value);
+  // Ai Powered Strategy -> MadMax -or- Slow and Steady
+  const [chooseAiProfileSelectButton, setChooseAiProfileSelectButton] =
+    useState(null);
+  const chooseAiProfileHandleClick = (chooseAiProfileButtonId) => {
+    setChooseAiProfileSelectButton(chooseAiProfileButtonId);
   };
 
-  //---------------------------------------------------------------------
-  const [aiProfileSelectButton, setAiProfileSelectButton] = useState(null);
-  const aiProfileHandleClick = (aiProfileButtonId) => {
-    setAiProfileSelectButton(aiProfileButtonId);
+  // MadMax -> Adjust Min/Max Price
+  const [minMaxPriceSelectButton, setMinMaxPriceSelectButton] = useState(null);
+  const minMaxPriceHandleClick = (minMaxPriceSelectButtonId) => {
+    setMinMaxPriceSelectButton(minMaxPriceSelectButtonId);
   };
+
+  // Custom Rules Strategy -> Buy Box Strategy -or- Low price Strategy
   const [personalizedProfileSelectButton, setPersonalizedProfileSelectButton] =
     useState(null);
   const personalizedProfileHandleClick = (personalizedProfileButtonId) => {
     setPersonalizedProfileSelectButton(personalizedProfileButtonId);
   };
 
-  const [minMaxPriceSelectButton, setMinMaxPriceSelectButton] = useState(null);
-  const minMaxPriceHandleClick = (minMaxPriceSelectButtonId) => {
-    setMinMaxPriceSelectButton(minMaxPriceSelectButtonId);
+  // Assign Strategy to Products
+  const [assignStrategyToProducts, setAssignStrategyToProducts] = useState("");
+  const handleChangeAssignStrategyToProducts = (event) => {
+    setAssignStrategyToProducts(event.target.value);
+  };
+
+  const [customRuleBaseSelectButton, setCustomRuleBaseSelectButton] =
+    useState(null);
+  const customRuleBaseHandleClick = (customRuleBaseSelectButtonId) => {
+    setCustomRuleBaseSelectButton(customRuleBaseSelectButtonId);
   };
 
   //check if file uploaded
@@ -400,8 +496,8 @@ const ChooseStrategy = () => {
               <AiProfilesSelectContainer>
                 <Grow in={true}>
                   <AiProfileSelect
-                    active={aiProfileSelectButton === 1}
-                    onClick={() => aiProfileHandleClick(1)}
+                    active={chooseAiProfileSelectButton === 1}
+                    onClick={() => chooseAiProfileHandleClick(1)}
                   >
                     <AiProfileImageBox component="img" src={madMax} />
                     <BoxText align="center" variant="h5" component="div">
@@ -412,8 +508,8 @@ const ChooseStrategy = () => {
 
                 <Grow in={true} timeout={1000}>
                   <AiProfileSelect
-                    active={aiProfileSelectButton === 2}
-                    onClick={() => aiProfileHandleClick(2)}
+                    active={chooseAiProfileSelectButton === 2}
+                    onClick={() => chooseAiProfileHandleClick(2)}
                   >
                     <AiProfileImageBox component="img" src={slowAndSteady} />
                     <BoxText align="center" variant="h5" component="div">
@@ -438,7 +534,7 @@ const ChooseStrategy = () => {
               <BlueButton
                 variant="contained"
                 endIcon={<EastOutlinedIcon />}
-                disabled={!aiProfileSelectButton}
+                disabled={!chooseAiProfileSelectButton}
                 onClick={handleStrategyStepChange("madMax", 2)}
               >
                 Next
@@ -534,6 +630,291 @@ const ChooseStrategy = () => {
                 </Grow>
               </AiProfilesSelectContainer>
             </AiProfile>
+
+            {personalizedProfileSelectButton === 1 && (
+              <>
+                <Stack spacing={2}>
+                  <Box
+                    sx={{ display: "flex", flexDirection: "row", gap: "10px" }}
+                  >
+                    <BuyBoxStrategyRulesLabel>
+                      How to price against the competition
+                    </BuyBoxStrategyRulesLabel>
+                  </Box>
+                  <StackItems>
+                    <Autocomplete
+                      disablePortal
+                      id="combo-box-choose-option"
+                      options={options}
+                      sx={{
+                        minWidth: "250px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          label="Choose Option"
+                        />
+                      )}
+                    />
+                    <BuyBoxStrategyRulesLabel>by</BuyBoxStrategyRulesLabel>
+                    <TextField
+                      size="small"
+                      id="select-currency"
+                      select
+                      label="Currency"
+                      defaultValue="USD"
+                      sx={{
+                        minWidth: "100px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                    >
+                      {currencies.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                      <InputLabel htmlFor="amount">Amount</InputLabel>
+                      <OutlinedInput
+                        id="amount"
+                        size="small"
+                        sx={{ background: "#fff" }}
+                        startAdornment={
+                          <InputAdornment position="start">$</InputAdornment>
+                        }
+                        label="Amount"
+                      />
+                    </FormControl>
+                    <Tooltip
+                      title="The amount Sale Support will adjust your price by
+                        when competing with other sellers."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+
+                  <Box
+                    sx={{ display: "flex", flexDirection: "row", gap: "10px" }}
+                  >
+                    <StyledSwitch
+                      defaultChecked
+                      inputProps={{ "aria-label": "ant design" }}
+                    />
+                    <BuyBoxStrategyRulesLabel>
+                      Price differently against Amazon
+                    </BuyBoxStrategyRulesLabel>
+                  </Box>
+                  <StackItems>
+                    <Autocomplete
+                      disablePortal
+                      id="combo-box-choose-option"
+                      options={options}
+                      sx={{
+                        minWidth: "250px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          label="Choose Option"
+                        />
+                      )}
+                    />
+                    <BuyBoxStrategyRulesLabel>by</BuyBoxStrategyRulesLabel>
+                    <TextField
+                      size="small"
+                      id="select-currency"
+                      select
+                      label="Currency"
+                      defaultValue="USD"
+                      sx={{
+                        minWidth: "100px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                    >
+                      {currencies.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                      <InputLabel htmlFor="amount">Amount</InputLabel>
+                      <OutlinedInput
+                        id="amount"
+                        size="small"
+                        sx={{ background: "#fff" }}
+                        startAdornment={
+                          <InputAdornment position="start">$</InputAdornment>
+                        }
+                        label="Amount"
+                      />
+                    </FormControl>
+                    <Tooltip
+                      title="The amount Sale Support will adjust your price by when competing with Amazon."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+
+                  <Box
+                    sx={{ display: "flex", flexDirection: "row", gap: "10px" }}
+                  >
+                    <StyledSwitch
+                      defaultChecked
+                      inputProps={{ "aria-label": "ant design" }}
+                    />
+                    <BuyBoxStrategyRulesLabel>
+                      Price differently against FBA
+                    </BuyBoxStrategyRulesLabel>
+                  </Box>
+                  <StackItems>
+                    <Autocomplete
+                      disablePortal
+                      id="combo-box-choose-option"
+                      options={options}
+                      sx={{
+                        minWidth: "250px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          label="Choose Option"
+                        />
+                      )}
+                    />
+                    <BuyBoxStrategyRulesLabel>by</BuyBoxStrategyRulesLabel>
+                    <TextField
+                      size="small"
+                      id="select-currency"
+                      select
+                      label="Currency"
+                      defaultValue="USD"
+                      sx={{
+                        minWidth: "100px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                    >
+                      {currencies.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                      <InputLabel htmlFor="amount">Amount</InputLabel>
+                      <OutlinedInput
+                        id="amount"
+                        size="small"
+                        sx={{ background: "#fff" }}
+                        startAdornment={
+                          <InputAdornment position="start">$</InputAdornment>
+                        }
+                        label="Amount"
+                      />
+                    </FormControl>
+                    <Tooltip
+                      title="The amount Sale Support will adjust your price by when competing with FBA."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+
+                  <Box
+                    sx={{ display: "flex", flexDirection: "row", gap: "10px" }}
+                  >
+                    <StyledSwitch
+                      defaultChecked
+                      inputProps={{ "aria-label": "ant design" }}
+                    />
+                    <BuyBoxStrategyRulesLabel>
+                      Price differently against FBM
+                    </BuyBoxStrategyRulesLabel>
+                  </Box>
+                  <StackItems>
+                    <Autocomplete
+                      disablePortal
+                      id="combo-box-choose-option"
+                      options={options}
+                      sx={{
+                        minWidth: "250px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          label="Choose Option"
+                        />
+                      )}
+                    />
+                    <BuyBoxStrategyRulesLabel>by</BuyBoxStrategyRulesLabel>
+                    <TextField
+                      size="small"
+                      id="select-currency"
+                      select
+                      label="Currency"
+                      defaultValue="USD"
+                      sx={{
+                        minWidth: "100px",
+                        background: "#fff",
+                        "& .MuiSvgIcon-root": { color: "#1565D8" },
+                      }}
+                    >
+                      {currencies.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+                      <InputLabel htmlFor="amount">Amount</InputLabel>
+                      <OutlinedInput
+                        id="amount"
+                        size="small"
+                        sx={{ background: "#fff" }}
+                        startAdornment={
+                          <InputAdornment position="start">$</InputAdornment>
+                        }
+                        label="Amount"
+                      />
+                    </FormControl>
+                    <Tooltip
+                      title="The amount Sale Support will adjust your price by when competing with FBM."
+                      followCursor
+                    >
+                      <Hint>
+                        <Box component="img" src={lightBulb} />
+                      </Hint>
+                    </Tooltip>
+                  </StackItems>
+                </Stack>
+              </>
+            )}
+
+            {personalizedProfileSelectButton === 2 && <Box>2</Box>}
 
             <NavigationButtonsContainer>
               <BackButton
@@ -957,8 +1338,8 @@ const ChooseStrategy = () => {
                 <RadioGroup
                   aria-labelledby="demo-controlled-radio-buttons-group"
                   name="controlled-radio-buttons-group"
-                  value={strategy}
-                  onChange={handleChangeStrategy}
+                  value={assignStrategyToProducts}
+                  onChange={handleChangeAssignStrategyToProducts}
                 >
                   <Grow in={true}>
                     <AssignItem>

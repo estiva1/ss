@@ -311,3 +311,30 @@ export const AssignItemQuantityText = styled(Typography)`
   font-size: 24px !important;
   font-weight: 700 !important;
 `;
+
+export const BuyBoxStrategyRulesLabel = styled(Typography)`
+  font-size: 14px !important;
+  line-height: 16px !important;
+  font-weight: 500 !important;
+  color: #4e5969 !important;
+`;
+
+export const StackItems = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  margin-top: 0px !important;
+  padding: 0px !important;
+`;
+
+export const Hint = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  height: 24px;
+  padding: 8px;
+  gap: 10px;
+  border-radius: 4px;
+  background-color: #f9f0e2;
+  cursor: help;
+`;

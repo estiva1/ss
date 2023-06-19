@@ -88,7 +88,7 @@ const Guide = () => {
             </Box>
           </Zoom>
 
-          <Zoom in={true} style={{ transitionDelay: "500ms" }}>
+          <Zoom in={true} timeout={500}>
             <Box sx={{ position: "relative" }}>
               <ImageBox
                 component="img"
@@ -122,7 +122,7 @@ const Guide = () => {
               </ArrowContainer>
             </Box>
           </Zoom>
-          <Zoom in={true} style={{ transitionDelay: "1000ms" }}>
+          <Zoom in={true} timeout={1000}>
             <Box sx={{ position: "relative" }}>
               <ImageBox
                 component="img"
