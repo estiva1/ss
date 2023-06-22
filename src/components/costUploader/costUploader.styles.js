@@ -6,9 +6,8 @@ export const CostUploaderContainer = styled(Box)`
   flex-direction: row;
   justify-content: center;
   //justify-content: space-between;
-  padding: 20px;
-  padding-bottom: 5px;
-  gap: 15px;
+  padding: 20px 20px 5px 20px;
+  gap: 10px;
   overflow: hidden;
 `;
 
@@ -19,25 +18,19 @@ export const StyledPaper = styled(Paper)`
   align-items: center;
   border: 1px solid #00a3ff;
   border-radius: 16px !important;
-  min-width: 100px;
-  min-height: 100px;
-  width: 390px;
+  //min-width: 100px;
+  //min-height: 100px;
+  width: 60%;
   background-color: #f8fafb !important;
   box-shadow: 0;
   overflow: hidden;
-`;
-
-export const TextfieldContainer = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  grid-row-gap: 10px;
-  margin: 20px;
 `;
 
 export const TextContainer = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: #fff !important;
   padding: 20px;
   background: #f8fafb;
   gap: 15px;

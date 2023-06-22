@@ -101,7 +101,7 @@ const CostUploader = () => {
           >
             Select parameters to finish uploading
           </Typography>
-          <TableContainer component={Paper} sx={{ minWidth: 380 }}>
+          <TableContainer component={Paper} sx={{ width: "100%" }}>
             <Table aria-label="customized table">
               <TableHead>
                 <TableRow>
@@ -134,6 +134,7 @@ const CostUploader = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            width: "10%",
           }}
         >
           <Chip label="OR" />
@@ -145,6 +146,7 @@ const CostUploader = () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            width: "30%",
             border: "1px dashed #00A3FF",
             borderRadius: "16px",
             width: "200px",
@@ -157,19 +159,19 @@ const CostUploader = () => {
           <Box
             component="img"
             sx={{
-              height: 40,
+              height: 30,
             }}
             src={dragndrop}
           />
           <Typography
             align="center"
-            style={{ margin: "15px", fontSize: "14px", lineHeight: "18px" }}
+            sx={{ margin: "15px", fontSize: "14px", lineHeight: "18px" }}
           >
             Select a file or drag and drop here
           </Typography>
           <Typography
             align="center"
-            style={{
+            sx={{
               margin: "15px",
               fontSize: "12px",
               lineHeight: "12px",

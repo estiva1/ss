@@ -51,8 +51,8 @@ export const MarketplacesContainer = styled(Box)`
 
 export const Marketplace = styled(Paper)`
   display: flex;
-  width: 200px;
-  height: 200px;
+  width: 33.3%;
+  height: 230px;
   position: relative;
   flex-direction: column;
   align-items: center;

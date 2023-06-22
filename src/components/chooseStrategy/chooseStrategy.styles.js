@@ -43,10 +43,10 @@ export const StyledStack = styled(Stack)`
 export const StrategyTypesContainer = styled(Box)`
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  padding: 20px;
+  justify-content: space-between;
+  padding: 20px 40px 30px 40px;
   background: #f8fafb;
-  gap: 20px;
+  gap: 40px;
 `;
 
 export const StrategyType = styled(Paper)`
@@ -55,7 +55,7 @@ export const StrategyType = styled(Paper)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 300px;
+  width: 50%;
   margin-top: 40px;
   border: 1px solid #00a3ff;
   border-radius: 16px !important;
@@ -67,7 +67,7 @@ export const StrategyChip = styled(Chip)`
   position: absolute;
   height: 30px;
   top: -33px;
-  padding: 15px 30px !important;
+  padding: 15px 18% !important;
   color: #000;
   border-radius: 16px 16px 0px 0px !important;
   border-color: #dedfdf;
@@ -149,8 +149,9 @@ export const AiProfilesSelectContainer = styled(Box)`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  padding: 20px;
-  gap: 15px;
+  padding: 20px 40px 40px 40px;
+  width: 100%;
+  gap: 40px;
 `;
 
 export const AiProfileSelect = styled(Button)`
@@ -163,12 +164,19 @@ export const AiProfileSelect = styled(Button)`
   border-radius: 16px !important;
   box-shadow: 4px 4px 20px rgba(111, 213, 246, 0.25),
     inset 0px 0px 0px 1px #00a3ff;
-  width: 280px;
+  width: 100%;
   height: 80px;
   background-color: ${(props) =>
     props.active ? "#F1FBFE" : "#FFF"} !important;
   box-shadow: ${(props) =>
     props.active ? "inset 0px 0px 0px 2px #00a3ff" : ""} !important;
+
+  &:first-of-type {
+    margin-left: 40px !important;
+  }
+  &:last-of-type {
+    margin-right: 40px !important;
+  }
 `;
 
 export const AiProfileImageBox = styled(Box)`
@@ -188,23 +196,23 @@ export const NavigationButtonsContainer = styled(Box)`
 export const AdjustMinMaxContainer = styled(Box)`
   display: flex;
   flex-direction: column;
+  width: 95%;
   margin: auto;
-  padding: 20px;
+  margin-bottom: 20px;
   background: #f8fafb;
-  gap: 15px;
+  gap: 30px;
 `;
 
 export const MinMaxTypeSelect = styled(Button)`
   display: flex;
   flex-direction: column;
-  padding: 0px;
   text-transform: none !important;
   border-radius: 16px !important;
   box-shadow: 4px 4px 20px rgba(111, 213, 246, 0.25);
   align-items: center;
   justify-content: center;
   border: 1px solid #00a3ff !important;
-  width: 280px;
+  width: 100%;
   height: 120px;
   background: #ffffff !important;
   background-color: ${(props) =>
@@ -259,6 +267,57 @@ export const AboutManualPricingUploadBox = styled(Box)`
   border: 1px dashed #6fd5f6;
   border-radius: 8px;
   grid-row-gap: 10px;
+`;
+
+export const ProductForCalculationContainer = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: top;
+  justify-content: space-between;
+  //gap: 15px;
+`;
+
+export const ProductForCalculationImageBox = styled(Box)`
+  min-height: 100px;
+  height: 100px;
+`;
+
+export const ProductForCalculationDetails = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+export const ProductForCalculationName = styled(Typography)`
+  font-size: 16px !important;
+  line-height: 24px !important;
+  font-weight: 400 !important;
+`;
+
+export const ProductForCalculationParam = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+`;
+
+export const ParamText = styled(Typography)`
+  font-size: 14px !important;
+  line-height: 18px !important;
+`;
+
+export const RoundChartsContainer = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+`;
+
+export const RoundChartText = styled(Typography)`
+  font-size: 24px !important;
+  line-height: 28px !important;
+  font-weight: 700 !important;
 `;
 //--------------------------------------------------------------
 
@@ -335,9 +394,9 @@ export const Hint = styled(Box)`
   border-radius: 4px;
   background-color: #f9f0e2;
   cursor: help;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
 
-  &:hover{
-    box-shadow: 3px 4px 6px 1px rgba(0, 0, 255, .2);
+  &:hover {
+    box-shadow: 3px 4px 6px 1px rgba(0, 0, 255, 0.2);
   }
 `;

@@ -7,8 +7,8 @@ export const RepricerButtonContainer = styled(Box)`
   flex-direction: row;
   z-index: 99;
   margin-top: -28px;
-  margin-left: 100px;
   margin-bottom: 28px;
+  margin-left: calc(33.3% - 350px);
 `;
 
 export const RepricerPowerButton = styled.button`

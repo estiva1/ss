@@ -165,7 +165,7 @@ const Guide = () => {
           <StyledAccordionContainer>
             <StyledAccordion
               //for the power button
-              sx={{ paddingBottom: "30px" }}
+              sx={{ paddingBottom: "40px" }}
               expanded={expanded === "panel1"}
               onChange={handleChange("panel1")}
             >

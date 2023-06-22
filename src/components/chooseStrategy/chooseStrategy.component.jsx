@@ -5,6 +5,7 @@ import { cloneElement } from "react";
 import {
   Autocomplete,
   Button,
+  CircularProgress,
   Divider,
   FormControl,
   FormControlLabel,
@@ -56,6 +57,7 @@ import buyBoxStrategy from "../../assets/ai-repricer/buy-box-strategy.png";
 import lowPriceStrategy from "../../assets/ai-repricer/low-price-strategy.png";
 import lightBulb from "../../assets/ai-repricer/light-bulb.png";
 import fileUploaded from "../../assets/ai-repricer/file-uploaded.png";
+import productExampleImage from "../../assets/ai-repricer/product-example-image.png";
 
 import {
   AboutManualPricingBottom,
@@ -85,6 +87,14 @@ import {
   Hint,
   MinMaxTypeSelect,
   NavigationButtonsContainer,
+  ParamText,
+  ProductForCalculationContainer,
+  ProductForCalculationDetails,
+  ProductForCalculationImageBox,
+  ProductForCalculationName,
+  ProductForCalculationParam,
+  RoundChartText,
+  RoundChartsContainer,
   SpanText,
   StackItems,
   StrategyChip,
@@ -377,7 +387,7 @@ const ChooseStrategy = () => {
                         </StyledListItemAvatar>
                         <ListItemText
                           sx={{ color: "#4E5969" }}
-                          primary="Lorem ipsum dolor sit amet, conse"
+                          primary="Lorem ipsum dolor sit amet, consectetur"
                         />
                       </ListItem>
                     )}
@@ -385,7 +395,7 @@ const ChooseStrategy = () => {
                   <BlueButton
                     variant="contained"
                     onClick={handleStrategyStepChange("ai", 1)}
-                    sx={{ marginBottom: "20px" }}
+                    sx={{ width: "90%", marginBottom: "20px" }}
                   >
                     Choose Strategy
                   </BlueButton>
@@ -414,7 +424,7 @@ const ChooseStrategy = () => {
                         </StyledListItemAvatar>
                         <ListItemText
                           sx={{ color: "#4E5969" }}
-                          primary="Lorem ipsum dolor sit amet, conse"
+                          primary="Lorem ipsum dolor sit amet, consectetur"
                         />
                       </ListItem>
                     )}
@@ -422,7 +432,7 @@ const ChooseStrategy = () => {
                   <BlueButton
                     variant="contained"
                     onClick={handleStrategyStepChange("personalized", 1)}
-                    sx={{ marginBottom: "20px" }}
+                    sx={{ width: "90%", marginBottom: "20px" }}
                   >
                     Choose Strategy
                   </BlueButton>
@@ -469,7 +479,7 @@ const ChooseStrategy = () => {
                 style={{
                   background: "#7CCFFD",
                   padding: "0px 20px",
-                  left: "11.5%",
+                  left: "10%",
                 }}
               />
               <AiStrategyImageAndText>
@@ -1441,7 +1451,7 @@ const ChooseStrategy = () => {
               </>
             )}
 
-            {personalizedProfileSelectButton === 2 && <Box>2</Box>}
+            {/* {personalizedProfileSelectButton === 2 && <Box>2</Box>} */}
 
             <NavigationButtonsContainer>
               <BackButton
@@ -1705,7 +1715,7 @@ const ChooseStrategy = () => {
                       <AboutManualPricingBottom sx={{ alignItems: "start" }}>
                         <AboutManualPricingBottomText
                           component="div"
-                          align="center"
+                          align="left"
                         >
                           You'll have to manually specify the minimum and
                           maximum prices for each listing under the Catalogs
@@ -1799,9 +1809,776 @@ const ChooseStrategy = () => {
                 </Grid>
               </Grid>
             )}
-            {minMaxPriceSelectButton === 2 && <Box>2</Box>}
-            {minMaxPriceSelectButton === 3 && <Box>3</Box>}
-            {minMaxPriceSelectButton === 4 && <Box>4</Box>}
+            {minMaxPriceSelectButton === 2 && (
+              <>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <Item>
+                      <AboutManualPricingContainer>
+                        <AboutManualPricingTop>
+                          <Box
+                            component="img"
+                            sx={{
+                              height: 24,
+                              marginRight: "8px",
+                            }}
+                            src={lightBulb}
+                          />
+                          <DescriptionText
+                            component="div"
+                            align="left"
+                            sx={{ fontWeight: 600 }}
+                          >
+                            About ROI Based Pricing Method
+                          </DescriptionText>
+                        </AboutManualPricingTop>
+                        <AboutManualPricingBottom sx={{ alignItems: "start" }}>
+                          <AboutManualPricingBottomText
+                            component="div"
+                            align="left"
+                          >
+                            By selecting the ROI based pricing method, we will
+                            set the minimum and maximum prices for each listing
+                            dynamically based on the minimum and maximum return
+                            on investment that is set for this strategy. Your
+                            cost for each listing connected to this strategy
+                            will need to be set.
+                          </AboutManualPricingBottomText>
+                        </AboutManualPricingBottom>
+                      </AboutManualPricingContainer>
+                    </Item>
+                  </Grid>
+                </Grid>
+                <Grid item xs={12}>
+                  <Item>
+                    <AboutManualPricingContainer>
+                      <AboutManualPricingTop>
+                        <DescriptionText
+                          component="div"
+                          align="center"
+                          sx={{ fontWeight: 700 }}
+                        >
+                          Sample ROI Calculation
+                        </DescriptionText>
+                      </AboutManualPricingTop>
+                      <AboutManualPricingBottom>
+                        <ProductForCalculationContainer>
+                          <ProductForCalculationImageBox
+                            component="img"
+                            src={productExampleImage}
+                          />
+                          <ProductForCalculationDetails>
+                            <ProductForCalculationName gutterBottom>
+                              3 plus vibe pro smart watch series
+                            </ProductForCalculationName>
+                            <ProductForCalculationParam>
+                              <ParamText sx={{ fontWeight: 700 }}>
+                                Material:
+                              </ParamText>
+                              <ParamText>10.1 FL OZ</ParamText>
+                            </ProductForCalculationParam>
+                            <ProductForCalculationParam>
+                              <ParamText sx={{ fontWeight: 700 }}>
+                                ASIN:
+                              </ParamText>
+                              <ParamText>B075VQ3YJQ</ParamText>
+                            </ProductForCalculationParam>
+                            <ProductForCalculationParam>
+                              <ParamText sx={{ fontWeight: 700 }}>
+                                Cost Price:
+                              </ParamText>
+                              <ParamText>$12.80</ParamText>
+                            </ProductForCalculationParam>
+                          </ProductForCalculationDetails>
+
+                          <ProductForCalculationDetails
+                            sx={{ alignItems: "end" }}
+                          >
+                            <BlueButton sx={{ padding: "0px 30px" }}>
+                              Try another product
+                            </BlueButton>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "10px",
+                              }}
+                            >
+                              {/* Should be renamed in future */}
+                              <BuyBoxStrategyRulesLabel>
+                                MIN return on investment
+                              </BuyBoxStrategyRulesLabel>
+                              <FormControl>
+                                <OutlinedInput
+                                  id="min-return"
+                                  size="small"
+                                  sx={{ background: "#fff", width: "80px" }}
+                                  startAdornment={
+                                    <InputAdornment position="start">
+                                      %
+                                    </InputAdornment>
+                                  }
+                                />
+                              </FormControl>
+                            </Box>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "10px",
+                              }}
+                            >
+                              {/* Should be renamed in future */}
+                              <BuyBoxStrategyRulesLabel>
+                                MAX return on investment
+                              </BuyBoxStrategyRulesLabel>
+                              <FormControl>
+                                <OutlinedInput
+                                  id="min-return"
+                                  size="small"
+                                  sx={{ background: "#fff", width: "80px" }}
+                                  startAdornment={
+                                    <InputAdornment position="start">
+                                      %
+                                    </InputAdornment>
+                                  }
+                                />
+                              </FormControl>
+                            </Box>
+                          </ProductForCalculationDetails>
+                        </ProductForCalculationContainer>
+
+                        <Divider
+                          sx={{ margin: "20px", width: "100%" }}
+                          variant="middle"
+                        />
+
+                        <RoundChartsContainer>
+                          <Box sx={{ position: "relative" }}>
+                            <CircularProgress
+                              variant="determinate"
+                              sx={{
+                                color: "#F1FBFE",
+                                transform: "rotate(180deg) !important",
+                              }}
+                              size={300}
+                              thickness={5}
+                              value={50}
+                            />
+                            <CircularProgress
+                              variant="determinate"
+                              disableShrink
+                              sx={{
+                                position: "absolute",
+                                color: "#6FD5F6",
+                                transform: "rotate(180deg) !important",
+                                left: 0,
+                              }}
+                              size={300}
+                              thickness={5}
+                              value={15}
+                            />
+                            <Box
+                              sx={{
+                                top: 0,
+                                left: 0,
+                                bottom: 0,
+                                right: 0,
+                                position: "absolute",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                marginTop: "33%",
+                              }}
+                            >
+                              <RoundChartText
+                                gutterBottom
+                                sx={{ color: "#00A3FF" }}
+                              >
+                                $ 25.12
+                              </RoundChartText>
+                              <AboutManualPricingBottomText
+                                sx={{ fontWeight: "600" }}
+                                component="div"
+                                align="center"
+                              >
+                                Sample MIN Price
+                              </AboutManualPricingBottomText>
+                            </Box>
+                          </Box>
+                          <Box sx={{ position: "relative" }}>
+                            <CircularProgress
+                              variant="determinate"
+                              sx={{
+                                color: "#F1FBFE",
+                                transform: "rotate(180deg) !important",
+                              }}
+                              size={300}
+                              thickness={5}
+                              value={50}
+                            />
+                            <CircularProgress
+                              variant="determinate"
+                              disableShrink
+                              sx={{
+                                position: "absolute",
+                                color: "#FF9900",
+                                transform: "rotate(180deg) !important",
+                                left: 0,
+                              }}
+                              size={300}
+                              thickness={5}
+                              value={35}
+                            />
+                            <Box
+                              sx={{
+                                top: 0,
+                                left: 0,
+                                bottom: 0,
+                                right: 0,
+                                position: "absolute",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                marginTop: "33%",
+                              }}
+                            >
+                              <RoundChartText
+                                gutterBottom
+                                sx={{ color: "#FF9900" }}
+                              >
+                                $ 40.02
+                              </RoundChartText>
+                              <AboutManualPricingBottomText
+                                sx={{ fontWeight: "600" }}
+                                component="div"
+                                align="center"
+                              >
+                                Sample MAX Price
+                              </AboutManualPricingBottomText>
+                            </Box>
+                          </Box>
+                        </RoundChartsContainer>
+                      </AboutManualPricingBottom>
+                    </AboutManualPricingContainer>
+                  </Item>
+                </Grid>
+              </>
+            )}
+            {minMaxPriceSelectButton === 3 && (
+              <>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <Item>
+                      <AboutManualPricingContainer>
+                        <AboutManualPricingTop>
+                          <Box
+                            component="img"
+                            sx={{
+                              height: 24,
+                              marginRight: "8px",
+                            }}
+                            src={lightBulb}
+                          />
+                          <DescriptionText
+                            component="div"
+                            align="left"
+                            sx={{ fontWeight: 600 }}
+                          >
+                            About Profit Margin Pricing Method
+                          </DescriptionText>
+                        </AboutManualPricingTop>
+                        <AboutManualPricingBottom sx={{ alignItems: "start" }}>
+                          <AboutManualPricingBottomText
+                            component="div"
+                            align="left"
+                          >
+                            Amet minim mollit non deserunt ullamco est sit
+                            aliqua dolor do amet sint. Velit officia consequat
+                            duis enim velit mollit. Exercitation veniam
+                            consequat sunt nostrud amet.
+                          </AboutManualPricingBottomText>
+                        </AboutManualPricingBottom>
+                      </AboutManualPricingContainer>
+                    </Item>
+                  </Grid>
+                </Grid>
+                <Grid item xs={12}>
+                  <Item>
+                    <AboutManualPricingContainer>
+                      <AboutManualPricingTop>
+                        <DescriptionText
+                          component="div"
+                          align="center"
+                          sx={{ fontWeight: 700 }}
+                        >
+                          Sample Profit Margin Calculation
+                        </DescriptionText>
+                      </AboutManualPricingTop>
+                      <AboutManualPricingBottom>
+                        <ProductForCalculationContainer>
+                          <ProductForCalculationImageBox
+                            component="img"
+                            src={productExampleImage}
+                          />
+                          <ProductForCalculationDetails>
+                            <ProductForCalculationName gutterBottom>
+                              3 plus vibe pro smart watch series
+                            </ProductForCalculationName>
+                            <ProductForCalculationParam>
+                              <ParamText sx={{ fontWeight: 700 }}>
+                                Material:
+                              </ParamText>
+                              <ParamText>10.1 FL OZ</ParamText>
+                            </ProductForCalculationParam>
+                            <ProductForCalculationParam>
+                              <ParamText sx={{ fontWeight: 700 }}>
+                                ASIN:
+                              </ParamText>
+                              <ParamText>B075VQ3YJQ</ParamText>
+                            </ProductForCalculationParam>
+                            <ProductForCalculationParam>
+                              <ParamText sx={{ fontWeight: 700 }}>
+                                Cost Price:
+                              </ParamText>
+                              <ParamText>$12.80</ParamText>
+                            </ProductForCalculationParam>
+                          </ProductForCalculationDetails>
+
+                          <ProductForCalculationDetails
+                            sx={{ alignItems: "end" }}
+                          >
+                            <BlueButton sx={{ padding: "0px 30px" }}>
+                              Try another product
+                            </BlueButton>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "10px",
+                              }}
+                            >
+                              {/* Should be renamed in future */}
+                              <BuyBoxStrategyRulesLabel>
+                                MIN return on investment
+                              </BuyBoxStrategyRulesLabel>
+                              <FormControl>
+                                <OutlinedInput
+                                  id="min-return"
+                                  size="small"
+                                  sx={{ background: "#fff", width: "80px" }}
+                                  startAdornment={
+                                    <InputAdornment position="start">
+                                      %
+                                    </InputAdornment>
+                                  }
+                                />
+                              </FormControl>
+                            </Box>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "10px",
+                              }}
+                            >
+                              {/* Should be renamed in future */}
+                              <BuyBoxStrategyRulesLabel>
+                                MAX return on investment
+                              </BuyBoxStrategyRulesLabel>
+                              <FormControl>
+                                <OutlinedInput
+                                  id="min-return"
+                                  size="small"
+                                  sx={{ background: "#fff", width: "80px" }}
+                                  startAdornment={
+                                    <InputAdornment position="start">
+                                      %
+                                    </InputAdornment>
+                                  }
+                                />
+                              </FormControl>
+                            </Box>
+                          </ProductForCalculationDetails>
+                        </ProductForCalculationContainer>
+
+                        <Divider
+                          sx={{ margin: "20px", width: "100%" }}
+                          variant="middle"
+                        />
+
+                        <RoundChartsContainer>
+                          <Box sx={{ position: "relative" }}>
+                            <CircularProgress
+                              variant="determinate"
+                              sx={{
+                                color: "#F1FBFE",
+                                transform: "rotate(180deg) !important",
+                              }}
+                              size={300}
+                              thickness={5}
+                              value={50}
+                            />
+                            <CircularProgress
+                              variant="determinate"
+                              disableShrink
+                              sx={{
+                                position: "absolute",
+                                color: "#6FD5F6",
+                                transform: "rotate(180deg) !important",
+                                left: 0,
+                              }}
+                              size={300}
+                              thickness={5}
+                              value={15}
+                            />
+                            <Box
+                              sx={{
+                                top: 0,
+                                left: 0,
+                                bottom: 0,
+                                right: 0,
+                                position: "absolute",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                marginTop: "33%",
+                              }}
+                            >
+                              <RoundChartText
+                                gutterBottom
+                                sx={{ color: "#00A3FF" }}
+                              >
+                                $ 25.12
+                              </RoundChartText>
+                              <AboutManualPricingBottomText
+                                sx={{ fontWeight: "600" }}
+                                component="div"
+                                align="center"
+                              >
+                                Sample MIN Price
+                              </AboutManualPricingBottomText>
+                            </Box>
+                          </Box>
+                          <Box sx={{ position: "relative" }}>
+                            <CircularProgress
+                              variant="determinate"
+                              sx={{
+                                color: "#F1FBFE",
+                                transform: "rotate(180deg) !important",
+                              }}
+                              size={300}
+                              thickness={5}
+                              value={50}
+                            />
+                            <CircularProgress
+                              variant="determinate"
+                              disableShrink
+                              sx={{
+                                position: "absolute",
+                                color: "#FF9900",
+                                transform: "rotate(180deg) !important",
+                                left: 0,
+                              }}
+                              size={300}
+                              thickness={5}
+                              value={35}
+                            />
+                            <Box
+                              sx={{
+                                top: 0,
+                                left: 0,
+                                bottom: 0,
+                                right: 0,
+                                position: "absolute",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                marginTop: "33%",
+                              }}
+                            >
+                              <RoundChartText
+                                gutterBottom
+                                sx={{ color: "#FF9900" }}
+                              >
+                                $ 40.02
+                              </RoundChartText>
+                              <AboutManualPricingBottomText
+                                sx={{ fontWeight: "600" }}
+                                component="div"
+                                align="center"
+                              >
+                                Sample MAX Price
+                              </AboutManualPricingBottomText>
+                            </Box>
+                          </Box>
+                        </RoundChartsContainer>
+                      </AboutManualPricingBottom>
+                    </AboutManualPricingContainer>
+                  </Item>
+                </Grid>
+              </>
+            )}
+            {minMaxPriceSelectButton === 4 && (
+              <>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <Item>
+                      <AboutManualPricingContainer>
+                        <AboutManualPricingTop>
+                          <Box
+                            component="img"
+                            sx={{
+                              height: 24,
+                              marginRight: "8px",
+                            }}
+                            src={lightBulb}
+                          />
+                          <DescriptionText
+                            component="div"
+                            align="left"
+                            sx={{ fontWeight: 600 }}
+                          >
+                            About Fixed Profit Pricing Method
+                          </DescriptionText>
+                        </AboutManualPricingTop>
+                        <AboutManualPricingBottom sx={{ alignItems: "start" }}>
+                          <AboutManualPricingBottomText
+                            component="div"
+                            align="left"
+                          >
+                            Amet minim mollit non deserunt ullamco est sit
+                            aliqua dolor do amet sint. Velit officia consequat
+                            duis enim velit mollit. Exercitation veniam
+                            consequat sunt nostrud amet.
+                          </AboutManualPricingBottomText>
+                        </AboutManualPricingBottom>
+                      </AboutManualPricingContainer>
+                    </Item>
+                  </Grid>
+                </Grid>
+                <Grid item xs={12}>
+                  <Item>
+                    <AboutManualPricingContainer>
+                      <AboutManualPricingTop>
+                        <DescriptionText
+                          component="div"
+                          align="center"
+                          sx={{ fontWeight: 700 }}
+                        >
+                          Sample Fixed Profit Calculation
+                        </DescriptionText>
+                      </AboutManualPricingTop>
+                      <AboutManualPricingBottom>
+                        <ProductForCalculationContainer>
+                          <ProductForCalculationImageBox
+                            component="img"
+                            src={productExampleImage}
+                          />
+                          <ProductForCalculationDetails>
+                            <ProductForCalculationName gutterBottom>
+                              3 plus vibe pro smart watch series
+                            </ProductForCalculationName>
+                            <ProductForCalculationParam>
+                              <ParamText sx={{ fontWeight: 700 }}>
+                                Material:
+                              </ParamText>
+                              <ParamText>10.1 FL OZ</ParamText>
+                            </ProductForCalculationParam>
+                            <ProductForCalculationParam>
+                              <ParamText sx={{ fontWeight: 700 }}>
+                                ASIN:
+                              </ParamText>
+                              <ParamText>B075VQ3YJQ</ParamText>
+                            </ProductForCalculationParam>
+                            <ProductForCalculationParam>
+                              <ParamText sx={{ fontWeight: 700 }}>
+                                Cost Price:
+                              </ParamText>
+                              <ParamText>$12.80</ParamText>
+                            </ProductForCalculationParam>
+                          </ProductForCalculationDetails>
+
+                          <ProductForCalculationDetails
+                            sx={{ alignItems: "end" }}
+                          >
+                            <BlueButton sx={{ padding: "0px 30px" }}>
+                              Try another product
+                            </BlueButton>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "10px",
+                              }}
+                            >
+                              {/* Should be renamed in future */}
+                              <BuyBoxStrategyRulesLabel>
+                                MIN return on investment
+                              </BuyBoxStrategyRulesLabel>
+                              <FormControl>
+                                <OutlinedInput
+                                  id="min-return"
+                                  size="small"
+                                  sx={{ background: "#fff", width: "80px" }}
+                                  startAdornment={
+                                    <InputAdornment position="start">
+                                      %
+                                    </InputAdornment>
+                                  }
+                                />
+                              </FormControl>
+                            </Box>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: "10px",
+                              }}
+                            >
+                              {/* Should be renamed in future */}
+                              <BuyBoxStrategyRulesLabel>
+                                MAX return on investment
+                              </BuyBoxStrategyRulesLabel>
+                              <FormControl>
+                                <OutlinedInput
+                                  id="min-return"
+                                  size="small"
+                                  sx={{ background: "#fff", width: "80px" }}
+                                  startAdornment={
+                                    <InputAdornment position="start">
+                                      %
+                                    </InputAdornment>
+                                  }
+                                />
+                              </FormControl>
+                            </Box>
+                          </ProductForCalculationDetails>
+                        </ProductForCalculationContainer>
+
+                        <Divider
+                          sx={{ margin: "20px", width: "100%" }}
+                          variant="middle"
+                        />
+
+                        <RoundChartsContainer>
+                          <Box sx={{ position: "relative" }}>
+                            <CircularProgress
+                              variant="determinate"
+                              sx={{
+                                color: "#F1FBFE",
+                                transform: "rotate(180deg) !important",
+                              }}
+                              size={300}
+                              thickness={5}
+                              value={50}
+                            />
+                            <CircularProgress
+                              variant="determinate"
+                              disableShrink
+                              sx={{
+                                position: "absolute",
+                                color: "#6FD5F6",
+                                transform: "rotate(180deg) !important",
+                                left: 0,
+                              }}
+                              size={300}
+                              thickness={5}
+                              value={15}
+                            />
+                            <Box
+                              sx={{
+                                top: 0,
+                                left: 0,
+                                bottom: 0,
+                                right: 0,
+                                position: "absolute",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                marginTop: "33%",
+                              }}
+                            >
+                              <RoundChartText
+                                gutterBottom
+                                sx={{ color: "#00A3FF" }}
+                              >
+                                $ 25.12
+                              </RoundChartText>
+                              <AboutManualPricingBottomText
+                                sx={{ fontWeight: "600" }}
+                                component="div"
+                                align="center"
+                              >
+                                Sample MIN Price
+                              </AboutManualPricingBottomText>
+                            </Box>
+                          </Box>
+                          <Box sx={{ position: "relative" }}>
+                            <CircularProgress
+                              variant="determinate"
+                              sx={{
+                                color: "#F1FBFE",
+                                transform: "rotate(180deg) !important",
+                              }}
+                              size={300}
+                              thickness={5}
+                              value={50}
+                            />
+                            <CircularProgress
+                              variant="determinate"
+                              disableShrink
+                              sx={{
+                                position: "absolute",
+                                color: "#FF9900",
+                                transform: "rotate(180deg) !important",
+                                left: 0,
+                              }}
+                              size={300}
+                              thickness={5}
+                              value={35}
+                            />
+                            <Box
+                              sx={{
+                                top: 0,
+                                left: 0,
+                                bottom: 0,
+                                right: 0,
+                                position: "absolute",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                marginTop: "33%",
+                              }}
+                            >
+                              <RoundChartText
+                                gutterBottom
+                                sx={{ color: "#FF9900" }}
+                              >
+                                $ 40.02
+                              </RoundChartText>
+                              <AboutManualPricingBottomText
+                                sx={{ fontWeight: "600" }}
+                                component="div"
+                                align="center"
+                              >
+                                Sample MAX Price
+                              </AboutManualPricingBottomText>
+                            </Box>
+                          </Box>
+                        </RoundChartsContainer>
+                      </AboutManualPricingBottom>
+                    </AboutManualPricingContainer>
+                  </Item>
+                </Grid>
+              </>
+            )}
 
             <NavigationButtonsContainer>
               <BackButton
