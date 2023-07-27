@@ -62,6 +62,8 @@ const Guide = () => {
     setExpanded(isExpanded ? panel : false);
     if (panel === "panel1") {
       setIsFirstPanelExpanded(isExpanded);
+    } else {
+      setIsFirstPanelExpanded(false);
     }
   };
 
