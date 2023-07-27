@@ -128,3 +128,15 @@ export const ValueText = styled(Typography)`
   font-weight: 700 !important;
   line-height: 1.5rem !important;
 `;
+
+export const MainWrapper = styled(Box)`
+  display: flex;
+  flex-direction: row;
+
+  @media screen and (min-width: 1500px) {
+    width: 1500px;
+    max-width: 1500px;
+    justify-content: center;
+    margin: auto;
+  }
+`;

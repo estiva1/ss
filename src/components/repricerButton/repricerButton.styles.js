@@ -6,9 +6,11 @@ export const RepricerButtonContainer = styled(Box)`
   display: flex;
   flex-direction: row;
   z-index: 99;
-  margin-top: -28px;
+  //top: 75px;
+  left: 100px;
+  /* margin-top: -28px;
   margin-bottom: 28px;
-  margin-left: calc(33.3% - 350px);
+  margin-left: calc(33.3% - 350px); */
 `;
 
 export const RepricerPowerButton = styled.button`

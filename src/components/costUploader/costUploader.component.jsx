@@ -83,15 +83,7 @@ function fileUploaded(fileName, fileStatus, output) {
 const rowForFile = [fileUploaded("", "", "")];
 
 const CostUploader = () => {
-  //const [isFileToLoad, setIsFileToLoad] = useState(true);
-  const [isFileLoading, setIsFileLoading] = useState(false);
-  const [isFileUploaded, setIsFileUploaded] = useState(false);
-
   const [currentState, setCurrentState] = useState(1);
-
-  const handleClick = () => {
-    setCurrentState(3);
-  };
 
   return (
     <>

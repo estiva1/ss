@@ -397,9 +397,9 @@ export const StackItems = styled(Box)`
 export const Hint = styled(Box)`
   display: flex;
   flex-direction: row;
+  //align-items: center;
   height: 24px;
   width: 100%;
-  max-width: 300px;
   padding: 8px;
   gap: 10px;
   border-radius: 4px;
