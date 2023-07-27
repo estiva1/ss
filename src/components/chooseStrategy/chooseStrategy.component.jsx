@@ -914,7 +914,7 @@ const ChooseStrategy = ({
                             />
                           </FormControl>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>
                               The amount Sale Support will adjust your price by when competing with other sellers.
                             </SpanTextSmall>
@@ -967,7 +967,7 @@ const ChooseStrategy = ({
                             />
                           </FormControl>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>
                               The amount Sale Support will adjust your price by when competing with Amazon.
                             </SpanTextSmall>
@@ -1020,7 +1020,7 @@ const ChooseStrategy = ({
                             />
                           </FormControl>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>
                               The amount Sale Support will adjust your price by when competing with FBA.
                             </SpanTextSmall>
@@ -1073,7 +1073,7 @@ const ChooseStrategy = ({
                             />
                           </FormControl>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>
                               The amount Sale Support will adjust your price by when competing with FBM.
                             </SpanTextSmall>
@@ -1162,7 +1162,7 @@ const ChooseStrategy = ({
                             </StackItems>
                           </Box>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>
                               Action for Sale Support to take when no competition is found on a listing.
                             </SpanTextSmall>
@@ -1232,7 +1232,7 @@ const ChooseStrategy = ({
                             </StackItems>
                           </Box>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>
                               Action for Sale Support to take when the competition is below your min price.
                             </SpanTextSmall>
@@ -1302,7 +1302,7 @@ const ChooseStrategy = ({
                             </StackItems>
                           </Box>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>
                               Action for Sale Support to take when the competition is above your max price.
                             </SpanTextSmall>
@@ -1323,7 +1323,7 @@ const ChooseStrategy = ({
                             <BuyBoxStrategyRulesLabel>Use max price when out of stock</BuyBoxStrategyRulesLabel>
                           </Box>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>Listings can be set to max price when going out of stock.</SpanTextSmall>
                           </Hint>
                         </StackItems>
@@ -1375,7 +1375,7 @@ const ChooseStrategy = ({
                             </BuyBoxStrategyRulesLabel>
                           </Box>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>
                               Sellers that meet or exceed this feedback level will be considered competitors
                             </SpanTextSmall>
@@ -1396,7 +1396,7 @@ const ChooseStrategy = ({
                             <BuyBoxStrategyRulesLabel>Exclude Amazon as a competitor</BuyBoxStrategyRulesLabel>
                           </Box>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>Choose to ignore Amazon when found on a listing.</SpanTextSmall>
                           </Hint>
                         </StackItems>
@@ -1415,7 +1415,7 @@ const ChooseStrategy = ({
                             <BuyBoxStrategyRulesLabel>Exclude back-ordered sellers</BuyBoxStrategyRulesLabel>
                           </Box>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>Exclude sellers whose inventory is not yet available.</SpanTextSmall>
                           </Hint>
                         </StackItems>
@@ -1434,7 +1434,7 @@ const ChooseStrategy = ({
                             <BuyBoxStrategyRulesLabel>With Free Shipping</BuyBoxStrategyRulesLabel>
                           </Box>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>Exclude sellers whose entered with free shipping details.</SpanTextSmall>
                           </Hint>
                         </StackItems>
@@ -1487,7 +1487,7 @@ const ChooseStrategy = ({
                         <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }}>
                           <BuyBoxStrategyRulesLabel>When you've acquired the buy box</BuyBoxStrategyRulesLabel>
                         </Box>
-                        <StackItems sx={{ marginTop: "0px !important" }}>
+                        <StackItems sx={{ marginTop: "0px !important", mb: 2 }}>
                           <Autocomplete
                             disablePortal
                             id="combo-box-choose-option"
@@ -1529,7 +1529,7 @@ const ChooseStrategy = ({
                             />
                           </FormControl>
                           <Hint>
-                            <Box component="img" src={lightBulb} />
+                            <Box component="img" src={lightBulb} sx={{width: "24px"}}/>
                             <SpanTextSmall>
                               The action Sale Support will take to keep you in the buy box for longer.
                             </SpanTextSmall>

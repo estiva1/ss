@@ -224,7 +224,7 @@ export const SpanText = styled(Typography)`
 
 export const SpanTextSmall = styled(Typography)`
   font-family: Titillium Web !important;
-  font-size: 10px !important;
+  font-size: 11px !important;
   color: #4e5969 !important;
   line-height: 12px !important;
 `;
@@ -397,7 +397,7 @@ export const StackItems = styled(Box)`
 export const Hint = styled(Box)`
   display: flex;
   flex-direction: row;
-  //align-items: center;
+  align-items: center;
   height: 24px;
   width: 100%;
   padding: 8px;
