@@ -4,9 +4,11 @@ import styled from "styled-components";
 export const CostUploaderContainer = styled(Box)`
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: center;
+  height: 275px;
   //justify-content: space-between;
-  padding: 20px 20px 5px 20px;
+  padding: 20px 20px 20px 20px;
   gap: 10px;
   overflow: hidden;
 `;
@@ -27,18 +29,17 @@ export const StyledPaper = styled(Paper)`
 `;
 
 export const TextContainer = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   background-color: #fff !important;
   padding: 20px;
-  background: #f8fafb;
-  gap: 15px;
 `;
 
 export const HeaderText = styled(Typography)`
-  font-weight: 700 !important;
   color: #000 !important;
+  font-family: Titillium Web !important;
+  font-size: 1.125rem !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 1.25rem !important;
 `;
 
 export const DescriptionText = styled(Typography)`
@@ -52,6 +53,35 @@ export const StyledWhiteButton = styled(Button)`
   border-radius: 10px !important;
   margin-top: 20px !important;
   margin-bottom: 20px !important;
+`;
+
+export const SubheaderText = styled(Typography)`
+  color: #000 !important;
+  text-align: center !important;
+  font-size: 0.875rem !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 1.125rem !important;
+`;
+
+export const SpanText = styled.p`
+  color: #4e5969;
+  text-align: center;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.125rem;
+  margin: 0;
+`;
+
+export const TableDescriptionText = styled(Typography)`
+  color: #000 !important;
+  text-align: center !important;
+  font-family: Titillium Web !important;
+  font-size: 0.875rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 1.125rem !important;
 `;
 
 export const AboutContainer = styled(Box)`

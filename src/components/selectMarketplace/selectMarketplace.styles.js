@@ -11,6 +11,7 @@ export const TextContainer = styled(Box)`
 `;
 
 export const HeaderText = styled(Typography)`
+  font-family: Titillium Web !important;
   font-size: 24px !important;
   line-height: 30px !important;
   font-weight: 700 !important;
@@ -19,6 +20,7 @@ export const HeaderText = styled(Typography)`
 
 export const DescriptionText = styled(Typography)`
   margin: auto;
+  font-family: Titillium Web !important;
   font-size: 14px !important;
   line-height: 18px !important;
   color: #4e5969;
@@ -79,4 +81,43 @@ export const MarketplaceImageBox = styled(Box)`
   width: 180px;
   margin-top: 30px;
   margin-bottom: 30px;
+`;
+
+export const HeaderTextLarge = styled(Typography)`
+  color: #000 !important;
+  font-feature-settings: "clig" off, "liga" off !important;
+  font-family: Titillium Web !important;
+  font-size: 2rem !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: normal !important;
+`;
+
+export const HeaderTextExtraLarge = styled(Typography)`
+  color: #1565d8 !important;
+  text-align: center !important;
+  font-family: Titillium Web !important;
+  font-size: 60px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 72px !important;
+`;
+
+export const SpanText = styled(Typography)`
+  color: #4e5969 !important;
+  font-family: Titillium Web !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+  white-space: pre-line;
+`;
+
+export const SpanTextSmall = styled(Typography)`
+  color: #979797 !important;
+  font-family: Titillium Web !important;
+  font-size: 0.75rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
 `;

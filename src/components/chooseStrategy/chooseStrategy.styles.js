@@ -1,14 +1,6 @@
 import styled from "styled-components";
 import { styled as materialStyled } from "@mui/material/styles";
-import {
-  Box,
-  Button,
-  Chip,
-  ListItemAvatar,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Chip, ListItemAvatar, Paper, Stack, Typography } from "@mui/material";
 
 export const TextContainer = styled(Box)`
   display: flex;
@@ -20,13 +12,17 @@ export const TextContainer = styled(Box)`
 `;
 
 export const HeaderText = styled(Typography)`
+  font-family: Titillium Web !important;
   font-weight: 700 !important;
   color: #000 !important;
 `;
 
 export const DescriptionText = styled(Typography)`
   margin: auto;
-  font-size: 16px !important;
+  font-family: Titillium Web !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 18px !important;
   color: #4e5969 !important;
 `;
 //--------------------------------------------------------------
@@ -84,9 +80,11 @@ export const StrategyImageBox = styled(Box)`
 `;
 
 export const BoxText = styled(Typography)`
+  color: #000 !important;
+  font-family: Titillium Web !important;
   font-weight: 700 !important;
   font-size: 18px !important;
-  color: #000;
+  line-height: 20px !important;
 `;
 
 export const StyledListItemAvatar = styled(ListItemAvatar)`
@@ -162,14 +160,11 @@ export const AiProfileSelect = styled(Button)`
   padding: 0px !important;
   text-transform: none !important;
   border-radius: 16px !important;
-  box-shadow: 4px 4px 20px rgba(111, 213, 246, 0.25),
-    inset 0px 0px 0px 1px #00a3ff;
+  box-shadow: 4px 4px 20px rgba(111, 213, 246, 0.25), inset 0px 0px 0px 1px #00a3ff;
   width: 100%;
   height: 80px;
-  background-color: ${(props) =>
-    props.active ? "#F1FBFE" : "#FFF"} !important;
-  box-shadow: ${(props) =>
-    props.active ? "inset 0px 0px 0px 2px #00a3ff" : ""} !important;
+  background-color: ${(props) => (props.active ? "#F1FBFE" : "#FFF")} !important;
+  box-shadow: ${(props) => (props.active ? "inset 0px 0px 0px 2px #00a3ff" : "")} !important;
 
   &:first-of-type {
     margin-left: 40px !important;
@@ -215,17 +210,23 @@ export const MinMaxTypeSelect = styled(Button)`
   width: 100%;
   height: 120px;
   background: #ffffff !important;
-  background-color: ${(props) =>
-    props.active ? "#F1FBFE" : "#FFF"} !important;
-  box-shadow: ${(props) =>
-    props.active ? "inset 0px 0px 0px 1px #00a3ff" : ""} !important;
+  background-color: ${(props) => (props.active ? "#F1FBFE" : "#FFF")} !important;
+  box-shadow: ${(props) => (props.active ? "inset 0px 0px 0px 1px #00a3ff" : "")} !important;
 `;
 
 export const SpanText = styled(Typography)`
+  font-family: Titillium Web !important;
   margin-top: 10px !important;
   font-size: 12px !important;
   color: #4e5969 !important;
   line-height: 18px !important;
+`;
+
+export const SpanTextSmall = styled(Typography)`
+  font-family: Titillium Web !important;
+  font-size: 10px !important;
+  color: #4e5969 !important;
+  line-height: 12px !important;
 `;
 
 export const AboutManualPricingContainer = styled(Box)`
@@ -251,6 +252,7 @@ export const AboutManualPricingBottom = styled(Box)`
 `;
 
 export const AboutManualPricingBottomText = styled(Typography)`
+  font-family: Titillium Web !important;
   font-size: 12px !important;
   color: #4e5969 !important;
   line-height: 18px !important;
@@ -259,8 +261,9 @@ export const AboutManualPricingBottomText = styled(Typography)`
 export const AboutManualPricingUploadBox = styled(Box)`
   display: flex;
   flex-direction: column;
-  width: 80%;
-  height: 245px;
+  min-width: 450px;
+  width: 450px;
+  height: 220px;
   padding: 20px;
   align-items: center;
   justify-content: center;
@@ -290,6 +293,7 @@ export const ProductForCalculationDetails = styled(Box)`
 `;
 
 export const ProductForCalculationName = styled(Typography)`
+  font-family: Titillium Web !important;
   font-size: 16px !important;
   line-height: 24px !important;
   font-weight: 400 !important;
@@ -302,6 +306,7 @@ export const ProductForCalculationParam = styled(Box)`
 `;
 
 export const ParamText = styled(Typography)`
+  font-family: Titillium Web !important;
   font-size: 14px !important;
   line-height: 18px !important;
 `;
@@ -315,6 +320,7 @@ export const RoundChartsContainer = styled(Box)`
 `;
 
 export const RoundChartText = styled(Typography)`
+  font-family: Titillium Web !important;
   font-size: 24px !important;
   line-height: 28px !important;
   font-weight: 700 !important;
@@ -347,6 +353,7 @@ export const AssignItemContentLeft = styled(Box)`
 `;
 
 export const AssignItemSpanText = styled(Typography)`
+  font-family: Titillium Web !important;
   font-size: 12px !important;
   color: #4e5969 !important;
   line-height: 18px !important;
@@ -367,11 +374,13 @@ export const AssignItemContentRightExtended = styled(Box)`
 `;
 
 export const AssignItemQuantityText = styled(Typography)`
+  font-family: Titillium Web !important;
   font-size: 24px !important;
   font-weight: 700 !important;
 `;
 
 export const BuyBoxStrategyRulesLabel = styled(Typography)`
+  font-family: Titillium Web !important;
   font-size: 14px !important;
   line-height: 16px !important;
   font-weight: 500 !important;
@@ -389,6 +398,8 @@ export const Hint = styled(Box)`
   display: flex;
   flex-direction: row;
   height: 24px;
+  width: 100%;
+  max-width: 300px;
   padding: 8px;
   gap: 10px;
   border-radius: 4px;

@@ -43,7 +43,7 @@ export const StyledAccordionContainer = styled(Paper)`
   border: none;
   box-shadow: none !important;
   border-radius: 16px !important;
-  
+
   &:first-of-type {
     margin-bottom: 50px;
   }
@@ -98,4 +98,33 @@ export const StyledPaperRight = styled(Paper)`
   border-radius: 16px !important;
   background: #f8fafb !important;
   box-shadow: 4px 4px 25px rgba(111, 213, 246, 0.25) !important;
+`;
+
+export const StepperStrategyText = styled(Typography)`
+  color: #4e5969 !important;
+  font-family: Titillium Web !important;
+  font-size: 0.75rem !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  line-height: 0.875rem !important;
+  letter-spacing: 0.00375rem !important;
+  margin-bottom: 4px !important;
+`;
+
+export const StepperSubstrategyText = styled(Typography)`
+  color: #979797 !important;
+  font-family: Titillium Web !important;
+  font-size: 0.625rem !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  line-height: 0.625rem !important;
+`;
+
+export const ValueText = styled(Typography)`
+  color: #000 !important;
+  font-family: Titillium Web !important;
+  font-size: 1.125rem !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 1.5rem !important;
 `;
